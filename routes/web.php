@@ -15,4 +15,5 @@ use App\Http\Controllers\AuthController;
 
 Route::middleware("share")->group(function (){
    Route::get("giris-yap",[AuthController::class,"login"])->name("login");
+   Route::post("/giris-yap",[AuthController::class,"userCheck"])->name("checkUser");
 });

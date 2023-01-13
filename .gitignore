@@ -5,6 +5,7 @@ auth.json
 npm-debug.log
 yarn-error.log
 .env
+dbyedek
 /.fleet
 /.idea
 /.vscode
