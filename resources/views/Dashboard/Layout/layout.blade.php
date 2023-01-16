@@ -102,144 +102,16 @@
         <div class="deznav-scroll">
             <a href="javascript:void(0)" class="add-menu-sidebar" data-toggle="modal" data-target="#addOrderModalside" >+ New Event</a>
             <ul class="metismenu" id="menu">
-                <li><a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
+                <li><a href="{{route("admin.index")}}" class="ai-icon" aria-expanded="false">
                         <i class="flaticon-381-networking"></i>
-                        <span class="nav-text">Dashboard</span>
+                        <span class="nav-text">Anasayfa</span>
                     </a>
-                    <ul aria-expanded="false">
-                        <li><a href="index.html">Dashboard</a></li>
-                        <li><a href="event.html">Event</a></li>
-                        <li><a href="event-detail.html">Event Detail</a></li>
-                        <li><a href="customers.html">Customers</a></li>
-                        <li><a href="analytics.html">Analytics</a></li>
-                        <li><a href="reviews.html">Reviews</a></li>
-                    </ul>
                 </li>
-                <li><a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
-                        <i class="flaticon-381-television"></i>
-                        <span class="nav-text">Apps</span>
-                    </a>
-                    <ul aria-expanded="false">
-                        <li><a href="assets/app-profile.html">Profile</a></li>
-                        <li><a href="assets/post-details.html">Post Details</a></li>
-                        <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">Email</a>
-                            <ul aria-expanded="false">
-                                <li><a href="assets/email-compose.html">Compose</a></li>
-                                <li><a href="assets/email-inbox.html">Inbox</a></li>
-                                <li><a href="assets/email-read.html">Read</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="assets/app-calender.html">Calendar</a></li>
-                        <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">Shop</a>
-                            <ul aria-expanded="false">
-                                <li><a href="assets/ecom-product-grid.html">Product Grid</a></li>
-                                <li><a href="assets/ecom-product-list.html">Product List</a></li>
-                                <li><a href="assets/ecom-product-detail.html">Product Details</a></li>
-                                <li><a href="assets/ecom-product-order.html">Order</a></li>
-                                <li><a href="assets/ecom-checkout.html">Checkout</a></li>
-                                <li><a href="assets/ecom-invoice.html">Invoice</a></li>
-                                <li><a href="assets/ecom-customers.html">Customers</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </li>
-                <li><a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
-                        <i class="flaticon-381-controls-3"></i>
-                        <span class="nav-text">Charts</span>
-                    </a>
-                    <ul aria-expanded="false">
-                        <li><a href="assets/chart-flot.html">Flot</a></li>
-                        <li><a href="assets/chart-morris.html">Morris</a></li>
-                        <li><a href="assets/chart-chartjs.html">Chartjs</a></li>
-                        <li><a href="assets/chart-chartist.html">Chartist</a></li>
-                        <li><a href="assets/chart-sparkline.html">Sparkline</a></li>
-                        <li><a href="assets/chart-peity.html">Peity</a></li>
-                    </ul>
-                </li>
-                <li><a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
-                        <i class="flaticon-381-internet"></i>
-                        <span class="nav-text">Bootstrap</span>
-                    </a>
-                    <ul aria-expanded="false">
-                        <li><a href="assets/ui-accordion.html">Accordion</a></li>
-                        <li><a href="assets/ui-alert.html">Alert</a></li>
-                        <li><a href="assets/ui-badge.html">Badge</a></li>
-                        <li><a href="assets/ui-button.html">Button</a></li>
-                        <li><a href="assets/ui-modal.html">Modal</a></li>
-                        <li><a href="assets/ui-button-group.html">Button Group</a></li>
-                        <li><a href="assets/ui-list-group.html">List Group</a></li>
-                        <li><a href="assets/ui-media-object.html">Media Object</a></li>
-                        <li><a href="assets/ui-card.html">Cards</a></li>
-                        <li><a href="assets/ui-carousel.html">Carousel</a></li>
-                        <li><a href="assets/ui-dropdown.html">Dropdown</a></li>
-                        <li><a href="assets/ui-popover.html">Popover</a></li>
-                        <li><a href="assets/ui-progressbar.html">Progressbar</a></li>
-                        <li><a href="assets/ui-tab.html">Tab</a></li>
-                        <li><a href="assets/ui-typography.html">Typography</a></li>
-                        <li><a href="assets/ui-pagination.html">Pagination</a></li>
-                        <li><a href="assets/ui-grid.html">Grid</a></li>
 
-                    </ul>
-                </li>
-                <li><a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
-                        <i class="flaticon-381-heart"></i>
-                        <span class="nav-text">Plugins</span>
-                    </a>
-                    <ul aria-expanded="false">
-                        <li><a href="assets/uc-select2.html">Select 2</a></li>
-                        <li><a href="assets/uc-nestable.html">Nestedable</a></li>
-                        <li><a href="assets/uc-noui-slider.html">Noui Slider</a></li>
-                        <li><a href="assets/uc-sweetalert.html">Sweet Alert</a></li>
-                        <li><a href="assets/uc-toastr.html">Toastr</a></li>
-                        <li><a href="assets/map-jqvmap.html">Jqv Map</a></li>
-                        <li><a href="assets/uc-lightgallery.html">Lightgallery</a></li>
-                    </ul>
-                </li>
-                <li><a href="widget-basic.html" class="ai-icon" aria-expanded="false">
-                        <i class="flaticon-381-settings-2"></i>
-                        <span class="nav-text">Widget</span>
-                    </a>
-                </li>
-                <li><a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
-                        <i class="flaticon-381-notepad"></i>
-                        <span class="nav-text">Forms</span>
-                    </a>
-                    <ul aria-expanded="false">
-                        <li><a href="assets/form-element.html">Form Elements</a></li>
-                        <li><a href="assets/form-wizard.html">Wizard</a></li>
-                        <li><a href="assets/form-editor-summernote.html">Summernote</a></li>
-                        <li><a href="form-pickers.html">Pickers</a></li>
-                        <li><a href="form-validation-jquery.html">Jquery Validate</a></li>
-                    </ul>
-                </li>
-                <li><a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
-                        <i class="flaticon-381-network"></i>
-                        <span class="nav-text">Table</span>
-                    </a>
-                    <ul aria-expanded="false">
-                        <li><a href="table-bootstrap-basic.html">Bootstrap</a></li>
-                        <li><a href="table-datatable-basic.html">Datatable</a></li>
-                    </ul>
-                </li>
-                <li><a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
-                        <i class="flaticon-381-layer-1"></i>
-                        <span class="nav-text">Pages</span>
-                    </a>
-                    <ul aria-expanded="false">
-                        <li><a href="assets/page-register.html">Register</a></li>
-                        <li><a href="assets/page-login.html">Login</a></li>
-                        <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">Error</a>
-                            <ul aria-expanded="false">
-                                <li><a href="assets/page-error-400.html">Error 400</a></li>
-                                <li><a href="assets/page-error-403.html">Error 403</a></li>
-                                <li><a href="assets/page-error-404.html">Error 404</a></li>
-                                <li><a href="assets/page-error-500.html">Error 500</a></li>
-                                <li><a href="assets/page-error-503.html">Error 503</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="assets/page-lock-screen.html">Lock Screen</a></li>
-                    </ul>
-                </li>
+
+
+
+
             </ul>
             <div class="copyright">
                 <p>Made with <span class="heart"></span> by Ahmet Vuruskan</p>

@@ -23,6 +23,7 @@ class UserSeeder extends Seeder
                 "email"=>"ahmetfatih0702@gmail.com",
                 "phone" => "05434432849",
                 "password" => bcrypt("123456789"),
+                "role" =>"admin"
             ],
             [
                 "name" => "Onurcan",
@@ -31,6 +32,7 @@ class UserSeeder extends Seeder
                 "email"=>"info@psikologlive.com",
                 "phone" => "000000000",
                 "password" => bcrypt("123456789"),
+                "role" =>"admin"
             ]
         ]);
     }
