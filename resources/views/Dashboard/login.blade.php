@@ -31,7 +31,8 @@
                                     @endforeach
                                 @endif
                                 <h4 class="text-center mb-4 text-white">Giriş yapın</h4>
-                                <form action="{{route("checkUser")}}">
+                                <form method="post" action="{{route("checkUser")}}">
+                                    @csrf
                                     <div class="form-group">
                                         <label class="mb-1 text-white"><strong>Email</strong></label>
                                         <input name="email" type="email" class="form-control" placeholder="hello@example.com">

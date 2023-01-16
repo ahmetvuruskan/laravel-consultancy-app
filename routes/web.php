@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\AdminController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,7 +14,12 @@ use App\Http\Controllers\AuthController;
 |
 */
 
-Route::middleware("share")->group(function (){
-   Route::get("giris-yap",[AuthController::class,"login"])->name("login");
-   Route::post("/giris-yap",[AuthController::class,"userCheck"])->name("checkUser");
+Route::middleware(['share',"xss"])->group(function (){
+    Route::get("giris-yap",[AuthController::class,"login"])->middleware("checkSession")->name("login");
+    Route::post("userCheck",[AuthController::class,"userCheck"])->name("checkUser");
+    Route::get("cikis-yap",[AuthController::class,'logout'])->name("logout");
+    Route::middleware(["adminAccess"])->prefix("admin")->group(function (){
+        Route::get("/",[AdminController::class,"index"])->name("admin.index");
+    });
+
 });

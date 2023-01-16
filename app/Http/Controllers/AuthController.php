@@ -5,6 +5,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cookie;
+use Illuminate\Support\Facades\Validator;
+use App\Models\User;
 
 class AuthController extends Controller
 {
@@ -33,7 +35,7 @@ class AuthController extends Controller
             $token = $user->createToken("userToken")->plainTextToken;
             Log::info("Kullanıcı giriş yaptı", ['user' => Auth::user()->email, 'date-time' => now()->format("d/m/Y") . "-" . now()->format("H:i:s")]);
             if (Auth::user()->role == "admin") {
-                return redirect("/admin/panel")->withCookie(\cookie("token", $token, env("SESSION_LIFETIME")));
+                return redirect(route("admin.index"))->withCookie(\cookie("token", $token, env("SESSION_LIFETIME")));
             }
 //            elseif (Auth::user()->role == "user") {
 //                return redirect("/kullanici/panel")->withCookie(\cookie("token", $token, env("SESSION_LIFETIME")));;
@@ -52,5 +54,4 @@ class AuthController extends Controller
         Auth::logout();
         return redirect(route('login'));
     }
-
 }

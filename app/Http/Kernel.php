@@ -2,7 +2,10 @@
 
 namespace App\Http;
 
+use App\Http\Middleware\AdminAccess;
+use App\Http\Middleware\AuthCheck;
 use App\Http\Middleware\Share;
+use App\Http\Middleware\XssProtection;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 class Kernel extends HttpKernel
@@ -65,5 +68,8 @@ class Kernel extends HttpKernel
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'share' =>Share::class,
+        'xss' =>XssProtection::class,
+        'checkSession'=>AuthCheck::class,
+        'adminAccess'=>AdminAccess::class
     ];
 }
