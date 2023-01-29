@@ -1,4 +1,4 @@
-@extends('Dashboard.Layout.layout')
+@extends('Dashboard.Admin.Layout.layout')
 @section('title')
     {{$title}} | Anasayfa
 @endsection

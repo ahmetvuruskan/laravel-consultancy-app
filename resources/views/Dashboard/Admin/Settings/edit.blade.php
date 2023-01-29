@@ -1,4 +1,4 @@
-@extends("Dashboard.Layout.layout")
+@extends("Dashboard.Admin.Layout.layout")
 @section('title')
     {{$title}} | Ayar Duzenle
 @endsection
@@ -15,30 +15,33 @@
                             <h4 class="card-title">{{$setting->settings_description}} İsimli ayarı Düzenliyorsunuz</h4>
                         </div>
                         <div class="card-body">
-                            <form enctype="multipart/form-data" method="post" action="{{route("admin.settings.update",$setting->id)}}">
+                            <form enctype="multipart/form-data" method="post"
+                                  action="{{route("admin.settings.update",$setting->id)}}">
                                 @csrf
                                 @if($setting->settings_type == "text")
-                                <div class="row justify-content-center">
-                                    <div class="form-group col-lg-6">
-                                        <label for="settingValue" class="col-form-label">Ayar Değer</label>
-                                        <input type="text" name="settings_value" class="form-control" value="{{$setting->settings_value}}">
+                                    <div class="row justify-content-center">
+                                        <div class="form-group col-lg-6">
+                                            <label for="settingValue" class="col-form-label">Ayar Değer</label>
+                                            <input type="text" name="settings_value" class="form-control"
+                                                   value="{{$setting->settings_value}}">
+                                        </div>
                                     </div>
-                                </div>
-                                    @elseif($setting->settings_type=="file")
+                                @elseif($setting->settings_type=="file")
                                     <div class="row justify-content-center">
                                         <div class="form-group col-lg-6">
                                             <label for="settingValue" class="col-form-label">Yüklü Resim</label>
                                             <br>
-                                            <img class="mt-2 mb-2 " width="400" src="/assets/images/{{$setting->settings_value}}" alt="">
+                                            <img class="mt-2 mb-2 " width="400"
+                                                 src="/assets/images/{{$setting->settings_value}}" alt="">
                                             <br>
                                             <label for="settingValue" class="col-form-label">Ayar Değer</label>
-                                            <input  type="file" name="settings_value" class="form-control">
+                                            <input type="file" name="settings_value" class="form-control">
 
                                         </div>
                                         <input type="hidden" value="{{$setting->settings_value}}" name="old_file"
                                                id="old_file">
                                     </div>
-                                    @endif
+                                @endif
                                 <div class="row justify-content-end mr-xl-5">
                                     <button class="btn btn-primary">Kaydet</button>
                                 </div>

@@ -11,14 +11,13 @@ class SettingsController extends Controller
 {
     public function index(){
         $data["settings"]=Settings::orderBy("settings_must","ASC")->get();
-        return view("Dashboard.Settings.index")->with("data",$data);
+        return view("Dashboard.Admin.Settings.index")->with("data",$data);
     }
     public function editSettings($id){
         $setting = Settings::find($id);
-        return view("Dashboard.Settings.edit")->with("setting",$setting);
+        return view("Dashboard.Admin.Settings.edit")->with("setting",$setting);
     }
     public function updateSetting(Request $request,$id){
-
         if ($request->hasFile("settings_value")) {
             $validated = Validator::make($request->all(), [
                 'settings_value' => 'required|image|mimes:jpg,jpeg,png,ico|max:2048',
@@ -50,7 +49,7 @@ class SettingsController extends Controller
         } else {
             Log::info($request->user()->email . " Kullanıcısı," . $request->id . " id numaralı ayarı güncellemeye çalıştı fakat hata ile karşılaştı. " . $settings);
             return redirect(route("admin.settings.edit",$id));
-
         }
     }
+
 }

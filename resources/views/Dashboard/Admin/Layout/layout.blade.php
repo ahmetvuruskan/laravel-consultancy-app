@@ -11,7 +11,7 @@
         {{$title}}
         @endif
     </title>
-    <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/favicon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/{{$icon}}">
     <link href="/assets/vendor/datatables/css/jquery.dataTables.min.css" rel="stylesheet">
     <link rel="stylesheet" href="/assets/vendor/chartist/css/chartist.min.css">
     <link href="/assets/vendor/bootstrap-select/dist/css/bootstrap-select.min.css" rel="stylesheet">
@@ -24,6 +24,7 @@
     <div class="sk-three-bounce">
         <div class="sk-child sk-bounce1"></div>
         <div class="sk-child sk-bounce2"></div>
+        <div class="sk-child sk-bounce3"></div>
         <div class="sk-child sk-bounce3"></div>
     </div>
 </div>
@@ -70,6 +71,7 @@
                                     <svg id="icon-logout" xmlns="http://www.w3.org/2000/svg" class="text-danger" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
                                     <span class="ml-2">Çıkış Yap </span>
                                 </a>
+
                             </div>
                         </li>
                     </ul>
@@ -91,6 +93,16 @@
                         <i class="flaticon-381-settings"></i>
                         <span class="nav-text">Ayarlar</span>
                     </a>
+                </li>
+                <li>
+                    <a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
+                        <i class="flaticon-381-home-1"></i>
+                        <span class="nav-text">Mağaza İşlemleri</span>
+                    </a>
+                    <ul aria-expanded="false">
+
+                        <li><a href="{{route("admin.packages.index")}}">Paketler</a></li>
+                    </ul>
                 </li>
             </ul>
             <div class="copyright">

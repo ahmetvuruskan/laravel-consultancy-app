@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\SettingsController;
+use App\Http\Controllers\PackageController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -25,6 +26,14 @@ Route::middleware(['share',"xss"])->group(function (){
             Route::get("/",[SettingsController::class,"index"])->name("admin.settings.index");
             Route::get("duzenle/{id}",[SettingsController::class,'editSettings'])->name("admin.settings.edit");
             Route::post("guncelle/{id}",[SettingsController::class,"updateSetting"])->name("admin.settings.update");
+        });
+        Route::prefix("paketler")->group(function (){
+           Route::get("/",[PackageController::class,"index"])->name("admin.packages.index");
+           Route::get("ekle",[PackageController::class,"addPackage"])->name("admin.packages.add");
+           Route::post("insert",[PackageController::class,"insertPackage"])->name("admin.packages.insert");
+           Route::get("duzenle/{id}",[PackageController::class,"edit"])->name("admin.packages.edit");
+           Route::post("update/{id}",[PackageController::class,"update"])->name("admin.packages.update");
+           Route::get("delete/{id}",[PackageController::class,"delete"])->name("admin.packages.delete");
         });
     });
 
