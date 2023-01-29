@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\SettingsController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -20,6 +21,11 @@ Route::middleware(['share',"xss"])->group(function (){
     Route::get("cikis-yap",[AuthController::class,'logout'])->name("logout");
     Route::middleware(["adminAccess"])->prefix("admin")->group(function (){
         Route::get("/",[AdminController::class,"index"])->name("admin.index");
+        Route::prefix("ayarlar")->group(function (){
+            Route::get("/",[SettingsController::class,"index"])->name("admin.settings.index");
+            Route::get("duzenle/{id}",[SettingsController::class,'editSettings'])->name("admin.settings.edit");
+            Route::post("guncelle/{id}",[SettingsController::class,"updateSetting"])->name("admin.settings.update");
+        });
     });
 
 });

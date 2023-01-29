@@ -11,19 +11,15 @@
         {{$title}}
         @endif
     </title>
-    <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon.png">
-    <link rel="stylesheet" href="assets/vendor/chartist/css/chartist.min.css">
-    <link href="assets/vendor/bootstrap-select/dist/css/bootstrap-select.min.css" rel="stylesheet">
-    <link href="assets/vendor/owl-carousel/owl.carousel.css" rel="stylesheet">
-    <link href="assets/css/style.css" rel="stylesheet">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/favicon.png">
+    <link href="/assets/vendor/datatables/css/jquery.dataTables.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/vendor/chartist/css/chartist.min.css">
+    <link href="/assets/vendor/bootstrap-select/dist/css/bootstrap-select.min.css" rel="stylesheet">
+    <link href="/assets/vendor/owl-carousel/owl.carousel.css" rel="stylesheet">
+    <link href="/assets/css/style.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
 </head>
 <body>
-
-<!--*******************
-    Preloader start
-********************-->
 <div id="preloader">
     <div class="sk-three-bounce">
         <div class="sk-child sk-bounce1"></div>
@@ -31,21 +27,11 @@
         <div class="sk-child sk-bounce3"></div>
     </div>
 </div>
-<!--*******************
-    Preloader end
-********************-->
-
-<!--**********************************
-    Main wrapper start
-***********************************-->
 <div id="main-wrapper">
 
-    <!--**********************************
-        Nav header start
-    ***********************************-->
     <div class="nav-header">
-        <a href="index.html" class="brand-logo">
-            <img class="logo-abbr" src="assets/images/{{$logo}}" alt="">
+        <a href="{{route("admin.index")}}" class="brand-logo">
+            <img class="logo-abbr" src="/assets/images/{{$logo}}" alt="">
         </a>
 
         <div class="nav-control">
@@ -69,14 +55,14 @@
                         <li class="nav-item dropdown notification_dropdown">
                         <li class="nav-item dropdown header-profile">
                             <a class="nav-link" href="javascript:void(0)" role="button" data-toggle="dropdown">
-                                <img src="assets/images/profile/17.jpg" width="20" alt=""/>
+                                <img src="/assets/images/profile/17.jpg" width="20" alt=""/>
                                  <div class="header-info">
                                     <span class="text-black"><strong>{{\Illuminate\Support\Facades\Auth::user()->name." ".\Illuminate\Support\Facades\Auth::user()->surname}}</strong></span>
                                     <p class="fs-12 mb-0">{{strtoupper(\Illuminate\Support\Facades\Auth::user()->role)}}</p>
                                 </div>
                             </a>
                             <div class="dropdown-menu dropdown-menu-right">
-                                <a href="assets/assets/app-profile.html" class="dropdown-item ai-icon">
+                                <a href="/assets/assets/app-profile.html" class="dropdown-item ai-icon">
                                     <svg id="icon-user1" xmlns="http://www.w3.org/2000/svg" class="text-primary" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
                                     <span class="ml-2">Profil </span>
                                 </a>
@@ -91,27 +77,21 @@
             </nav>
         </div>
     </div>
-    <!--**********************************
-        Header end ti-comment-alt
-    ***********************************-->
 
-    <!--**********************************
-        Sidebar start
-    ***********************************-->
     <div class="deznav">
         <div class="deznav-scroll">
             <a href="javascript:void(0)" class="add-menu-sidebar" data-toggle="modal" data-target="#addOrderModalside" >+ New Event</a>
             <ul class="metismenu" id="menu">
                 <li><a href="{{route("admin.index")}}" class="ai-icon" aria-expanded="false">
-                        <i class="flaticon-381-networking"></i>
+                        <i class="flaticon-381-home"></i>
                         <span class="nav-text">Anasayfa</span>
                     </a>
                 </li>
-
-
-
-
-
+                <li><a href="{{route("admin.settings.index")}}" class="ai-icon" aria-expanded="false">
+                        <i class="flaticon-381-settings"></i>
+                        <span class="nav-text">Ayarlar</span>
+                    </a>
+                </li>
             </ul>
             <div class="copyright">
                 <p>Made with <span class="heart"></span> by Ahmet Vuruskan</p>
@@ -124,42 +104,22 @@
             <p>Copyright ©  Developed by <a href="https://github.com/ahmetvuruskan" target="_blank">Ahmet Vuruşkan</a> {{date("Y")}}</p>
         </div>
     </div>
-    <!--**********************************
-        Footer end
-    ***********************************-->
 
-    <!--**********************************
-       Support ticket button start
-    ***********************************-->
-
-    <!--**********************************
-       Support ticket button end
-    ***********************************-->
 
 
 </div>
-<!--**********************************
-    Main wrapper end
-***********************************-->
 
-<!--**********************************
-    Scripts
-***********************************-->
-<!-- Required vendors -->
-<script src="assets/vendor/global/global.min.js"></script>
-<script src="assets/vendor/bootstrap-select/dist/js/bootstrap-select.min.js"></script>
-<script src="assets/vendor/chart.js/Chart.bundle.min.js"></script>
-<script src="assets/js/custom.min.js"></script>
-<script src="assets/js/deznav-init.js"></script>
-<script src="assets/vendor/owl-carousel/owl.carousel.js"></script>
-
-<!-- Chart piety plugin files -->
-<script src="assets/vendor/peity/jquery.peity.min.js"></script>
-<!-- Apex Chart -->
-<script src="assets/vendor/apexchart/apexchart.js"></script>
-
-<!-- Dashboard 1 -->
-<script src="assets/js/dashboard/dashboard-1.js"></script>
+<script src="/assets/vendor/global/global.min.js"></script>
+<script src="/assets/vendor/bootstrap-select/dist/js/bootstrap-select.min.js"></script>
+<script src="/assets/vendor/chart.js/Chart.bundle.min.js"></script>
+<script src="/assets/js/custom.min.js"></script>
+<script src="/assets/js/deznav-init.js"></script>
+<script src="/assets/vendor/owl-carousel/owl.carousel.js"></script>
+<script src="/assets/vendor/peity/jquery.peity.min.js"></script>
+<script src="/assets/vendor/apexchart/apexchart.js"></script>
+<script src="/assets/js/dashboard/dashboard-1.js"></script>
+<script src="/assets/vendor/datatables/js/jquery.dataTables.min.js"></script>
+<script src="/assets/js/plugins-init/datatables.init.js"></script>
 
 <script>
     function carouselReview(){
