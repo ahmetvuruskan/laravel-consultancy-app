@@ -89,4 +89,5 @@ class PackageController extends Controller
         Packages::find($id)->delete();
         return back();
     }
+
 }
