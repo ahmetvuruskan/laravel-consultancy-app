@@ -26,6 +26,7 @@ return new class extends Migration
             $table->rememberToken();
             $table->timestamps();
             $table->enum("role",['user','admin','psychologist'])->default("user");
+            $table->enum("status",['active','passive'])->default("passive");
         });
     }
 

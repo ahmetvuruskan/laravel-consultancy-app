@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Log;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Validator;
-use App\Models\User;
+use App\Models\Users;
 
 class AuthController extends Controller
 {
@@ -31,7 +31,7 @@ class AuthController extends Controller
         $rememberMe = $request->has('remember_me');
         $userData = $request->only(["email", "password"]);
         if (Auth::attempt($userData, $rememberMe)) {
-            $user = User::where('email', $userData['email'])->first();
+            $user = Users::where('email', $userData['email'])->first();
             $token = $user->createToken("userToken")->plainTextToken;
             Log::info("Kullanıcı giriş yaptı", ['user' => Auth::user()->email, 'date-time' => now()->format("d/m/Y") . "-" . now()->format("H:i:s")]);
             if (Auth::user()->role == "admin") {
@@ -42,6 +42,7 @@ class AuthController extends Controller
 //            }
         } else {
             Log::info('Kullanıcı giriş hatası.', ['email' => $userData['email']]);
+            $request->flash();
             return back()->withErrors(['error' => "Kullanıcı adı ve şifreniz hatalı"]);
         }
     }

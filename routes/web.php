@@ -5,6 +5,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\SettingsController;
 use App\Http\Controllers\PackageController;
+use App\Http\Controllers\UserController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -35,6 +36,9 @@ Route::middleware(['share',"xss"])->group(function (){
            Route::post("update/{id}",[PackageController::class,"update"])->name("admin.packages.update");
            Route::get("delete/{id}",[PackageController::class,"delete"])->name("admin.packages.delete");
         });
-    });
+        Route::prefix("kullanicilar")->group(function (){
+            Route::get("/",[UserController::class,"index"])->name("admin.users.index");
+        });
 
+    });
 });
