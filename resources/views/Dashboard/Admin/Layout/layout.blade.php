@@ -135,7 +135,7 @@
 <script src="/assets/js/dashboard/dashboard-1.js"></script>
 <script src="/assets/vendor/datatables/js/jquery.dataTables.min.js"></script>
 <script src="/assets/js/plugins-init/datatables.init.js"></script>
-
+<script src="/assets/axios/dist/axios.min.js"></script>
 <script>
     function carouselReview(){
         /*  event-bx one function by = owl.carousel.js */
@@ -178,6 +178,7 @@
             carouselReview();
         }, 1000);
     });
+    @yield('js')
 </script>
 </body>
 </html>

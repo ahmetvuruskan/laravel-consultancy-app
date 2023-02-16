@@ -12,4 +12,12 @@ class UserController extends Controller
         $data['users']= Users::all();
         return view("Dashboard.Admin.Users.index")->with("data",$data);
     }
+    public function getUserDetails($id){
+        $user = Users::find($id);
+        return response()->json($user);
+    }
+    public function deleteUser($id){
+        Users::find($id)->delete();
+        return response()->json(["status"=>"success","message"=>"Kullanıcı başarıyla silindi."]);
+    }
 }
