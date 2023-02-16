@@ -16,7 +16,6 @@ use App\Http\Controllers\UserController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
 Route::middleware(['share',"xss"])->group(function (){
     Route::get("giris-yap",[AuthController::class,"login"])->middleware("checkSession")->name("login");
     Route::post("userCheck",[AuthController::class,"userCheck"])->name("checkUser");

@@ -178,7 +178,7 @@
             carouselReview();
         }, 1000);
     });
-    @yield('js')
 </script>
+@yield('js')
 </body>
 </html>
