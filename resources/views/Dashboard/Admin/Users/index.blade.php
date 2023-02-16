@@ -99,25 +99,35 @@
                             <label for="name">Ad</label>
                             <input type="text" class="form-control" id="name" name="name" placeholder="Ad">
                         </div>
+                        <input id="id" type="hidden">
                         <div class="col-md-6">
                             <label for="name">Soyad</label>
-                            <input type="text" class="form-control" id="name" name="name" placeholder="Soyad">
+                            <input type="text" class="form-control" id="surname" name="name" placeholder="Soyad">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-5">
+                            <label for="name">Kullanıcı Adı</label>
+                            <input type="text" class="form-control" id="username" name="name" placeholder="Kullanıcı Adı">
+                        </div>
+                        <div class="col-md-7">
+                            <label for="name">E-Posta Adresi</label>
+                            <input type="text" class="form-control" id="email" name="name" placeholder="E-Posta Adresi">
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-6">
-                            <label for="name">Kullanıcı Adı</label>
-                            <input type="text" class="form-control" id="name" name="name" placeholder="Kullanıcı Adı">
+                            <label for="name">Telefon Numarası</label>
+                            <input type="text" class="form-control" id="phone" name="name" placeholder="Telefon Numarası">
                         </div>
                         <div class="col-md-6">
-                            <label for="name">E-Posta Adresi</label>
-                            <input type="text" class="form-control" id="name" name="name" placeholder="E-Posta Adresi">
+                            <label for="name">Şifre Sıfırla</label>
+                            <button id="reset-password" class="btn btn-primary btn-block">Şifre Sıfırla</button>
                         </div>
                     </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Kapat</button>
-                    <button type="button" class="btn btn-primary">Kaydet</button>
                 </div>
             </div>
         </div>
@@ -128,6 +138,7 @@
         $(document).ready(function () {
             $(".edit-user").click(function () {
                 $("#user-detail-modal").modal('show');
+                $(".form-control").prop( "disabled", true );
                 axios.post("{{route('admin.users.details')}}", {
                     id: $(this).attr('u-id')
                 }, {
@@ -135,10 +146,18 @@
                         "Authorization ": "Bearer " + "{{\Illuminate\Support\Facades\Cookie::get("token")}}"
                     }
                 }).then(function (response) {
-                    console.log(response.data);
+                    $("#name").val(response.data.name);
+                    $("#id").val(response.data.id);
+                    $("#surname").val(response.data.surname);
+                    $("#phone").val(response.data.phone);
+                    $("#username").val(response.data.username);
+                    $("#email").val(response.data.email);
                 }).catch(function (error) {
                     console.log(error);
                 });
+            });
+            $("#reset-password").click(function (){
+                console.log("asd");
             });
         });
     </script>

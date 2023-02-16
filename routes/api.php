@@ -18,4 +18,5 @@ use App\Http\Controllers\UserController;
 Route::middleware('auth:sanctum')->group(function () {
     Route::post('get-user-details',[UserController::class,'getUserDetails'])->name("admin.users.details");
     Route::post('delete-user',[UserController::class,'deleteUser'])->name("admin.users.delete");
+    Route::post('update-user',[UserController::class,'updateUser'])->name("admin.users.update");
 });
