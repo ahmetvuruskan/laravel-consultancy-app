@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -23,6 +24,11 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        Blade::directive("fileRoute",function (){
+            return "/assets/images/";
+        });
+        Blade::directive("w",function ($w){
+            return "width='".$w."px'";
+        });
     }
 }
