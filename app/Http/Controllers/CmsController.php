@@ -10,10 +10,10 @@ class CmsController extends Controller
 {
     public function sliderIndex(){
         $data['sliders'] = Sliders::all();
-        return view("Dashboard.Admin.Cms.Slider.index")->with("data",$data);
+        return view("Dashboard.Admin.CMS.Slider.index")->with("data",$data);
     }
     public function sliderAdd(){
-        return view("Dashboard.Admin.Cms.Slider.add");
+        return view("Dashboard.Admin.CMS.Slider.add");
     }
     public function sliderInsert(Request $request){
         $validate = Validator::make($request->all(),[
