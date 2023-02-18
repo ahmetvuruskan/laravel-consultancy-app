@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->timestamps();
             $table->string("profession_type")->nullable(false);
+            $table->string("profession_description")->nullable(false);
         });
     }
 

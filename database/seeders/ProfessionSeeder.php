@@ -17,64 +17,84 @@ class ProfessionSeeder extends Seeder
     {
         DB::table("professions")->insert([
             [
-                "profession_type" => "Adli Psikoloji"
+                "profession_type" => "Adli Psikoloji",
+                'profession_description' => "lorem ipsum"
             ],
             [
-                "profession_type" => "Aile Terapisi"
+                "profession_type" => "Aile Terapisi",
+                'profession_description' => "lorem ipsum"
             ],
             [
-                "profession_type" => "Anksiyete (Kaygı) Bozuklukları"
+                "profession_type" => "Anksiyete (Kaygı) Bozuklukları",
+                'profession_description' => "lorem ipsum"
             ],
             [
-                "profession_type" => "Asperger Sendromu"
+                "profession_type" => "Asperger Sendromu",
+                'profession_description' => "lorem ipsum"
             ],
             [
-                "profession_type" => "Bağımlılık"
+                "profession_type" => "Bağımlılık",
+                'profession_description' => "lorem ipsum"
             ],
             [
-                "profession_type" => "Bipolar Bozukluk"
+                "profession_type" => "Bipolar Bozukluk",
+                'profession_description' => "lorem ipsum"
             ],
             [
-                "profession_type" => "Bireysel / Yetişkin Terapisi"
+                "profession_type" => "Bireysel / Yetişkin Terapisi",
+                'profession_description' => "lorem ipsum"
             ],
             [
-                "profession_type" => "Cinsel İşlev / İstek / Kimlik Sorunları"
+                "profession_type" => "Cinsel İşlev / İstek / Kimlik Sorunları",
+                'profession_description' => "lorem ipsum"
             ],
             [
-                "profession_type" => "Cinsel Terapi"
+                "profession_type" => "Cinsel Terapi",
+                'profession_description' => "lorem ipsum"
             ],
             [
-                "profession_type" => "Çift Terapisi"
+                "profession_type" => "Çift Terapisi",
+                'profession_description' => "lorem ipsum"
             ],
             [
-                "profession_type" => "Çocuk ve Ergen Terapisi"
+                "profession_type" => "Çocuk ve Ergen Terapisi",
+                'profession_description' => "lorem ipsum"
             ],
             [
-                "profession_type" => "Depresyon"
+                "profession_type" => "Depresyon",
+                'profession_description' => "lorem ipsum"
             ],
             [
-                "profession_type" => "Dikkat Eksikliği ve Hiperaktivite Bozukluğu (DEHB)"
+                "profession_type" => "Dikkat Eksikliği ve Hiperaktivite Bozukluğu (DEHB)",
+                'profession_description' => "lorem ipsum"
             ],
             [
-                "profession_type" => "Duygusal İlişki Problemleri"
+                "profession_type" => "Duygusal İlişki Problemleri",
+                'profession_description' => "lorem ipsum"
             ],
-              [
-                "profession_type" => "Dürtü Kontrol Bozuklukları"
+            [
+                "profession_type" => "Dürtü Kontrol Bozuklukları",
+                'profession_description' => "lorem ipsum"
             ],
-              [
-                "profession_type" => "EMDR"
+            [
+                "profession_type" => "EMDR",
+                'profession_description' => "lorem ipsum"
             ],
-              [
-                "profession_type" => "English Therapy"
+            [
+                "profession_type" => "English Therapy",
+                'profession_description' => "lorem ipsum"
             ],
-              [
-                "profession_type" => "Fobiler"
+            [
+                "profession_type" => "Fobiler",
+                'profession_description' => "lorem ipsum"
             ],
-              [
-                "profession_type" => "Gebelik Problemleri"
+            [
+                "profession_type" => "Gebelik Problemleri",
+                'profession_description' => "lorem ipsum"
             ],
-              [
-                "profession_type" => "İletişim Problemleri"
+            [
+                "profession_type" => "İletişim Problemleri",
+                'profession_description' => "lorem ipsum"
             ],
 
         ]);

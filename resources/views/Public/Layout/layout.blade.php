@@ -77,99 +77,19 @@
                                     Anasayfa <i class="fas fa-plus"></i>
                                 </a>
                             </li>
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    Department <i class="fas fa-plus"></i>
-                                </a>
-                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="services.html">Dental Care</a>
-                                    <a class="dropdown-item" href="services-2.html">Cardiology</a>
-                                    <a class="dropdown-item" href="services-3.html">Neurology </a>
-                                    <a class="dropdown-item" href="services-detail.html">Eye Care</a>
-                                </div>
-                            </li>
-                            <!-- Sub Menu -->
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown"
-                                   aria-haspopup="true" aria-expanded="false">
-                                    Patients <i class="fas fa-plus"></i>
-                                </a>
-                                <ul class="dropdown-menu">
-                                    <li class="dropdown">
-                                        <a class="dropdown-item dropdown-toggle" data-toggle="dropdown"
-                                           aria-haspopup="true" aria-expanded="false" href="#">Services <i class="fas fa-plus"></i></a>
-                                        <ul class="dropdown-menu dropdown-menu1">
-                                            <li><a class="dropdown-item" href="services.html">Services
-                                                    One</a></li>
-                                            <li><a class="dropdown-item" href="services-2.html">Services
-                                                    Two</a></li>
-                                            <li><a class="dropdown-item" href="services-3.html">Services
-                                                    Three</a></li>
-                                            <li><a class="dropdown-item" href="services-detail.html">Service
-                                                    Detail</a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="dropdown-item" href="appointment.html">Appointment</a>
-                                    </li>
-                                    <li class="dropdown">
-                                        <a class="dropdown-item dropdown-toggle" data-toggle="dropdown"
-                                           aria-haspopup="true" aria-expanded="false" href="#">Our Doctors <i class="fas fa-plus"></i></a>
-                                        <ul class="dropdown-menu dropdown-menu1">
-                                            <li><a class="dropdown-item" href="doctors.html">Doctors One</a></li>
-                                            <li><a class="dropdown-item" href="doctors-2.html">Doctors Two</a></li>
-                                            <li><a class="dropdown-item" href="doctors-3.html">Doctors Three</a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="dropdown-item" href="pricing.html">Pricing</a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <!--//End Sub Menu -->
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown3"
-                                   role="button" data-toggle="dropdown" aria-haspopup="true"
-                                   aria-expanded="false"> Blog <i class="fas fa-plus"></i> </a>
-                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="blog-standard.html">Blog Stadared</a>
-                                    <a class="dropdown-item" href="blog-list.html">Blog List</a>
-                                    <a class="dropdown-item" href="blog-grid.html">Blog Grid</a>
-                                    <a class="dropdown-item" href="blog-grid-2.html">Blog Grid-2</a>
-                                    <a class="dropdown-item" href="blog-details.html">Blog Details</a>
-                                </div>
-                            </li>
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown3" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    pages <i class="fas fa-plus"></i>
-                                </a>
-                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="about.html">About</a>
-                                    <a class="dropdown-item" href="contact-us.html">Contact One</a>
-                                    <a class="dropdown-item" href="contact-us-2.html">Contact Two</a>
-                                    <a class="dropdown-item" href="error.html">Error 404</a>
-                                </div>
-                            </li>
                         </ul>
                         <ul class="nav-icon-wrap">
-                            <li class="nav-item">
-                                <a class="nav-link" href="#"><i class="fab fa-facebook-f"></i></a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#"><i class="fab fa-twitter"></i></a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#"><i class="fab fa-instagram"></i></a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#"><i class="fab fa-google-plus-g"></i></a>
-                            </li>
-                            <li class="nav-item cart-seperate">
-                                <a class="nav-link" href="#"><i class="fas fa-shopping-cart fa-top-search"></i> <span>2</span></a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#"><i class="fas fa-bars"></i></a>
-                            </li>
+                            <ul>
+                                <li>
+                                    <a href="https://facebook.com/{{$facebook}}"><i class="fab fa-facebook-f"></i></a>
+                                </li>
+                                <li>
+                                    <a href="https://twitter.com/{{$twitter}}"><i class="fab fa-twitter"></i></a>
+                                </li>
+                                <li>
+                                    <a href="https://instagram.com/{{$instagram}}"><i class="fab fa-instagram"></i></a>
+                                </li>
+                            </ul>
                         </ul>
                     </div>
                 </nav>
@@ -240,21 +160,15 @@
             </div>
             <div class="col-md-4 col-lg-2 offset-lg-1">
                 <div class="foot-link-box footlink-box_btn">
-                    <a href="#" class="btn btn-outline-success">Find a Doctor</a>
-                    <a href="#" class="btn btn-outline-success">Career</a>
-                    <a href="#" class="btn btn-outline-success">Newsletter</a>
                     <ul>
                         <li>
-                            <a href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a href="https://facebook.com/{{$facebook}}"><i class="fab fa-facebook-f"></i></a>
                         </li>
                         <li>
-                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="https://twitter.com/{{$twitter}}"><i class="fab fa-twitter"></i></a>
                         </li>
                         <li>
-                            <a href="#"><i class="fab fa-instagram"></i></a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="fab fa-linkedin"></i></a>
+                            <a href="https://instagram.com/{{$instagram}}"><i class="fab fa-instagram"></i></a>
                         </li>
                     </ul>
                 </div>
@@ -263,7 +177,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="copyright">
-                    <p>© Medenin 2020 Allright Reserved</p>
+                    <p>© Psikologlive {{date("Y")}}</p>
                     <a href="#" id="scroll"><i class="fas fa-angle-double-up"></i></a>
                 </div>
             </div>

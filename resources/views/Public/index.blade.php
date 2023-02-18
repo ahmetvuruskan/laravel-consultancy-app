@@ -325,7 +325,7 @@
                 </div>
                 <div class="col-sm-12 col-md-3 col-lg-3 d-flex align-items-center justify-content-end">
                     <div class="counter-btn_block">
-                        <a href="#" class="btn btn-success">BOOK NOW</a>
+                        <a href="#" class="btn btn-success">Randevu Al</a>
                     </div>
                 </div>
             </div>
