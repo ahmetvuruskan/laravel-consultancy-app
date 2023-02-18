@@ -107,6 +107,15 @@
                         <li><a href="{{route("admin.packages.index")}}">Paketler</a></li>
                     </ul>
                 </li>
+                <li>
+                    <a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
+                        <i class="flaticon-381-folder"></i>
+                        <span class="nav-text">CMS İşlemleri</span>
+                    </a>
+                    <ul aria-expanded="false">
+                        <li><a href="{{route("admin.cms.slider")}}">Slider Yönetimi</a></li>
+                    </ul>
+                </li>
             </ul>
             <div class="copyright">
                 <p>Made with <span class="heart"></span> by Ahmet Vuruskan</p>

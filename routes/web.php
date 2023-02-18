@@ -7,6 +7,7 @@ use App\Http\Controllers\SettingsController;
 use App\Http\Controllers\PackageController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\FrontEndPageController;
+use App\Http\Controllers\CmsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,6 +39,9 @@ Route::middleware(['share', "xss"])->group(function () {
             Route::get("duzenle/{id}", [PackageController::class, "edit"])->name("admin.packages.edit");
             Route::post("update/{id}", [PackageController::class, "update"])->name("admin.packages.update");
             Route::get("delete/{id}", [PackageController::class, "delete"])->name("admin.packages.delete");
+        });
+        Route::prefix("cms")->group(function (){
+            Route::get("slider",[CmsController::class,"sliderIndex"])->name("admin.cms.slider");
         });
         Route::prefix("kullanicilar")->group(function () {
             Route::get("/", [UserController::class, "index"])->name("admin.users.index");
