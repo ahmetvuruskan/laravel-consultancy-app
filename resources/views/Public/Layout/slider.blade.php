@@ -19,8 +19,6 @@
                                 <a href="{{$slider->button_link}}" class="btn btn-primary" tabindex="0">{{$slider->button_text}}</a>
                             @endif
                         </div>
-                        <!--//End Slider Title -->
-
                     </div>
 
                 </div>

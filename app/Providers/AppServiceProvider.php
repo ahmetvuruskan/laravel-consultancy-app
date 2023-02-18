@@ -30,5 +30,11 @@ class AppServiceProvider extends ServiceProvider
         Blade::directive("w",function ($w){
             return "width='".$w."px'";
         });
+        Blade::directive("h",function ($h){
+            return "height='".$h."px'";
+        });
+        Blade::directive("wh",function ($w,$h){
+            return "width='".$w."px' height='".$h."px'";
+        });
     }
 }
