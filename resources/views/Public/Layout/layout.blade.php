@@ -231,24 +231,11 @@
                 <div class="foot-link-box">
                     <h4>Our Services</h4>
                     <ul>
+                        @foreach($data['professions'] as $package)
                         <li>
-                            <a href="#"><i class="fas fa-angle-double-right"></i>Pediatrics</a>
+                            <a href="#"><i class="fas fa-angle-double-right"></i>{{$package->profession_type}}</a>
                         </li>
-                        <li>
-                            <a href="#"><i class="fas fa-angle-double-right"></i>Dermatology</a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="fas fa-angle-double-right"></i>Cardiology</a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="fas fa-angle-double-right"></i>Psychological</a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="fas fa-angle-double-right"></i>Surgery</a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="fas fa-angle-double-right"></i>Family Medicine</a>
-                        </li>
+                        @endforeach
                     </ul>
                 </div>
             </div>
