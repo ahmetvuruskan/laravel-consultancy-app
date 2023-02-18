@@ -108,41 +108,29 @@
         <div class="row">
             <div class="col-sm-12 col-md-12 col-lg-4">
                 <div class="foot-contact-block">
-                    <img src="/Public/images/foot-logo.png" class="img-fluid" alt="#" />
-                    <p>
-                        Lorem ipsum dolor sit amet, consect <br /> etur adipisicing elit, sed do eius mod <br />
-                        tempor incididunt ut labore et dolore<br /> magna aliqua. Ut enim ad minim
-                    </p>
-                    <a href="tel:31234567890">
-                        <h4><i class="fas fa-phone"></i>3123 456 7890</h4>
+                    <img src="@fileRoute{{$logo}}" class="img-fluid" alt="#" />
+                    <a href="tel:{{$phone_sabit}}">
+                        <h4><i class="fas fa-phone"></i>{{$phone_sabit}}</h4>
                     </a>
-                    <a href="mailto:info@mededin.com">
-                        <h4><i class="far fa-envelope"></i>info@mededin.com</h4>
+                    <a href="mailto:{{$mail}}">
+                        <h4><i class="far fa-envelope"></i>{{$mail}}</h4>
                     </a>
                 </div>
             </div>
             <div class="col-sm-6 col-md-4 col-lg-2 offset-lg-1">
                 <div class="foot-link-box">
-                    <h4>Quick Links</h4>
+                    <h4>Hızlı Linkler</h4>
                     <ul>
                         <li>
-                            <a href="#"><i class="fas fa-angle-double-right"></i>About Us</a>
+                            <a href="#"><i class="fas fa-angle-double-right"></i>Hakkımızda</a>
                         </li>
                         <li>
-                            <a href="#"><i class="fas fa-angle-double-right"></i>Our Mission</a>
+                            <a href="#"><i class="fas fa-angle-double-right"></i>Hizmetlerimiz</a>
                         </li>
                         <li>
-                            <a href="#"><i class="fas fa-angle-double-right"></i>Our Services</a>
+                            <a href="#"><i class="fas fa-angle-double-right"></i>İletişim</a>
                         </li>
-                        <li>
-                            <a href="#"><i class="fas fa-angle-double-right"></i>Blogs & News</a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="fas fa-angle-double-right"></i>Contact Us</a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="fas fa-angle-double-right"></i>Faq</a>
-                        </li>
+
                     </ul>
                 </div>
             </div>

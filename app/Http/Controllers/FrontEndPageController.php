@@ -13,4 +13,5 @@ class FrontEndPageController extends Controller
         $data['sliders'] = Sliders::all()->sortBy("slider_order");
         return view("Public.index")->with('data',$data);
     }
+
 }

@@ -42,7 +42,9 @@ Route::middleware(['share', "xss"])->group(function () {
         });
         Route::prefix("cms")->group(function (){
             Route::get("slider",[CmsController::class,"sliderIndex"])->name("admin.cms.slider");
+            Route::get("slider/ekle",[CmsController::class,"sliderAdd"])->name("admin.cms.sliders.add");
             Route::get("slider/duzenle/{id}",[CmsController::class,"sliderEdit"])->name("admin.cms.sliders.edit");
+            Route::post("slider/insert",[CmsController::class,"sliderInsert"])->name("admin.cms.sliders.insert");
         });
         Route::prefix("kullanicilar")->group(function () {
             Route::get("/", [UserController::class, "index"])->name("admin.users.index");
