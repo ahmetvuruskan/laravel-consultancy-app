@@ -20,17 +20,19 @@ class BlocksSeeder extends Seeder
                 "header" => "Specialised Service",
                 "paragraph" => "Lorem ipsum dolor sit",
                 "icon" => "service-icon8.png",
-                "color" => "bg-color1",
+                "color" => "blue",
             ],
             [
                 "header" => "24/7 Advanced Care",
                 "paragraph" => "Lorem ipsum dolor sit",
                 "icon" => "service-icon9.png",
+                "color" => "green",
             ],
             [
                 "header" => "Get Result Online",
                 "paragraph" => "Lorem ipsum dolor sit",
                 "icon" => "service-icon10.png",
+                "color" => "yellow",
             ]
         ]);
     }

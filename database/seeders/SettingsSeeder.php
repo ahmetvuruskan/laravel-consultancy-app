@@ -105,14 +105,33 @@ class SettingsSeeder extends Seeder
                 'settings_status' => '1'
             ],
             [
-                'settings_description' => 'Adres',
-                'settings_key' => 'adres',
-                'settings_value' => 'Istanbul',
+                'settings_description' => 'Facebook',
+                'settings_key' => 'facebook',
+                'settings_value' => 'facebook',
                 'settings_type' => 'text',
-                'settings_must' => 10,
+                'settings_must' => 11,
                 'settings_delete' => '0',
                 'settings_status' => '1'
-            ]
+            ],
+            [
+                'settings_description' => 'instagram',
+                'settings_key' => 'instagram',
+                'settings_value' => 'instagram',
+                'settings_type' => 'text',
+                'settings_must' => 12,
+                'settings_delete' => '0',
+                'settings_status' => '1'
+            ],
+            [
+                'settings_description' => 'twitter',
+                'settings_key' => 'twitter',
+                'settings_value' => 'twitter',
+                'settings_type' => 'text',
+                'settings_must' => 13,
+                'settings_delete' => '0',
+                'settings_status' => '1'
+            ],
+
         ]);
     }
 }
