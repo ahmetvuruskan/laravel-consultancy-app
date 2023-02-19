@@ -6,6 +6,7 @@ use App\Models\Settings;
 use Illuminate\Http\Request;
 use App\Models\Sliders;
 use Illuminate\Support\Facades\Validator;
+use App\Models\Blocks;
 class CmsController extends Controller
 {
     public function sliderIndex(){
@@ -125,5 +126,35 @@ class CmsController extends Controller
            "status" => "success",
            "message" => "Slider Başarıyla Silindi"
        ]);
+    }
+    public function indexBlocks(){
+        $data['blocks'] = Blocks::all();
+        return view("Dashboard.Admin.CMS.Blocks.index")->with("data",$data);
+    }
+    public function blocksEdit($id){
+        $data['block'] = Blocks::find($id);
+        return view("Dashboard.Admin.CMS.Blocks.edit")->with("data",$data);
+    }
+    public function blockUpdate(Request $request){
+        $validate = Validator::make($request->all(),[
+            "block_header" => "required",
+            "block_paragraph" =>"required",
+        ],[
+            "block_header.required" => "Bloğun Başlık Alanı Boş Bırakılamaz",
+            "block_paragraph.required" => "Bloğun Paragraf Alanı Boş Bırakılamaz",
+        ]);
+        if ($validate->fails()) {
+            $request->flash();
+            return redirect(route('admin.cms.blocks.edit',$request->id))->withErrors($validate);
+        }
+        $update = Blocks::where("id",$request->id)->update([
+            "block_header" => $request->block_header,
+            "block_paragraph" => $request->block_paragraph,
+        ]);
+        if ($update) {
+            return redirect(route('admin.cms.blocks'))->with("success", "Bloğun Başarıyla Güncellendi");
+        } else {
+            return redirect(route('admin.cms.blocks'))->with("error", "Bloğun Güncellenirken Bir Hata Oluştu");
+        }
     }
 }

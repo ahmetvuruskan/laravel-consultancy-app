@@ -29,7 +29,7 @@
                 <div class="top-bar">
                     <div class="row">
                         <div class="col-lg-3 col-md-12">
-                            <a class="navbar-brand" href="index.html"><img @w(300) src="@fileRoute{{$logo}}" alt="#"></a>
+                            <a class="navbar-brand" href="#"><img @w(300) src="@fileRoute{{$logo}}" alt="#"></a>
                         </div>
                         <div class="col-md-9 d-flex align-items-end">
                             <ul class="ml-auto">
@@ -87,7 +87,15 @@
                                 <li>
                                     <a href="https://instagram.com/{{$instagram}}"><i class="fab fa-instagram"></i></a>
                                 </li>
+                                <li class="nav-item">
+                                    @if(\Illuminate\Support\Facades\Auth::user())
+                                        <a class="nav-link" href="{{route("login")}}">Kullanıcı Paneli</a>
+                                    @else
+                                        <a class="nav-link" href="{{route("login")}}">Giriş Yap / Kayıt Ol</a>
+                                    @endif
+                                </li>
                             </ul>
+
                         </ul>
                     </div>
                 </nav>

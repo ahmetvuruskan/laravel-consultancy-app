@@ -3,37 +3,17 @@
     <section class="about-section">
         <div class="container container-custom">
             <div class="row space">
-                <!-- Service Icon -->
+                @foreach($data['blocks'] as $block)
                 <div class="col-md-4">
-                    <div class="service-thumbnail services-top-icon services-top-icon2 blue d-flex flex-fill">
-                        <img src="/Public/images/service-icon8.png" class="img-fluid" alt="#">
+                    <div class="service-thumbnail services-top-icon services-top-icon2 {{$block->color}} d-flex flex-fill">
+                        <img src="/Public/images/{{$block->icon}}" class="img-fluid" alt="#">
                         <div class="service-thumbnail_text">
-                            <h4>Specialised Service</h4>
-                            <p>Lorem ipsum dolor sit</p>
+                            <h4>{{$block->header}}</h4>
+                            <p>{{$block->paragraph}}</p>
                         </div>
                     </div>
                 </div>
-                <!-- Service Icon 02 -->
-                <div class="col-md-4">
-                    <div class="service-thumbnail services-top-icon services-top-icon2 green d-flex flex-fill">
-                        <img src="/Public/images/service-icon9.png" class="img-fluid" alt="#">
-                        <div class="service-thumbnail_text">
-                            <h4>24/7 Advanced Care</h4>
-                            <p>Lorem ipsum dolor sit</p>
-                        </div>
-                    </div>
-                </div>
-                <!-- Service Icon 03 -->
-                <div class="col-md-4">
-                    <div class="service-thumbnail services-top-icon services-top-icon2 yellow d-flex flex-fill">
-                        <img src="/Public/images/service-icon10.png" class="img-fluid" alt="#">
-                        <div class="service-thumbnail_text">
-                            <h4>Get Result Online</h4>
-                            <p>Lorem ipsum dolor sit</p>
-                        </div>
-                    </div>
-                </div>
-                <!--//End Service Icon -->
+                @endforeach
             </div>
             <div class="row">
                 <div class="col-md-7">

@@ -129,6 +129,7 @@
                     </a>
                     <ul aria-expanded="false">
                         <li><a href="{{route("admin.cms.slider")}}">Slider Yönetimi</a></li>
+                        <li><a href="{{route("admin.cms.block")}}">Anasayfa Blok Yönetimi</a></li>
                     </ul>
                 </li>
             </ul>
