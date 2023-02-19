@@ -137,19 +137,19 @@ class CmsController extends Controller
     }
     public function blockUpdate(Request $request){
         $validate = Validator::make($request->all(),[
-            "block_header" => "required",
-            "block_paragraph" =>"required",
+            "header" => "required",
+            "paragraph" =>"required",
         ],[
-            "block_header.required" => "Bloğun Başlık Alanı Boş Bırakılamaz",
-            "block_paragraph.required" => "Bloğun Paragraf Alanı Boş Bırakılamaz",
+            "header.required" => "Bloğun Başlık Alanı Boş Bırakılamaz",
+            "paragraph.required" => "Bloğun Paragraf Alanı Boş Bırakılamaz",
         ]);
         if ($validate->fails()) {
             $request->flash();
             return redirect(route('admin.cms.blocks.edit',$request->id))->withErrors($validate);
         }
         $update = Blocks::where("id",$request->id)->update([
-            "block_header" => $request->block_header,
-            "block_paragraph" => $request->block_paragraph,
+            "header" => $request->header,
+            "paragraph" => $request->paragraph,
         ]);
         if ($update) {
             return redirect(route('admin.cms.blocks'))->with("success", "Bloğun Başarıyla Güncellendi");

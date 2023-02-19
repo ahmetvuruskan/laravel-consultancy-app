@@ -48,9 +48,9 @@ Route::middleware(['share', "xss"])->group(function () {
             Route::get("slider/duzenle/{id}",[CmsController::class,"sliderEdit"])->name("admin.cms.sliders.edit");
             Route::post("slider/update/{id}",[CmsController::class,"sliderUpdate"])->name("admin.cms.sliders.update");
             Route::post("slider/insert",[CmsController::class,"sliderInsert"])->name("admin.cms.sliders.insert");
-            Route::get("blok",[CmsController::class,"indexBlocks"])->name("admin.cms.block");
+            Route::get("blok",[CmsController::class,"indexBlocks"])->name("admin.cms.blocks");
             Route::get("blok/duzenle/{id}",[CmsController::class,"blocksEdit"])->name("admin.cms.blocks.edit");
-            Route::get("blok/update",[CmsController::class,"blockUpdate"])->name("admin.cms.blocks.update");
+            Route::post("blok/update",[CmsController::class,"blockUpdate"])->name("admin.cms.blocks.update");
         });
         Route::prefix("kullanicilar")->group(function () {
             Route::get("/", [UserController::class, "index"])->name("admin.users.index");
