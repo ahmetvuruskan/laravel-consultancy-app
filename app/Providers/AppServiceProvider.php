@@ -33,8 +33,9 @@ class AppServiceProvider extends ServiceProvider
         Blade::directive("h",function ($h){
             return "height='".$h."px'";
         });
-        Blade::directive("wh",function ($w,$h){
-            return "width='".$w."px' height='".$h."px'";
+        Blade::directive("sliderpath",function ($img){
+            return "/Public/images/{$img}";
         });
+
     }
 }

@@ -14,9 +14,7 @@
 
     <link rel="stylesheet" href="/Public/css/slick.css">
     <link rel="stylesheet" href="/Public/css/slick-theme.css">
-
     <link rel="stylesheet" href="/Public/css/magnific-popup.css" />
-
     <link rel="stylesheet" href="/Public/css/style.css">
     <title>{{$title}}</title>
 </head>

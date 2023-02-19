@@ -8,7 +8,7 @@
         @hasSection('title')
             @yield('title')
         @else
-        {{$title}}
+            {{$title}}
         @endif
     </title>
     <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/{{$icon}}">
@@ -16,8 +16,11 @@
     <link rel="stylesheet" href="/assets/vendor/chartist/css/chartist.min.css">
     <link href="/assets/vendor/bootstrap-select/dist/css/bootstrap-select.min.css" rel="stylesheet">
     <link href="/assets/vendor/owl-carousel/owl.carousel.css" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/vendor/toastr/css/toastr.min.css">
     <link href="/assets/css/style.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&family=Roboto:wght@100;300;400;500;700;900&display=swap"
+        rel="stylesheet">
 </head>
 <body>
 <div id="preloader">
@@ -56,18 +59,30 @@
                         <li class="nav-item dropdown header-profile">
                             <a class="nav-link" href="javascript:void(0)" role="button" data-toggle="dropdown">
                                 <img src="/assets/images/profile/17.jpg" width="20" alt=""/>
-                                 <div class="header-info">
-                                    <span class="text-black"><strong>{{\Illuminate\Support\Facades\Auth::user()->name." ".\Illuminate\Support\Facades\Auth::user()->surname}}</strong></span>
+                                <div class="header-info">
+                                    <span
+                                        class="text-black"><strong>{{\Illuminate\Support\Facades\Auth::user()->name." ".\Illuminate\Support\Facades\Auth::user()->surname}}</strong></span>
                                     <p class="fs-12 mb-0">{{strtoupper(\Illuminate\Support\Facades\Auth::user()->role)}}</p>
                                 </div>
                             </a>
                             <div class="dropdown-menu dropdown-menu-right">
                                 <a href="/assets/assets/app-profile.html" class="dropdown-item ai-icon">
-                                    <svg id="icon-user1" xmlns="http://www.w3.org/2000/svg" class="text-primary" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                                    <svg id="icon-user1" xmlns="http://www.w3.org/2000/svg" class="text-primary"
+                                         width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                         stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                                        <circle cx="12" cy="7" r="4"></circle>
+                                    </svg>
                                     <span class="ml-2">Profil </span>
                                 </a>
                                 <a href="{{route("logout")}}" class="dropdown-item ai-icon">
-                                    <svg id="icon-logout" xmlns="http://www.w3.org/2000/svg" class="text-danger" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
+                                    <svg id="icon-logout" xmlns="http://www.w3.org/2000/svg" class="text-danger"
+                                         width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                         stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                                        <polyline points="16 17 21 12 16 7"></polyline>
+                                        <line x1="21" y1="12" x2="9" y2="12"></line>
+                                    </svg>
                                     <span class="ml-2">Çıkış Yap </span>
                                 </a>
 
@@ -125,10 +140,10 @@
     @yield('content')
     <div class="footer">
         <div class="copyright">
-            <p>Copyright ©  Developed by <a href="https://github.com/ahmetvuruskan" target="_blank">Ahmet Vuruşkan</a> {{date("Y")}}</p>
+            <p>Copyright © Developed by <a href="https://github.com/ahmetvuruskan" target="_blank">Ahmet
+                    Vuruşkan</a> {{date("Y")}}</p>
         </div>
     </div>
-
 
 
 </div>
@@ -145,14 +160,16 @@
 <script src="/assets/vendor/datatables/js/jquery.dataTables.min.js"></script>
 <script src="/assets/js/plugins-init/datatables.init.js"></script>
 <script src="/assets/axios/dist/axios.min.js"></script>
+<script src="/assets/vendor/toastr/js/toastr.min.js"></script>
+
 <script>
-    function carouselReview(){
+    function carouselReview() {
         /*  event-bx one function by = owl.carousel.js */
         jQuery('.event-bx').owlCarousel({
-            loop:true,
-            margin:30,
-            nav:true,
-            center:true,
+            loop: true,
+            margin: 30,
+            nav: true,
+            center: true,
             autoplaySpeed: 3000,
             navSpeed: 3000,
             paginationSpeed: 3000,
@@ -160,28 +177,29 @@
             smartSpeed: 3000,
             autoplay: false,
             navText: ['<i class="fa fa-caret-left" aria-hidden="true"></i>', '<i class="fa fa-caret-right" aria-hidden="true"></i>'],
-            dots:true,
-            responsive:{
-                0:{
-                    items:1
+            dots: true,
+            responsive: {
+                0: {
+                    items: 1
                 },
-                720:{
-                    items:2
+                720: {
+                    items: 2
                 },
-                1150:{
-                    items:3
+                1150: {
+                    items: 3
                 },
-                1200:{
-                    items:2
+                1200: {
+                    items: 2
                 },
-                1749:{
-                    items:3
+                1749: {
+                    items: 3
                 }
             }
         })
     }
-    jQuery(window).on('load',function(){
-        setTimeout(function(){
+
+    jQuery(window).on('load', function () {
+        setTimeout(function () {
             carouselReview();
         }, 1000);
     });

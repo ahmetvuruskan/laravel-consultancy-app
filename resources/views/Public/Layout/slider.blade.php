@@ -2,7 +2,7 @@
 @section("slider")
     <div class="banner-slider">
         @foreach($data['sliders'] as $slider)
-        <div style="background: url('/Public/images/{{$slider->slider_image}}')" class="banner1">
+        <div style="background: url('@sliderpath({{"$slider->slider_image"}})')" class="banner1">
             <div class="container">
                 <div class="row">
                     <div class="col-md-9 col-lg-5">
