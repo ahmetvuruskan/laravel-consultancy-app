@@ -40,3 +40,4 @@ return new class extends Migration
         Schema::dropIfExists('users');
     }
 };
+// kırmızı yazanlar değişiklik yaptığımız dosyalar githuba gönderelim hemen
