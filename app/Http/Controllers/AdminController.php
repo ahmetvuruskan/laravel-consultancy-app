@@ -9,4 +9,7 @@ class AdminController extends Controller
     public function index(){
         return view("Dashboard.Admin.index");
     }
+    public function psychologistIndex(){
+        return view("Dashboard.Psychologist.index");
+    }
 }

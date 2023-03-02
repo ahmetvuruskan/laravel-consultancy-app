@@ -36,6 +36,8 @@ class AuthController extends Controller
             Log::info("Kullanıcı giriş yaptı", ['user' => Auth::user()->email, 'date-time' => now()->format("d/m/Y") . "-" . now()->format("H:i:s")]);
             if (Auth::user()->role == "admin") {
                 return redirect(route("admin.index"))->withCookie(\cookie("token", $token, env("SESSION_LIFETIME")));
+            }elseif (Auth::user()->role == "psychologist") {
+                return redirect(route("psychologist.index"))->withCookie(\cookie("token", $token, env("SESSION_LIFETIME")));
             }
 //            elseif (Auth::user()->role == "user") {
 //                return redirect("/kullanici/panel")->withCookie(\cookie("token", $token, env("SESSION_LIFETIME")));;
@@ -51,7 +53,9 @@ class AuthController extends Controller
     {
         Log::info("Kullanıcı çıkış yaptı", ['user' => Auth::user()->email, 'date-time' => now()->format("d/m/Y") . "-" . now()->format("H:i:s")]);
         auth()->user()->tokens()->delete();
-        Cookie::forget('token');
+        if (Cookie::has('token')) {
+            Cookie::forget('token');
+        }
         Auth::logout();
         return redirect(route('login'));
     }

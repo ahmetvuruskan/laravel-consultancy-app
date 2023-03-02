@@ -18,6 +18,7 @@
     <link href="/assets/vendor/owl-carousel/owl.carousel.css" rel="stylesheet">
     <link rel="stylesheet" href="/assets/vendor/toastr/css/toastr.min.css">
     <link href="/assets/css/style.css" rel="stylesheet">
+    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.4/index.global.min.js'></script>
     <link
         href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&family=Roboto:wght@100;300;400;500;700;900&display=swap"
         rel="stylesheet">
@@ -97,41 +98,59 @@
     <div class="deznav">
         <div class="deznav-scroll">
             <ul class="metismenu" id="menu">
-                <li><a href="{{route("admin.index")}}" class="ai-icon" aria-expanded="false">
+                <li><a href="@if(auth()->user()->role == "admin")
+
+                {{route("admin.index")}}
+                @else
+                {{route("psychologist.index")}}
+                @endif" class="ai-icon" aria-expanded="false">
                         <i class="flaticon-381-home"></i>
                         <span class="nav-text">Anasayfa</span>
                     </a>
                 </li>
-                <li><a href="{{route("admin.settings.index")}}" class="ai-icon" aria-expanded="false">
-                        <i class="flaticon-381-settings"></i>
-                        <span class="nav-text">Ayarlar</span>
-                    </a>
-                </li>
-                <li><a href="{{route("admin.users.index")}}" class="ai-icon" aria-expanded="false">
-                        <i class="flaticon-381-user"></i>
-                        <span class="nav-text">Kullanıcılar</span>
-                    </a>
-                </li>
-                <li>
-                    <a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
-                        <i class="flaticon-381-home-1"></i>
-                        <span class="nav-text">Mağaza İşlemleri</span>
-                    </a>
-                    <ul aria-expanded="false">
+                @if(auth()->user()->role == "admin")
+                    <li><a href="{{route("admin.settings.index")}}" class="ai-icon" aria-expanded="false">
+                            <i class="flaticon-381-settings"></i>
+                            <span class="nav-text">Ayarlar</span>
+                        </a>
+                    </li>
+                    <li><a href="{{route("admin.users.index")}}" class="ai-icon" aria-expanded="false">
+                            <i class="flaticon-381-user"></i>
+                            <span class="nav-text">Kullanıcılar</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
+                            <i class="flaticon-381-home-1"></i>
+                            <span class="nav-text">Mağaza İşlemleri</span>
+                        </a>
+                        <ul aria-expanded="false">
 
-                        <li><a href="{{route("admin.packages.index")}}">Paketler</a></li>
-                    </ul>
-                </li>
-                <li>
-                    <a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
-                        <i class="flaticon-381-folder"></i>
-                        <span class="nav-text">CMS İşlemleri</span>
-                    </a>
-                    <ul aria-expanded="false">
-                        <li><a href="{{route("admin.cms.slider")}}">Slider Yönetimi</a></li>
-                        <li><a href="{{route("admin.cms.blocks")}}">Anasayfa Blok Yönetimi</a></li>
-                    </ul>
-                </li>
+                            <li><a href="{{route("admin.packages.index")}}">Paketler</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
+                            <i class="flaticon-381-folder"></i>
+                            <span class="nav-text">CMS İşlemleri</span>
+                        </a>
+                        <ul aria-expanded="false">
+                            <li><a href="{{route("admin.cms.slider")}}">Slider Yönetimi</a></li>
+                            <li><a href="{{route("admin.cms.blocks")}}">Anasayfa Blok Yönetimi</a></li>
+                        </ul>
+                    </li>
+                    @elseif(auth()->user()->role == "psychologist")
+                    <li><a href="{{route("psychologist.calendar")}}" class="ai-icon" aria-expanded="false">
+                            <i class="flaticon-381-calendar"></i>
+                            <span class="nav-text">Takvim</span>
+                        </a>
+                    </li>
+                    <li><a href="#" class="ai-icon" aria-expanded="false">
+                            <i class="flaticon-381-incoming-call"></i>
+                            <span class="nav-text">Görüşmeler</span>
+                        </a>
+                    </li>
+                @endif
             </ul>
             <div class="copyright">
                 <p>Made with <span class="heart"></span> by Ahmet Vuruskan</p>
@@ -162,7 +181,9 @@
 <script src="/assets/js/plugins-init/datatables.init.js"></script>
 <script src="/assets/axios/dist/axios.min.js"></script>
 <script src="/assets/vendor/toastr/js/toastr.min.js"></script>
-
+<script src="/assets/vendor/jqueryui/js/jquery-ui.min.js"></script>
+<script src="/assets/vendor/moment/moment.min.js"></script>
+<script src="/assets/fullcalendar/index.global.js"></script>
 <script>
     function carouselReview() {
         /*  event-bx one function by = owl.carousel.js */
@@ -206,5 +227,6 @@
     });
 </script>
 @yield('js')
+
 </body>
 </html>

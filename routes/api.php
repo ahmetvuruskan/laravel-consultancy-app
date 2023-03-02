@@ -20,4 +20,5 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('delete-user',[UserController::class,'deleteUser'])->name("admin.users.delete");
     Route::post('update-user',[UserController::class,'updateUser'])->name("admin.users.update");
     Route::post("slider/delete/",[CmsController::class,"deleteSlider"])->name("admin.cms.sliders.delete");
+    Route::get("psicolosist",[AppointmentController::class,"getAppointments"])->name("psychologist.calendar.get");
 });
