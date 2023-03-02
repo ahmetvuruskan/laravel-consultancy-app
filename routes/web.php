@@ -19,15 +19,18 @@ use App\Http\Controllers\CalendarController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+// Burası urlleri tanımladığımız yer herkese açık olanlar var yada admine açık olanlar var
 Route::middleware(['share', "xss"])->group(function () {
 
-    Route::prefix("/")->group(function (){
+    Route::prefix("/")->group(function (){ // Burası herkese açık
         Route::get("/", [FrontEndPageController::class, 'index'])->name("frontend.index");
+        Route::get("sayfalar/{slug}", [FrontEndPageController::class, "pages"])->name("frontend.pages");
+        // Teşekkür ederim aşkım . E> <3
     });
     Route::get("giris-yap", [AuthController::class, "login"])->middleware("checkSession")->name("login");
     Route::post("userCheck", [AuthController::class, "userCheck"])->name("checkUser");
     Route::get("cikis-yap", [AuthController::class, 'logout'])->name("logout");
-    Route::middleware(["checkToken","adminAccess"])->prefix("admin")->group(function () {
+    Route::middleware(["checkToken","adminAccess"])->prefix("admin")->group(function () { // Burası adminlere açık
         Route::get("/", [AdminController::class, "index"])->name("admin.index");
         Route::prefix("ayarlar")->group(function () {
             Route::get("/", [SettingsController::class, "index"])->name("admin.settings.index");
@@ -57,7 +60,7 @@ Route::middleware(['share', "xss"])->group(function () {
         });
 
     });
-    Route::middleware(["psychologistAccess"])->prefix("psikolog")->group(function () {
+    Route::middleware(["psychologistAccess"])->prefix("psikolog")->group(function () { // Burası psikologlara açık
         Route::get("/", [AdminController::class, "psychologistIndex"])->name("psychologist.index");
         Route::get("randevular", [CalendarController::class, "index"])->name("psychologist.calendar");
     });
