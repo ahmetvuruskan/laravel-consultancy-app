@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string("title");
             $table->string("slug"); // slug dediğimiz şey tablonun ismi Bize Ulaşın ise bize-ulasin haline getirip url de kullanacağız
             $table->text("content");
+            $table->integer("order_by");
         });
     }
 

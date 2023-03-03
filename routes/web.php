@@ -54,6 +54,7 @@ Route::middleware(['share', "xss"])->group(function () {
             Route::get("blok",[CmsController::class,"indexBlocks"])->name("admin.cms.blocks");
             Route::get("blok/duzenle/{id}",[CmsController::class,"blocksEdit"])->name("admin.cms.blocks.edit");
             Route::post("blok/update",[CmsController::class,"blockUpdate"])->name("admin.cms.blocks.update");
+            Route::get("sayfalar",[CmsController::class,"pagesIndex"])->name("admin.cms.pages");
         });
         Route::prefix("kullanicilar")->group(function () {
             Route::get("/", [UserController::class, "index"])->name("admin.users.index");

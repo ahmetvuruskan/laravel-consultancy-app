@@ -6,7 +6,7 @@ use App\Models\Professions;
 use Illuminate\Http\Request;
 use App\Models\Sliders;
 use App\Models\Blocks;
-use App\Models\Pages; // Pages tablosu ile bağlantı kurmamızı sağlayacak model dosyası
+use App\Models\Pages;
 class FrontEndPageController extends Controller
 {
     public function index(){
@@ -16,7 +16,6 @@ class FrontEndPageController extends Controller
         return view("Public.index")->with('data',$data);
     }
     public function pages($slug){
-
         $data['page'] = Pages::where("page_slug",$slug)->first();
         return view("Public.pages")->with('data',$data);
     }

@@ -119,6 +119,11 @@
                             <span class="nav-text">Kullanıcılar</span>
                         </a>
                     </li>
+                    <li><a href="{{route("admin.cms.pages")}}" class="ai-icon" aria-expanded="false">
+                            <i class="flaticon-381-notebook"></i>
+                            <span class="nav-text">Sayfalar</span>
+                        </a>
+                    </li>
                     <li>
                         <a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
                             <i class="flaticon-381-home-1"></i>

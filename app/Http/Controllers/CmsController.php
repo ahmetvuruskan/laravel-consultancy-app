@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Pages;
 use App\Models\Settings;
 use Illuminate\Http\Request;
 use App\Models\Sliders;
@@ -156,5 +157,9 @@ class CmsController extends Controller
         } else {
             return redirect(route('admin.cms.blocks'))->with("error", "Bloğun Güncellenirken Bir Hata Oluştu");
         }
+    }
+    public function pagesIndex(){
+        $data['pages'] =  Pages::all();
+        return view("Dashboard.Admin.CMS.Pages.index")->with('data',$data);
     }
 }
