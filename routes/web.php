@@ -19,15 +19,14 @@ use App\Http\Controllers\CalendarController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-// Burası urlleri tanımladığımız yer herkese açık olanlar var yada admine açık olanlar var
+
 Route::post("sayfalar/update/{id}",[CmsController::class,"pagesUpdate"])->name("admin.cms.pages.update");
 Route::middleware(['share', "xss"])->group(function () {
 
-    Route::prefix("/")->group(function (){ // Burası herkese açık
+    Route::prefix("/")->group(function (){
         Route::get("/", [FrontEndPageController::class, 'index'])->name("frontend.index");
         Route::get("sayfalar/{slug}", [FrontEndPageController::class, "pages"])->name("frontend.pages");
         Route::get("iletisim", [FrontEndPageController::class, "contact"])->name("frontend.contact");
-        // Teşekkür ederim aşkım . E> <3
     });
     Route::get("giris-yap", [AuthController::class, "login"])->middleware("checkSession")->name("login");
     Route::post("userCheck", [AuthController::class, "userCheck"])->name("checkUser");
