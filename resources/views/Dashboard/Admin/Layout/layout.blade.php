@@ -189,6 +189,7 @@
 <script src="/assets/vendor/jqueryui/js/jquery-ui.min.js"></script>
 <script src="/assets/vendor/moment/moment.min.js"></script>
 <script src="/assets/fullcalendar/index.global.js"></script>
+
 <script>
     function carouselReview() {
         /*  event-bx one function by = owl.carousel.js */

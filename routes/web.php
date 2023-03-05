@@ -20,11 +20,13 @@ use App\Http\Controllers\CalendarController;
 |
 */
 // Burası urlleri tanımladığımız yer herkese açık olanlar var yada admine açık olanlar var
+Route::post("sayfalar/update/{id}",[CmsController::class,"pagesUpdate"])->name("admin.cms.pages.update");
 Route::middleware(['share', "xss"])->group(function () {
 
     Route::prefix("/")->group(function (){ // Burası herkese açık
         Route::get("/", [FrontEndPageController::class, 'index'])->name("frontend.index");
         Route::get("sayfalar/{slug}", [FrontEndPageController::class, "pages"])->name("frontend.pages");
+        Route::get("iletisim", [FrontEndPageController::class, "contact"])->name("frontend.contact");
         // Teşekkür ederim aşkım . E> <3
     });
     Route::get("giris-yap", [AuthController::class, "login"])->middleware("checkSession")->name("login");
@@ -55,6 +57,8 @@ Route::middleware(['share', "xss"])->group(function () {
             Route::get("blok/duzenle/{id}",[CmsController::class,"blocksEdit"])->name("admin.cms.blocks.edit");
             Route::post("blok/update",[CmsController::class,"blockUpdate"])->name("admin.cms.blocks.update");
             Route::get("sayfalar",[CmsController::class,"pagesIndex"])->name("admin.cms.pages");
+            Route::get("sayfalar/duzenle/{id}",[CmsController::class,"pagesEdit"])->name("admin.cms.pages.edit");
+
         });
         Route::prefix("kullanicilar")->group(function () {
             Route::get("/", [UserController::class, "index"])->name("admin.users.index");

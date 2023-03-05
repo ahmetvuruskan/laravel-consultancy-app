@@ -162,4 +162,15 @@ class CmsController extends Controller
         $data['pages'] =  Pages::all();
         return view("Dashboard.Admin.CMS.Pages.index")->with('data',$data);
     }
+    public function pagesEdit($id){
+        $data['page'] = Pages::where("id",$id)->first();
+        return view("Dashboard.Admin.CMS.Pages.edit")->with('data',$data);
+    }
+    public function pagesUpdate($id,Request $request){
+        Pages::where('id',$id)->update([
+           "content" => $request->page_content,
+            "updated_at" => date("Y-m-d H:i:s")
+        ]);
+        return redirect(route('admin.cms.pages'))->with("success","Sayfa Başarıyla Güncellendi");
+    }
 }

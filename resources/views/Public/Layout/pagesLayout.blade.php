@@ -1,6 +1,5 @@
-@include("Public.Layout.slider")
 @include("Public.Layout.menu")
-    <!doctype html>
+<!doctype html>
 <html lang="tr">
 
 <head>
@@ -15,10 +14,10 @@
 
     <link rel="stylesheet" href="/Public/css/slick.css">
     <link rel="stylesheet" href="/Public/css/slick-theme.css">
-    <link rel="stylesheet" href="/Public/css/magnific-popup.css"/>
+    <link rel="stylesheet" href="/Public/css/magnific-popup.css" />
     <link rel="stylesheet" href="/Public/css/style.css">
     <title>@hasSection('title')
-            @yield('title')
+               @yield('title')
         @else{{$title}}
         @endif
     </title>
@@ -70,13 +69,11 @@
             <div class="col-md-12">
                 <!-- Nav menu -->
                 <nav class="navbar navbar-expand-lg navbar-light">
-                    <button class="navbar-toggler" type="button" data-toggle="collapse"
-                            data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                            aria-expanded="false" aria-label="Toggle navigation">
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        @yield('menu')
+                        @yield("menu")
                         <ul class="nav-icon-wrap">
                             <ul>
                                 <li>
@@ -105,17 +102,13 @@
         </div>
     </div>
 </div>
-@yield('slider')
-<!--//End Header -->
-<!--==================== About Section ====================-->
-@yield('content')
-<!--==================== Footer ====================-->
+@yield("content")
 <footer>
     <div class="container container-custom">
         <div class="row">
             <div class="col-sm-12 col-md-12 col-lg-4">
                 <div class="foot-contact-block">
-                    <img src="@fileRoute{{$logo}}" class="img-fluid" alt="#"/>
+                    <img src="@fileRoute{{$logo}}" class="img-fluid" alt="#" />
                     <a href="tel:{{$phone_sabit}}">
                         <h4><i class="fas fa-phone"></i>{{$phone_sabit}}</h4>
                     </a>
@@ -143,7 +136,7 @@
             </div>
             <div class="col-sm-6 col-md-4 col-lg-2">
                 <div class="foot-link-box">
-                    <h4>Our Services</h4>
+                    <h4>Hizmetlerimiz</h4>
                     <ul>
                         @foreach($data['professions'] as $package)
                             <li>
