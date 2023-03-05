@@ -27,6 +27,7 @@ Route::middleware(['share', "xss"])->group(function () {
         Route::get("/", [FrontEndPageController::class, 'index'])->name("frontend.index");
         Route::get("sayfalar/{slug}", [FrontEndPageController::class, "pages"])->name("frontend.pages");
         Route::get("iletisim", [FrontEndPageController::class, "contact"])->name("frontend.contact");
+        Route::post("contactForm", [FrontEndPageController::class, "contactForm"])->name("frontend.contactForm");
     });
     Route::get("giris-yap", [AuthController::class, "login"])->middleware("checkSession")->name("login");
     Route::post("userCheck", [AuthController::class, "userCheck"])->name("checkUser");
@@ -57,15 +58,14 @@ Route::middleware(['share', "xss"])->group(function () {
             Route::post("blok/update",[CmsController::class,"blockUpdate"])->name("admin.cms.blocks.update");
             Route::get("sayfalar",[CmsController::class,"pagesIndex"])->name("admin.cms.pages");
             Route::get("sayfalar/duzenle/{id}",[CmsController::class,"pagesEdit"])->name("admin.cms.pages.edit");
-
         });
         Route::prefix("kullanicilar")->group(function () {
             Route::get("/", [UserController::class, "index"])->name("admin.users.index");
         });
-
     });
-    Route::middleware(["psychologistAccess"])->prefix("psikolog")->group(function () { // Burası psikologlara açık
+    Route::middleware(["checkToken","psychologistAccess"])->prefix("psikolog")->group(function () { // Burası psikologlara açık
         Route::get("/", [AdminController::class, "psychologistIndex"])->name("psychologist.index");
         Route::get("randevular", [CalendarController::class, "index"])->name("psychologist.calendar");
+        Route::get("gorusmeler",[CalendarController::class ,"interviews"])->name("psychologist.interviews");
     });
 });

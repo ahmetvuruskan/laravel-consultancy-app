@@ -15,57 +15,6 @@
                 </div>
                 @endforeach
             </div>
-            <div class="row">
-                <div class="col-md-7">
-                    <div class="news-img-block">
-                        <img src="/Public/images/play-img.png" class="img-fluid w-100" alt="#" />
-                        <!-- <a href="https://www.youtube.com/watch?v=pBFQdxA-apI" class="play-btn popup-youtube"><i class="fas fa-play"></i></a> -->
-                        <a class="video-play-button popup-youtube" href="https://www.youtube.com/watch?v=pBFQdxA-apI">
-                            <span></span>
-                        </a>
-
-                        <div id="video-overlay" class="video-overlay">
-                            <a class="video-overlay-close">&times;</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-12 col-lg-5">
-                    <div class="video-play-text">
-                        <h2>Short Story About Mededin Clinic.</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eius mod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.</p>
-                        <p>Sed do eius mod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostru <a href="#">Readmore</a>
-                        </p>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="facilities blue">
-                                    <h3>1000+</h3>
-                                    <span>Happy Patients</span>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="facilities green">
-                                    <h3>215+</h3>
-                                    <span>Expert Doctors</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="facilities yellow">
-                                    <h3>315+</h3>
-                                    <span>Hospital Rooms</span>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="facilities gray">
-                                    <h3>106+</h3>
-                                    <span>Award Winner</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
     </section>
     <!--//End About Section -->

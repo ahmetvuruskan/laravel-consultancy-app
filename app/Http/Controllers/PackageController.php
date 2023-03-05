@@ -89,5 +89,23 @@ class PackageController extends Controller
         Packages::find($id)->delete();
         return back();
     }
+    public function search(Request $request){
+        $data[] = [];
+        if ($request->has("q")) {
+            $search = $request->q;
+            $query = Packages::where("package_name", "like", "%$search%")->get();
+        }else{
+            $query = Packages::all();
+        }
+        foreach ($query as $item){
+            $data[] =[
+                'id' => $item->id,
+                'text' => $item->package_name
+            ];
+        }
+       return response([
+              "results" => $data
+       ],200);
+    }
 
 }

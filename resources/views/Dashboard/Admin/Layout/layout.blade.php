@@ -18,6 +18,7 @@
     <link href="/assets/vendor/owl-carousel/owl.carousel.css" rel="stylesheet">
     <link rel="stylesheet" href="/assets/vendor/toastr/css/toastr.min.css">
     <link href="/assets/css/style.css" rel="stylesheet">
+    @yield('css')
     <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.4/index.global.min.js'></script>
     <link
         href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&family=Roboto:wght@100;300;400;500;700;900&display=swap"
@@ -150,7 +151,7 @@
                             <span class="nav-text">Takvim</span>
                         </a>
                     </li>
-                    <li><a href="#" class="ai-icon" aria-expanded="false">
+                    <li><a href="{{route("psychologist.interviews")}}" class="ai-icon" aria-expanded="false">
                             <i class="flaticon-381-incoming-call"></i>
                             <span class="nav-text">Görüşmeler</span>
                         </a>

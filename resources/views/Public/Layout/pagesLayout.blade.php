@@ -33,7 +33,7 @@
                 <div class="top-bar">
                     <div class="row">
                         <div class="col-lg-3 col-md-12">
-                            <a class="navbar-brand" href="#"><img @w(300) src="@fileRoute{{$logo}}" alt="#"></a>
+                            <a class="navbar-brand" href="{{route("frontend.index")}}"><img @w(300) src="@fileRoute{{$logo}}" alt="#"></a>
                         </div>
                         <div class="col-md-9 d-flex align-items-end">
                             <ul class="ml-auto">
