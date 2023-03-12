@@ -21,6 +21,20 @@
         @else{{$title}}
         @endif
     </title>
+    <style>
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #888;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+    </style>
 </head>
 
 <body>
@@ -178,6 +192,8 @@
 <script src="/Public/js/slick.min.js"></script>
 <script src="/Public/js/jquery.magnific-popup.min.js"></script>
 <script src="/Public/js/script.js"></script>
+<script src="/assets/axios/dist/axios.min.js"></script>
+@yield('js')
 </body>
 
 </html>

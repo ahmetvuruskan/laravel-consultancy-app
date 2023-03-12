@@ -20,18 +20,19 @@ use App\Http\Controllers\CalendarController;
 |
 */
 
-Route::post("sayfalar/update/{id}",[CmsController::class,"pagesUpdate"])->name("admin.cms.pages.update");
+Route::middleware("adminAccess")->post("sayfalar/update/{id}",[CmsController::class,"pagesUpdate"])->name("admin.cms.pages.update");
 Route::middleware(['share', "xss"])->group(function () {
-
     Route::prefix("/")->group(function (){
         Route::get("/", [FrontEndPageController::class, 'index'])->name("frontend.index");
         Route::get("sayfalar/{slug}", [FrontEndPageController::class, "pages"])->name("frontend.pages");
         Route::get("iletisim", [FrontEndPageController::class, "contact"])->name("frontend.contact");
         Route::post("contactForm", [FrontEndPageController::class, "contactForm"])->name("frontend.contactForm");
-        Route::get("randevu-al", [FrontEndPageController::class, "appointment"])->name("frontend.appointment");
+        Route::get("randevu-al", [FrontEndPageController::class, "getAppoinment"])->name("frontend.appointment");
     });
     Route::get("giris-yap", [AuthController::class, "login"])->middleware("checkSession")->name("login");
+    Route::get("kayit-ol", [AuthController::class, "register"])->middleware("checkSession")->name("register");
     Route::post("userCheck", [AuthController::class, "userCheck"])->name("checkUser");
+    Route::post("registerUser", [AuthController::class, "registerUser"])->name("registerUser");
     Route::get("cikis-yap", [AuthController::class, 'logout'])->name("logout");
     Route::middleware(["checkToken","adminAccess"])->prefix("admin")->group(function () { // Burası adminlere açık
         Route::get("/", [AdminController::class, "index"])->name("admin.index");

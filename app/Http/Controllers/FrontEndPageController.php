@@ -45,4 +45,9 @@ class FrontEndPageController extends Controller
         ];
         return "mail sent";
     }
+    public function getAppoinment(){
+        $data['professions'] = Professions::all();
+
+        return view("Public.getAppointment")->with('data',$data);
+    }
 }

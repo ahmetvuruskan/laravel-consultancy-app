@@ -21,7 +21,7 @@
                         <div class="col-xl-12">
                             <div class="auth-form">
                                 <div class="text-center mb-3">
-                                    <a href="{{route("login")}}"><img src="assets/images/logo.png" alt=""></a>
+                                    <a href="{{route("login")}}"><img @w(350) src="assets/images/{{$logo}}" alt=""></a>
                                 </div>
                                 @if($errors->any())
                                     @foreach($errors->all() as $error)
@@ -29,6 +29,13 @@
                                             {{$error}}
                                         </div>
                                     @endforeach
+                                @endif
+                                @if(session()->has('success'))
+                                    <script>
+                                        <div class="alert alert-danger mt-3 ">
+                                            {{session('success')}}
+                                        </div>
+                                    </script>
                                 @endif
                                 <h4 class="text-center mb-4 text-white">Giriş yapın</h4>
                                 <form method="post" action="{{route("checkUser")}}">
@@ -57,7 +64,7 @@
                                     </div>
                                 </form>
                                 <div class="new-account mt-3">
-                                    <p class="text-white">Hesabınız yok mu ? <a class="text-white" href="#">Kayıt Ol!</a></p>
+                                    <p class="text-white">Hesabınız yok mu ? <a class="text-white" href="{{route("register")}}">Kayıt Ol!</a></p>
                                 </div>
                             </div>
                         </div>

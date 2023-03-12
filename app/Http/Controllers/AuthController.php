@@ -48,6 +48,48 @@ class AuthController extends Controller
             return back()->withErrors(['error' => "Kullanıcı adı ve şifreniz hatalı"]);
         }
     }
+    public function registerUser(Request $request){
+        $valdiate = Validator::make($request->all(),[
+            'firstname' => 'required',
+            'surname' => 'required',
+            'username' => 'required',
+            'email' => 'required|email:rfc,dns',
+            'password' => 'required',
+            'password_confirmation' => 'required|same:password',
+            'phone' => 'required|numeric|min:10',
+        ],[
+            'firstname.required' => 'Lütfen adınızı giriniz.',
+            'surname.required' => 'Lütfen soyadınızı giriniz.',
+            'username.required' => 'Lütfen kullanıcı adınızı giriniz.',
+            'email.required' => 'Lütfen e posta adresinizi giriniz.',
+            'email.email' => 'Lütfen geçerli bir mail adresi giriniz.',
+            'password.required' => 'Lütfen şifrenizi giriniz.',
+            'password_confirmation.required' => 'Lütfen şifrenizi tekrar giriniz.',
+            'password_confirmation.same' => 'Şifreleriniz uyuşmuyor.',
+            'phone.required' => 'Lütfen telefon numaranızı giriniz.',
+            'phone.numeric' => 'Lütfen geçerli bir telefon numarası giriniz.',
+            'phone.min' => 'Lütfen geçerli bir telefon numarası giriniz.',
+        ]);
+        if ($valdiate->fails()) {
+            $request->flash();
+            return redirect(route('register'))->withErrors($valdiate);
+        }
+       $user = User::insert([
+            'name' => $request->firstname,
+            'surname' => $request->surname,
+            'username' => $request->username,
+            'email' => $request->email,
+            'password' => bcrypt($request->password),
+            'phone' => $request->phone,
+            'role' => 'user',
+            'created_at' => now(),
+        ]);
+        if ($user) {
+            return redirect(route('login'))->with('success', 'Kayıt işlemi başarılı bir şekilde gerçekleşti.');
+        }else{
+            return redirect(route('register'))->with('error', 'Kayıt işlemi gerçekleştirilemedi.');
+        }
+    }
 
     public function logout()
     {
@@ -58,5 +100,8 @@ class AuthController extends Controller
         }
         Auth::logout();
         return redirect(route('login'));
+    }
+    public function register(){
+        return view("Dashboard.register");
     }
 }

@@ -22,6 +22,27 @@
         @else{{$title}}
         @endif
     </title>
+<style>
+    /* width */
+    ::-webkit-scrollbar {
+        width: 10px;
+    }
+
+    /* Track */
+    ::-webkit-scrollbar-track {
+        background: #f1f1f1;
+    }
+
+    /* Handle */
+    ::-webkit-scrollbar-thumb {
+        background: #888;
+    }
+
+    /* Handle on hover */
+    ::-webkit-scrollbar-thumb:hover {
+        background: #555;
+    }
+</style>
 </head>
 
 <body>
@@ -53,7 +74,7 @@
                                     </div>
                                 </li>
                                 <li class="appointment-btn">
-                                    <a href="#" class="btn btn-primary">Randevu Al</a>
+                                    <a href="{{route("frontend.appointment")}}" class="btn btn-primary">Randevu Al</a>
                                 </li>
                             </ul>
                         </div>
@@ -89,18 +110,16 @@
                                     <a href="https://instagram.com/{{$instagram}}"><i class="fab fa-instagram"></i></a>
                                 </li>
                                 <li class="nav-item">
-                                    @if(\Illuminate\Support\Facades\Auth::user())
+                                    @if(\Illuminate\Support\Facades\Auth::user() && \Illuminate\Support\Facades\Cookie::get('token'))
                                         <a class="nav-link" href="{{route("login")}}">Kullanıcı Paneli</a>
                                     @else
                                         <a class="nav-link" href="{{route("login")}}">Giriş Yap / Kayıt Ol</a>
                                     @endif
                                 </li>
                             </ul>
-
                         </ul>
                     </div>
                 </nav>
-                <!--//End Nav menu -->
             </div>
         </div>
     </div>

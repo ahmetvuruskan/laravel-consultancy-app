@@ -17,7 +17,7 @@ use App\Http\Controllers\ProductController;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-
+Route::middleware(['xss'])->group(function (){
 Route::middleware('auth:sanctum')->group(function () {
     Route::post('get-user-details',[UserController::class,'getUserDetails'])->name("admin.users.details");
     Route::post('delete-user',[UserController::class,'deleteUser'])->name("admin.users.delete");
@@ -28,4 +28,6 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post("professions/search",[ProfessionController::class,"search"])->name("admin.profession.search");
     Route::post("products/add",[ProductController::class,"add"])->name("api.save.products");
     Route::post("products/delete",[ProductController::class,"delete"])->name("api.delete.products");
+});
+    Route::post("products/getProductsByProfession",[ProductController::class,"getProductsByProfession"])->name("api.getproductsbyprofession");
 });

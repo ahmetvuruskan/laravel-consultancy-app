@@ -58,4 +58,12 @@ class ProductController extends Controller
             ],400);
         }
     }
+    public function getProductsByProfession(Request $request){
+        $product = new Products();
+        $products =$product->getProductsByProfession($request->profession_type);
+        return response([
+            "status" => "success",
+            "data" => $products
+        ],200);
+    }
 }
