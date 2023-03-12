@@ -29,12 +29,13 @@
 
                         <ul>
                             @foreach($data['professions'] as $profession)
-                            <li>
-                                <a class="profession">
-                                    <span class="profession_type" id="{{$profession->id}}" >{{$profession->profession_type}}</span>
-                                    <i class="fas fa-arrow-right"></i>
-                                </a>
-                            </li>
+                                <li>
+                                    <a class="profession">
+                                        <span class="profession_type"
+                                              id="{{$profession->id}}">{{$profession->profession_type}}</span>
+                                        <i class="fas fa-arrow-right"></i>
+                                    </a>
+                                </li>
                             @endforeach
                         </ul>
                     </div>
@@ -75,15 +76,14 @@
 @endsection
 @section('js')
     <script>
-        $(document).ready(function() {
-
-            $(".profession").click(function() {
+        $(document).ready(function () {
+            $(".profession").click(function () {
                 const professionType = $(this).find(".profession_type").text();
                 var serviceDetail = $("#service-detail");
-                axios.post("{{route('api.getproductsbyprofession')}}",{profession_type:professionType}).then(function(response){
+                axios.post("{{route('api.getproductsbyprofession')}}", {profession_type: professionType}).then(function (response) {
                     serviceDetail.empty();
                     const data = response.data.data;
-                    for(let key in data){
+                    for (let key in data) {
                         console.log(key)
                         var markup = `<div class="card mt-2">
                             <div class="card-body">
@@ -96,14 +96,14 @@
                                         <p class="card-text">${data[key].package_name} / ${data[key].session_duration} dk / ${data[key].number_of_sessions} Seans</p>
                                         <p class="card-text">${data[key].profession_description}</p>
                                         <p class="card-text">${data[key].profession_name}</p>
-                                        <a href="#" class="btn btn-primary">Satın Al ${data[key].package_price} ₺</a>
+                                        <a href="{{route("frontend.create.appointment")}}/${data[key].product_id}" class="btn btn-primary buy">Satın Al ${data[key].package_price} ₺</a>
                                     </div>
                                 </div>
                             </div>
                         </div>`;
                         serviceDetail.append(markup);
                     }
-                    });
+                });
             });
         });
     </script>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Products;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
 
@@ -61,6 +62,12 @@ class ProductController extends Controller
     public function getProductsByProfession(Request $request){
         $product = new Products();
         $products =$product->getProductsByProfession($request->profession_type);
+        foreach($products as $product){
+            $product->package_id = Crypt::encrypt($product->package_id);
+            $product->profession_id = Crypt::encrypt($product->profession_id);
+            $product->user_id = Crypt::encrypt($product->user_id);
+            $product->product_id = Crypt::encrypt($product->product_id);
+        }
         return response([
             "status" => "success",
             "data" => $products

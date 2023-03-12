@@ -21,6 +21,25 @@ class Products extends Model
             ->orderBy("professions.profession_type", "ASC")
             ->get();
     }
+    public function getSingleProduct($id){
+        return $this::where("$this->table.id", $id)
+            ->join("packages", "packages.id", "=", "$this->table.package_id")
+                ->join("professions", "professions.id", "=", "$this->table.profession_id")
+                ->join("users", "users.id", "=", "$this->table.user_id")
+                ->select("packages.package_name as package_name",
+                    "packages.id as package_id",
+                    "packages.package_price as package_price",
+                    "users.profile as profile",
+                    "packages.session_duration as session_duration",
+                    "packages.number_of_sessions as number_of_sessions",
+                    DB::raw("CONCAT(users.name,' ',users.surname) as user_fullname"),
+                    "professions.profession_type as profession_name",
+                    "professions.id as profession_id",
+                    "professions.profession_description as profession_description",
+                    "$this->table.id as product_id",
+                )
+                ->get();
+    }
 
     public function getProductsByProfession($profession)
     {
@@ -38,7 +57,7 @@ class Products extends Model
                 "professions.profession_type as profession_name",
                 "professions.id as profession_id",
                 "professions.profession_description as profession_description",
-                "$this->table.*"
+                "$this->table.id as product_id",
             )
             ->get();
     }

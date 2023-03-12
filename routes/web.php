@@ -28,6 +28,7 @@ Route::middleware(['share', "xss"])->group(function () {
         Route::get("iletisim", [FrontEndPageController::class, "contact"])->name("frontend.contact");
         Route::post("contactForm", [FrontEndPageController::class, "contactForm"])->name("frontend.contactForm");
         Route::get("randevu-al", [FrontEndPageController::class, "getAppoinment"])->name("frontend.appointment");
+        Route::get("randevu-al/{id?}", [FrontEndPageController::class, "createAppoinment"])->name("frontend.create.appointment");
     });
     Route::get("giris-yap", [AuthController::class, "login"])->middleware("checkSession")->name("login");
     Route::get("kayit-ol", [AuthController::class, "register"])->middleware("checkSession")->name("register");
