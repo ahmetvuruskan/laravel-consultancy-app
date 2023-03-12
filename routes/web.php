@@ -28,6 +28,7 @@ Route::middleware(['share', "xss"])->group(function () {
         Route::get("sayfalar/{slug}", [FrontEndPageController::class, "pages"])->name("frontend.pages");
         Route::get("iletisim", [FrontEndPageController::class, "contact"])->name("frontend.contact");
         Route::post("contactForm", [FrontEndPageController::class, "contactForm"])->name("frontend.contactForm");
+        Route::get("randevu-al", [FrontEndPageController::class, "appointment"])->name("frontend.appointment");
     });
     Route::get("giris-yap", [AuthController::class, "login"])->middleware("checkSession")->name("login");
     Route::post("userCheck", [AuthController::class, "userCheck"])->name("checkUser");

@@ -4,15 +4,16 @@
         <div class="container container-custom">
             <div class="row space">
                 @foreach($data['blocks'] as $block)
-                <div class="col-md-4">
-                    <div class="service-thumbnail services-top-icon services-top-icon2 {{$block->color}} d-flex flex-fill">
-                        <img src="/Public/images/{{$block->icon}}" class="img-fluid" alt="#">
-                        <div class="service-thumbnail_text">
-                            <h4>{{$block->header}}</h4>
-                            <p>{{$block->paragraph}}</p>
+                    <div class="col-md-4">
+                        <div
+                            class="service-thumbnail services-top-icon services-top-icon2 {{$block->color}} d-flex flex-fill">
+                            <img src="/Public/images/{{$block->icon}}" class="img-fluid" alt="#">
+                            <div class="service-thumbnail_text">
+                                <h4>{{$block->header}}</h4>
+                                <p>{{$block->paragraph}}</p>
+                            </div>
                         </div>
                     </div>
-                </div>
                 @endforeach
             </div>
         </div>
@@ -24,248 +25,50 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="heading-style1">
-                        <span>Our Services</span>
-                        <h2>High Quality Services for You</h2>
+                        <span>Hizmetlerimiz</span>
+                        <h2>Başlıca Hizmetlerimiz</h2>
                     </div>
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-6 col-lg-3 d-flex flex-fill flex-column">
-                    <div class="service-detail_box primary-color-br">
-                        <div class="service-detail-icon">
-                            <div class="service-detail-svg-block primary-color">
-                                <img src="/Public/images/009-teeth.svg" alt="#">
+                @foreach($data['services'] as $service)
+                    <div class="col-md-6 col-lg-3 d-flex flex-fill flex-column">
+                        <div class="service-detail_box quaternary-color-br">
+                            <div class="service-detail-icon">
                             </div>
-                            <h2>01</h2>
+                            <h6>{{$service->profession_type}}</h6>
+                            <p>{{substr($service->description,0,100)}}</p>
+                            <a href="#">Randevu Al</a>
                         </div>
-                        <h3>Dental Care</h3>
-                        <p>consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore t dolore secus</p>
-                        <a href="#">READ MORE</a>
                     </div>
-                </div>
-                <div class="col-md-6 col-lg-3 d-flex flex-fill flex-column">
-                    <div class="service-detail_box secondary-color-br">
-                        <div class="service-detail-icon">
-                            <div class="service-detail-svg-block secondary-color">
-                                <img src="/Public/images/009-teeth.svg" alt="#">
-                            </div>
-                            <h2>02</h2>
-                        </div>
-                        <h3>Eye Care</h3>
-                        <p>consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore t dolore secus</p>
-                        <a href="#">READ MORE</a>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-3 d-flex flex-fill flex-column">
-                    <div class="service-detail_box tertiary-color-br">
-                        <div class="service-detail-icon">
-                            <div class="service-detail-svg-block tertiary-color">
-                                <img src="/Public/images/009-teeth.svg" alt="#">
-                            </div>
-                            <h2>03</h2>
-                        </div>
-                        <h3>Allergic Issues</h3>
-                        <p>consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore t dolore secus</p>
-                        <a href="#">READ MORE</a>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-3 d-flex flex-fill flex-column">
-                    <div class="service-detail_box quaternary-color-br">
-                        <div class="service-detail-icon">
-                            <div class="service-detail-svg-block quaternary-color">
-                                <img src="/Public/images/009-teeth.svg" alt="#">
-                            </div>
-                            <h2>04</h2>
-                        </div>
-                        <h3>Orthopedic</h3>
-                        <p>consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore t dolore secus</p>
-                        <a href="#">READ MORE</a>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </section>
-    <!--//End Our Services -->
-    <!--==================== Appointment ====================-->
 
-    <!--//End Appointment -->
-    <!--==================== Our Team ====================-->
     <section class="space">
         <div class="container container-custom">
             <div class="row">
                 <div class="col-md-12">
                     <div class="sub-title_center">
-                        <span>---- Our Team ----</span>
-                        <h2>Our Dedicated Doctors</h2>
+                        <span>---- Doktorlarımız ----</span>
+                        <h2>Sizler için hizmete hazır olan doktrolarımız</h2>
                     </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-12">
                     <div class="our-team-slider">
+                        @foreach($data['doctors'] as $doctor) @endforeach
                         <div class="doctors-box3">
-                            <img src="/Public/images/doctors-img1.jpg" class="img-fluid" alt="#">
+                            <img src="/assets/images/{{$doctor->profile}}" class="img-fluid" alt="#">
                             <div class="doctors-plus-icon"><i class="fas fa-plus"></i></div>
-                            <h4>Dr. Mary Joe</h4>
-                            <p>SURGEON</p>
-                        </div>
-
-                        <div class="doctors-box3">
-                            <img src="/Public/images/doctors-img2.jpg" class="img-fluid" alt="#">
-                            <div class="doctors-plus-icon"><i class="fas fa-plus"></i></div>
-                            <h4>Dr. Mary Joe</h4>
-                            <p>SURGEON</p>
-                        </div>
-
-                        <div class="doctors-box3">
-                            <img src="/Public/images/doctors-img3.jpg" class="img-fluid" alt="#">
-                            <div class="doctors-plus-icon"><i class="fas fa-plus"></i></div>
-                            <h4>Dr. Mary Joe</h4>
-                            <p>SURGEON</p>
-                        </div>
-
-
-                        <div class="doctors-box3">
-                            <img src="/Public/images/doctors-img4.jpg" class="img-fluid" alt="#">
-                            <div class="doctors-plus-icon"><i class="fas fa-plus"></i></div>
-                            <h4>Dr. Mary Joe</h4>
-                            <p>SURGEON</p>
-                        </div>
-                        <div class="doctors-box3">
-                            <img src="/Public/images/doctors-img4.jpg" class="img-fluid" alt="#">
-                            <div class="doctors-plus-icon"><i class="fas fa-plus"></i></div>
-                            <h4>Dr. Mary Joe</h4>
-                            <p>SURGEON</p>
+                            <h4>{{$doctor->name ." ".$doctor->surname}}</h4>
+                            <p><a href="#" class="btn btn-xs btn-primary">Randevu Al</a></p>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    <section class="testimonial">
-        <div class="container container-custom">
-            <div class="col-md-12">
-                <div class="heading-style1">
-                    <span>Testimonials</span>
-                    <h2>What Our Clients Say</h2>
-                </div>
-                <div class="testi-slider">
-                    <div class="testimonial-wrap">
-                        <img src="/Public/images/testi-img1.jpg" class="img-fluid testi-img-icon" alt="#" />
-                        <ul>
-                            <li><i class="fas fa-star"></i></li>
-                            <li><i class="fas fa-star"></i></li>
-                            <li><i class="fas fa-star"></i></li>
-                            <li><i class="fas fa-star"></i></li>
-                            <li><i class="fas fa-star"></i></li>
-                        </ul>
-                        <p>
-                            <span>L</span>orem ipsum dolor sit amet, consectetur adipisicing elit, sed do eius mod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.
-                        </p>
-                        <span class="testi-name">Mary Jane (ceo)</span>
-                        <div class="testi-styled-bg">
-                            <img src="/Public/images/testi-side-img_05.png" class="img-fluid" alt="#" />
-                        </div>
-                    </div>
-                    <div class="testimonial-wrap quaternary-br-color">
-                        <img src="/Public/images/testi-img2.jpg" class="img-fluid testi-img-icon" alt="#" />
-                        <ul>
-                            <li><i class="fas fa-star"></i></li>
-                            <li><i class="fas fa-star"></i></li>
-                            <li><i class="fas fa-star"></i></li>
-                            <li><i class="fas fa-star"></i></li>
-                            <li><i class="fas fa-star"></i></li>
-                        </ul>
-                        <p>
-                            <span>L</span>orem ipsum dolor sit amet, consectetur adipisicing elit, sed do eius mod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.
-                        </p>
-                        <span class="testi-name">Mary Jane (ceo)</span>
-                        <div class="testi-styled-bg">
-                            <img src="/Public/images/testi-side-img_05.png" class="img-fluid" alt="#" />
-                        </div>
-                    </div>
-                    <div class="testimonial-wrap">
-                        <img src="/Public/images/testi-img1.jpg" class="img-fluid testi-img-icon" alt="#" />
-                        <ul>
-                            <li><i class="fas fa-star"></i></li>
-                            <li><i class="fas fa-star"></i></li>
-                            <li><i class="fas fa-star"></i></li>
-                            <li><i class="fas fa-star"></i></li>
-                            <li><i class="fas fa-star"></i></li>
-                        </ul>
-                        <p>
-                            <span>L</span>orem ipsum dolor sit amet, consectetur adipisicing elit, sed do eius mod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.
-                        </p>
-                        <span class="testi-name">Mary Jane (ceo)</span>
-                        <div class="testi-styled-bg">
-                            <img src="/Public/images/testi-side-img_05.png" class="img-fluid" alt="#" />
-                        </div>
-                    </div>
-                    <div class="testimonial-wrap quaternary-br-color">
-                        <img src="/Public/images/testi-img2.jpg" class="img-fluid testi-img-icon" alt="#" />
-                        <ul>
-                            <li><i class="fas fa-star"></i></li>
-                            <li><i class="fas fa-star"></i></li>
-                            <li><i class="fas fa-star"></i></li>
-                            <li><i class="fas fa-star"></i></li>
-                            <li><i class="fas fa-star"></i></li>
-                        </ul>
-                        <p>
-                            <span>L</span>orem ipsum dolor sit amet, consectetur adipisicing elit, sed do eius mod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.
-                        </p>
-                        <span class="testi-name">Mary Jane (ceo)</span>
-                        <div class="testi-styled-bg">
-                            <img src="/Public/images/testi-side-img_05.png" class="img-fluid" alt="#" />
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <section class="counter">
-        <div class="container container-custom">
-            <div class="row">
-                <div class="col-sm-4 col-md-3 col-lg-3">
-                    <div class="counter-block">
-                        <img src="/Public/images/counter1.png" alt="#">
-                        <div class="counter-text">
-                            <h2>60+</h2>
-                            <p>Expert Doctors</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-4 col-md-3 col-lg-3">
-                    <div class="counter-block">
-                        <img src="/Public/images/counter2.png" alt="#">
-                        <div class="counter-text">
-                            <h2>1000+</h2>
-                            <p>Happy Patients</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-4 col-md-3 col-lg-3">
-                    <div class="counter-block">
-                        <img src="/Public/images/counter3.png" alt="#">
-                        <div class="counter-text">
-                            <h2>150+</h2>
-                            <p>Award Winner</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-12 col-md-3 col-lg-3 d-flex align-items-center justify-content-end">
-                    <div class="counter-btn_block">
-                        <a href="#" class="btn btn-success">Randevu Al</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!--//End Counter -->
-
-
-
-
-
-
-
 @endsection

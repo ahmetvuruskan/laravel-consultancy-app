@@ -23,8 +23,9 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('delete-user',[UserController::class,'deleteUser'])->name("admin.users.delete");
     Route::post('update-user',[UserController::class,'updateUser'])->name("admin.users.update");
     Route::post("slider/delete/",[CmsController::class,"deleteSlider"])->name("admin.cms.sliders.delete");
-    Route::get("psicolosist",[AppointmentController::class,"getAppointments"])->name("psychologist.calendar.get");
+ //   Route::get("psicolosist",[AppointmentController::class,"getAppointments"])->name("psychologist.calendar.get");
     Route::post("packages/search",[PackageController::class,"search"])->name("admin.package.search");
     Route::post("professions/search",[ProfessionController::class,"search"])->name("admin.profession.search");
     Route::post("products/add",[ProductController::class,"add"])->name("api.save.products");
+    Route::post("products/delete",[ProductController::class,"delete"])->name("api.delete.products");
 });

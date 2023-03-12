@@ -1,4 +1,7 @@
 @extends("Dashboard.Admin..Layout.layout")
+@section('css')
+    <link rel="stylesheet" href="/assets/select2/select2.css">
+@endsection
 @section('title')
     {{$title}} | Görüşme Paketleri ve Uzmanlık Alanları Tanımlama
 @endsection
@@ -53,8 +56,7 @@
                                                         </svg>
                                                     </button>
                                                     <div class="dropdown-menu">
-                                                        <a class="dropdown-item" href="">Düzenle</a>
-                                                        <a class="dropdown-item" href="">Sil</a>
+                                                        <a class="dropdown-item delete-product" id="{{$package->id}}" >Sil</a>
                                                     </div>
                                                 </div>
                                             </td>
@@ -160,8 +162,22 @@
             $("#package-name").val(null).trigger('change');
             $("#profession-name").val(null).trigger('change');
         }
+        $(".delete-product").click(()=>{
+            var id = $(".delete-product").prop("id");
+            console.log(id);
+            console.log($(".delete-product"));
+            axios.post("{{route("api.delete.products")}}",{"id":id},{
+                headers:{
+                    "Authorization" : "Bearer {{\Illuminate\Support\Facades\Cookie::get('token')}}"
+                }
+            }).then((reponse)=>{
+                toastr.success(reponse.data.message);
+                location.reload();
+            }).catch((error)=>{
+                toastr.error(error.response.data.message);
+            });
+        });
+
     </script>
 @endsection
-@section('css')
-    <link rel="stylesheet" href="/assets/select2/select2.css">
-@endsection
+
