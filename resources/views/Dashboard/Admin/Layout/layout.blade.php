@@ -146,6 +146,11 @@
                         </ul>
                     </li>
                     @elseif(auth()->user()->role == "psychologist")
+                    <li><a href="{{route("psychologist.profile")}}" class="ai-icon" aria-expanded="false">
+                            <i class="flaticon-381-user-1"></i>
+                            <span class="nav-text">Profil Bilgileri</span>
+                        </a>
+                    </li>
                     <li><a href="{{route("psychologist.calendar")}}" class="ai-icon" aria-expanded="false">
                             <i class="flaticon-381-calendar"></i>
                             <span class="nav-text">Takvim</span>
@@ -156,6 +161,7 @@
                             <span class="nav-text">Görüşmeler</span>
                         </a>
                     </li>
+
                 @endif
             </ul>
             <div class="copyright">

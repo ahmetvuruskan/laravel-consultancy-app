@@ -22,10 +22,11 @@ class PageSeeder extends Seeder
                 'content' => "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nunc ut aliquam ultricies, nunc nisl aliquam nisl, eget"
             ],
             [
-                'title' => "İletişim",
-                'slug' => "iletisim",
+                'title' => "Gizlilik Sözlesmesi",
+                'slug' => "gizlilik-sozlesmesi",
                 'content' => "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nunc ut aliquam ultricies, nunc nisl aliquam nisl, eget"
-            ]
+            ],
+
         ]);
     }
 }

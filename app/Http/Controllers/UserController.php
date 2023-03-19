@@ -13,6 +13,9 @@ class UserController extends Controller
         $data['users']= User::all();
         return view("Dashboard.Admin.Users.index")->with("data",$data);
     }
+    public function profile(){
+        return view("Dashboard.Psychologist.profile");
+    }
     public function getUserDetails(Request $request){
         Validator::make($request->all(), [
             'id' => "required|numeric"
@@ -26,5 +29,17 @@ class UserController extends Controller
     public function deleteUser($id){
         User::find($id)->delete();
         return response()->json(["status"=>"success","message"=>"Kullanıcı başarıyla silindi."]);
+    }
+    public function makeAdmin(Request $request){
+        $user = User::find($request->id);
+        $user->role = "admin";
+        $user->save();
+        return response()->json(["status"=>"success","message"=>"Kullanıcı başarıyla admin olarak güncellendi."]);
+    }
+    public function makePsychologist(Request $request){
+        $user = User::find($request->id);
+        $user->role = "psychologist";
+        $user->save();
+        return response()->json(["status"=>"success","message"=>"Kullanıcı başarıyla psikolog olarak güncellendi."]);
     }
 }

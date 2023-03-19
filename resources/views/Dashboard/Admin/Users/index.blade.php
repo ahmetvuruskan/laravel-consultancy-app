@@ -125,6 +125,16 @@
                             <button id="reset-password" class="btn btn-primary btn-block">Şifre Sıfırla</button>
                         </div>
                     </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label for="name">Admin</label>
+                            <button id="make-admin" class="btn btn-primary btn-block">Admin Yap</button>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="name">Psikolog</label>
+                            <button id="make-psicologist" class="btn btn-primary btn-block">Psikolog Yap</button>
+                        </div>
+                    </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Kapat</button>
@@ -152,12 +162,42 @@
                     $("#phone").val(response.data.phone);
                     $("#username").val(response.data.username);
                     $("#email").val(response.data.email);
+                    $("#make-admin").data("userId",response.data.id);
+                    $("#make-psicologist").data("userId",response.data.id);
                 }).catch(function (error) {
                     console.log(error);
                 });
             });
             $("#reset-password").click(function (){
                 console.log("asd");
+            });
+            $("#make-admin").click(function (){
+               var userId = $(this).data("userId")
+                axios.post("{{route('api.make.admin')}}",{
+                    id:userId
+                },{
+                    headers: {
+                        "Authorization ": "Bearer " + "{{\Illuminate\Support\Facades\Cookie::get("token")}}"
+                    }
+                }).then((response)=>{
+                    toastr.success(response.data.message);
+                }).catch((error)=>{
+                    toastr.error(error.data.message);
+                })
+            });
+            $("#make-psicologist").click(function (){
+                var userId = $(this).data("userId")
+                axios.post("{{route('api.make.psychologist')}}",{
+                    id:userId
+                },{
+                    headers: {
+                        "Authorization ": "Bearer " + "{{\Illuminate\Support\Facades\Cookie::get("token")}}"
+                    }
+                }).then((response)=>{
+                    toastr.success(response.data.message);
+                }).catch((error)=>{
+                    toastr.error(error.data.message);
+                })
             });
         });
     </script>

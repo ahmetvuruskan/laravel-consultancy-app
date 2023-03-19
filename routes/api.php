@@ -28,6 +28,8 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post("professions/search",[ProfessionController::class,"search"])->name("admin.profession.search");
     Route::post("products/add",[ProductController::class,"add"])->name("api.save.products");
     Route::post("products/delete",[ProductController::class,"delete"])->name("api.delete.products");
+    Route::post("make-admin",[UserController::class,"makeAdmin"])->name("api.make.admin");
+    Route::post("make-psychologist",[UserController::class,"makePsychologist"])->name("api.make.psychologist");
 });
     Route::post("products/getProductsByProfession",[ProductController::class,"getProductsByProfession"])->name("api.getproductsbyprofession");
 });

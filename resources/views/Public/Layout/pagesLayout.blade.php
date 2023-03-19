@@ -66,7 +66,7 @@
                                     </div>
                                 </li>
                                 <li class="appointment-btn">
-                                    <a href="#" class="btn btn-primary">Randevu Al</a>
+                                    <a href="{{route("frontend.appointment")}}" class="btn btn-primary">Randevu Al</a>
                                 </li>
                             </ul>
                         </div>

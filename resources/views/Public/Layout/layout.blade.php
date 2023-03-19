@@ -23,22 +23,18 @@
         @endif
     </title>
 <style>
-    /* width */
     ::-webkit-scrollbar {
         width: 10px;
     }
-
-    /* Track */
     ::-webkit-scrollbar-track {
         background: #f1f1f1;
     }
 
-    /* Handle */
+
     ::-webkit-scrollbar-thumb {
         background: #888;
     }
 
-    /* Handle on hover */
     ::-webkit-scrollbar-thumb:hover {
         background: #555;
     }
@@ -46,8 +42,7 @@
 </head>
 
 <body>
-<!--==================== Header ====================-->
-<!-- top bar -->
+
 <section class="top-bar-block">
     <div class="container">
         <div class="row">
@@ -125,10 +120,7 @@
     </div>
 </div>
 @yield('slider')
-<!--//End Header -->
-<!--==================== About Section ====================-->
 @yield('content')
-<!--==================== Footer ====================-->
 <footer>
     <div class="container container-custom">
         <div class="row">

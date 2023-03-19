@@ -70,5 +70,6 @@ Route::middleware(['share', "xss"])->group(function () {
         Route::get("/", [AdminController::class, "psychologistIndex"])->name("psychologist.index");
         Route::get("randevular", [CalendarController::class, "index"])->name("psychologist.calendar");
         Route::get("gorusmeler",[CalendarController::class ,"interviews"])->name("psychologist.interviews");
+        Route::get("profil",[UserController::class,"profile"])->name("psychologist.profile");
     });
 });

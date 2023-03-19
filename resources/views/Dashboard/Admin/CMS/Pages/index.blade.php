@@ -1,9 +1,9 @@
 @extends("Dashboard.Admin..Layout.layout")
 @section('title')
-    {{$title}} | Ayarlar
+    {{$title}} | Sayfa Yönetimi
 @endsection
 @section('page-title')
-    Ayarlar
+    Sayfa Yönetimi
 @endsection
 @section('content')
     <div class="content-body">
@@ -12,7 +12,7 @@
                 <div class="col-lg-12">
                     <div class="card">
                         <div class="card-header">
-                            <h4 class="card-title">Ayarlar</h4>
+                            <h4 class="card-title">Sayfa Yönetimi</h4>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
