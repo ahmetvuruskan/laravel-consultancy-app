@@ -125,6 +125,11 @@
                             <span class="nav-text">Sayfalar</span>
                         </a>
                     </li>
+                    <li><a href="{{route("admin.blog.index")}}" class="ai-icon" aria-expanded="false">
+                            <i class="flaticon-381-pencil"></i>
+                            <span class="nav-text">Bloglar</span>
+                        </a>
+                    </li>
                     <li>
                         <a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
                             <i class="flaticon-381-home-1"></i>
@@ -146,11 +151,6 @@
                         </ul>
                     </li>
                     @elseif(auth()->user()->role == "psychologist")
-                    <li><a href="{{route("psychologist.profile")}}" class="ai-icon" aria-expanded="false">
-                            <i class="flaticon-381-user-1"></i>
-                            <span class="nav-text">Profil Bilgileri</span>
-                        </a>
-                    </li>
                     <li><a href="{{route("psychologist.calendar")}}" class="ai-icon" aria-expanded="false">
                             <i class="flaticon-381-calendar"></i>
                             <span class="nav-text">Takvim</span>
@@ -187,9 +187,7 @@
 <script src="/assets/js/deznav-init.js"></script>
 <script src="/assets/vendor/owl-carousel/owl.carousel.js"></script>
 <script src="/assets/vendor/peity/jquery.peity.min.js"></script>
-<script src="/assets/vendor/apexchart/apexchart.js"></script>
 <script src="/assets/js/dashboard/dashboard-1.js"></script>
-<script src="/assets/vendor/datatables/js/jquery.dataTables.min.js"></script>
 <script src="/assets/js/plugins-init/datatables.init.js"></script>
 <script src="/assets/axios/dist/axios.min.js"></script>
 <script src="/assets/vendor/toastr/js/toastr.min.js"></script>

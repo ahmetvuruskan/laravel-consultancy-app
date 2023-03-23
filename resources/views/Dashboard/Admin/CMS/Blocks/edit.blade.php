@@ -38,8 +38,16 @@
                                         <input type="text" name="paragraph" required class="form-control" value="{{$data['block']->paragraph}}">
                                     </div>
                                 </div>
+                                <div class="row justify-content-center">
+                                    <div class="form-group col-lg-6">
+                                        <label  class="col-form-label">Blok İcon</label>
+                                        <br>
+                                        <img class="mb-2" src="/Public/images/{{$data['block']->icon}}" >
+                                        <input type="file" name="icon_file" required class="form-control">
+                                    </div>
+                                </div>
                                 <input type="hidden" name="id" value="{{$data['block']->id}}">
-
+                                <input type="hidden" name="old_file" value="{{$data['block']->icon}}">
                                 <div class="row justify-content-end mr-xl-5">
                                     <button type="submit" class="btn btn-primary">Güncelle</button>
                                 </div>

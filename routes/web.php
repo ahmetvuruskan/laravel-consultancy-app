@@ -29,6 +29,7 @@ Route::middleware(['share', "xss"])->group(function () {
         Route::post("contactForm", [FrontEndPageController::class, "contactForm"])->name("frontend.contactForm");
         Route::get("randevu-al", [FrontEndPageController::class, "getAppoinment"])->name("frontend.appointment");
         Route::get("randevu-al/{id?}", [FrontEndPageController::class, "createAppoinment"])->name("frontend.create.appointment");
+        Route::get("bloglar/{slug}", [FrontEndPageController::class, "blogDetail"])->name("frontend.blog.detail");
     });
     Route::get("giris-yap", [AuthController::class, "login"])->middleware("checkSession")->name("login");
     Route::get("kayit-ol", [AuthController::class, "register"])->middleware("checkSession")->name("register");
@@ -62,6 +63,14 @@ Route::middleware(['share', "xss"])->group(function () {
             Route::get("sayfalar",[CmsController::class,"pagesIndex"])->name("admin.cms.pages");
             Route::get("sayfalar/duzenle/{id}",[CmsController::class,"pagesEdit"])->name("admin.cms.pages.edit");
         });
+        Route::prefix("blog")->group(function(){
+            Route::get("/",[CmsController::class,"blogIndex"])->name("admin.blog.index");
+            Route::get("ekle",[CmsController::class,"blogAdd"])->name("admin.blog.add");
+            Route::post("insert",[CmsController::class,"blogInsert"])->name("admin.blog.insert");
+            Route::get("duzenle/{id}",[CmsController::class,"blogEdit"])->name("admin.blog.edit");
+            Route::post("update",[CmsController::class,"blogUpdate"])->name("admin.blog.update");
+        });
+
         Route::prefix("kullanicilar")->group(function () {
             Route::get("/", [UserController::class, "index"])->name("admin.users.index");
         });

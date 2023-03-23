@@ -19,26 +19,28 @@
     <link rel="stylesheet" href="/Public/css/style.css">
     <title>@hasSection('title')
             @yield('title')
-        @else{{$title}}
+        @else
+            {{$title}}
         @endif
     </title>
-<style>
-    ::-webkit-scrollbar {
-        width: 10px;
-    }
-    ::-webkit-scrollbar-track {
-        background: #f1f1f1;
-    }
+    <style>
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
 
 
-    ::-webkit-scrollbar-thumb {
-        background: #888;
-    }
+        ::-webkit-scrollbar-thumb {
+            background: #888;
+        }
 
-    ::-webkit-scrollbar-thumb:hover {
-        background: #555;
-    }
-</style>
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+    </style>
 </head>
 
 <body>
@@ -50,7 +52,9 @@
                 <div class="top-bar">
                     <div class="row">
                         <div class="col-lg-3 col-md-12">
-                            <a class="navbar-brand" href="{{route("frontend.index")}}"><img @w(300) src="@fileRoute{{$logo}}" alt="#"></a>
+                            <a class="navbar-brand" href="{{route("frontend.index")}}"><img @w(300)
+                                                                                            src="@fileRoute{{$logo}}"
+                                                                                            alt="#"></a>
                         </div>
                         <div class="col-md-9 d-flex align-items-end">
                             <ul class="ml-auto">
@@ -147,6 +151,21 @@
                         </li>
                         <li>
                             <a href="#"><i class="fas fa-angle-double-right"></i>İletişim</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fas fa-angle-double-right"></i>Nasıl Çalışır</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fas fa-angle-double-right"></i>Psikolog Seç</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fas fa-angle-double-right"></i>S.S.S</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fas fa-angle-double-right"></i>Kendini Test Et</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fas fa-angle-double-right"></i>Blog</a>
                         </li>
 
                     </ul>

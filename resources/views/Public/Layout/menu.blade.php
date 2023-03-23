@@ -6,14 +6,33 @@
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link dropdown-toggle" href="{{route("frontend.pages","hakkimizda")}}" id="navbarDropdown" role="button"  aria-haspopup="true" aria-expanded="false">
-                Hakkımızda
+            <a class="nav-link dropdown-toggle" href="{{route("frontend.pages","nasil-calisir")}}" id="navbarDropdown" role="button"  aria-haspopup="true" aria-expanded="false">
+                Nasıl Çalışır?
+            </a>
+        </li>
+      <li class="nav-item">
+            <a class="nav-link dropdown-toggle" href="{{route("frontend.appointment")}}" id="navbarDropdown" role="button"  aria-haspopup="true" aria-expanded="false">
+                Psikolog Seç
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link dropdown-toggle" href="{{route("frontend.contact")}}" id="navbarDropdown" role="button"  aria-haspopup="true" aria-expanded="false">
-                İletişim
+            <a class="nav-link dropdown-toggle" href="{{route("frontend.pages","s-s-s")}}" id="navbarDropdown" role="button"
+               aria-haspopup="true" aria-expanded="false">
+                S.S.S
             </a>
         </li>
+        <li class="nav-item">
+            <a class="nav-link dropdown-toggle" href="{{route("frontend.pages","kendini-test-et")}}" id="navbarDropdown" role="button"
+               aria-haspopup="true" aria-expanded="false">
+                Kendini Test Et
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+               aria-haspopup="true" aria-expanded="false">
+                Blog
+            </a>
+        </li>
+
     </ul>
     @endsection
