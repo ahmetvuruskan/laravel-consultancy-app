@@ -6,11 +6,16 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\DB;
 use Laravel\Sanctum\HasApiTokens;
+use Termwind\Components\Raw;
+use Carbon\Carbon;
 
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
+
+    protected $table = 'users';
 
     /**
      * The attributes that are mass assignable.
@@ -41,4 +46,43 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function getAvailableUsers()
+    {
+
+
+        $days = ['Pazar', 'Pazartesi', 'Salı', 'Çarşamba', 'Perşembe', 'Cuma', 'Cumartesi'];
+        $todayRaw = Carbon::now();
+        $today = $days[$todayRaw->format("w")];
+        $time = $todayRaw->format("H:i");
+        $user_data = $this::select(
+            "profile",
+            DB::raw("CONCAT($this->table.name,' ',$this->table.surname) as fullname"),
+            "psychologist.title",
+            "psychologist.school",
+            "psychologist.description")
+            ->join("psychologist", "psychologist.user_id", "=", "$this->table.id")
+            ->join("available_times", "available_times.user_id", "=", "$this->table.id")
+            ->where('time_end', '>=', '10:00')
+            ->where('time_start', '<=', '23:59')
+            ->where("day", $today)
+            ->get();
+        return $user_data;
+    }
+    public function getUsers(){
+        $todayRaw = Carbon::now();
+        $time = $todayRaw->format("H:i");
+        $user_data = $this::select(
+            "profile",
+            DB::raw("CONCAT($this->table.name,' ',$this->table.surname) as fullname"),
+            "psychologist.title",
+            "psychologist.school",
+            "psychologist.description")
+            ->join("psychologist", "psychologist.user_id", "=", "$this->table.id")
+            ->join("available_times", "available_times.user_id", "=", "$this->table.id")
+            ->where('time_end', '<=', $time)
+            ->where('time_start', '>=', $time)
+            ->get();
+        return $user_data;
+    }
 }

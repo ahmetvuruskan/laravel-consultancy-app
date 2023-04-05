@@ -8,7 +8,7 @@
             <div class="row">
                 <div class="col-md-6">
                     <div class="sub-header_main">
-                        <h2>Hakkımızda</h2>
+                        <h2>{{$data['page']->title}}</h2>
                     </div>
                 </div>
             </div>

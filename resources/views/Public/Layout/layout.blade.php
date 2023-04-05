@@ -144,36 +144,32 @@
                     <h4>Hızlı Linkler</h4>
                     <ul>
                         <li>
-                            <a href="#"><i class="fas fa-angle-double-right"></i>Hakkımızda</a>
+                            <a href="{{route("frontend.pages","hakkimizda")}}"><i class="fas fa-angle-double-right"></i>Hakkımızda</a>
                         </li>
                         <li>
-                            <a href="#"><i class="fas fa-angle-double-right"></i>Hizmetlerimiz</a>
+                            <a href="{{route("frontend.contact")}}"><i class="fas fa-angle-double-right"></i>İletişim</a>
                         </li>
                         <li>
-                            <a href="#"><i class="fas fa-angle-double-right"></i>İletişim</a>
+                            <a href="{{route("frontend.pages","nasil-calisir")}}"><i class="fas fa-angle-double-right"></i>Nasıl Çalışır</a>
                         </li>
                         <li>
-                            <a href="#"><i class="fas fa-angle-double-right"></i>Nasıl Çalışır</a>
+                            <a href="{{route("frontend.appointment")}}"><i class="fas fa-angle-double-right"></i>Psikolog Seç</a>
                         </li>
                         <li>
-                            <a href="#"><i class="fas fa-angle-double-right"></i>Psikolog Seç</a>
+                            <a href="{{route("frontend.pages","s-s-s")}}"><i class="fas fa-angle-double-right"></i>S.S.S</a>
                         </li>
                         <li>
-                            <a href="#"><i class="fas fa-angle-double-right"></i>S.S.S</a>
+                            <a href="{{route("frontend.pages","kendini-test-et")}}"><i class="fas fa-angle-double-right"></i>Kendini Test Et</a>
                         </li>
                         <li>
-                            <a href="#"><i class="fas fa-angle-double-right"></i>Kendini Test Et</a>
+                            <a href="{{route("frontend.blog")}}"><i class="fas fa-angle-double-right"></i>Blog</a>
                         </li>
-                        <li>
-                            <a href="#"><i class="fas fa-angle-double-right"></i>Blog</a>
-                        </li>
-
                     </ul>
                 </div>
             </div>
             <div class="col-sm-6 col-md-4 col-lg-2">
                 <div class="foot-link-box">
-                    <h4>Our Services</h4>
+                    <h4>Hizmetlerimiz</h4>
                     <ul>
                         @foreach($data['professions'] as $package)
                             <li>

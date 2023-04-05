@@ -28,7 +28,7 @@
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+            <a class="nav-link dropdown-toggle" href="{{route("frontend.blog")}}" id="navbarDropdown" role="button"
                aria-haspopup="true" aria-expanded="false">
                 Blog
             </a>

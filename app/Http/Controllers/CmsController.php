@@ -162,6 +162,7 @@ class CmsController extends Controller
         $update = Blocks::where("id",$request->id)->update([
             "header" => $request->header,
             "paragraph" => $request->paragraph,
+            "link" => $request->link,
             "icon" => $request->icon_file ? $request->icon_file : $request->old_file,
         ]);
         if ($update) {

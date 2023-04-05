@@ -21,6 +21,7 @@ class DatabaseSeeder extends Seeder
             TitlesSeeder::class,
             SliderSeeder::class,
             BlocksSeeder::class,
+            TestsSeeder::class,
         ]);
     }
 }

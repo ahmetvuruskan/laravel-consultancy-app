@@ -1,6 +1,5 @@
 @extends("Public.Layout.pagesLayout")
 @section("content")
-    <!-- Sub header -->
     <section class="space sub-header">
         <div class="container container-custom">
             <div class="row">
@@ -18,17 +17,13 @@
             </div>
         </div>
     </section>
-    <!--//End Sub header -->
-    <!--//End Header -->
-    <!--==================== Service Detail ====================-->
     <section class="light">
         <div class="container container-custom">
             <div class="row">
                 <div class="col-md-12 col-lg-4">
                     <div class="sidebar-category" style="max-height: 350px; overflow-y:auto;">
-
                         <ul>
-                            @foreach($data['professions'] as $profession)
+                            @foreach($data['professionsforsell'] as $profession)
                                 <li>
                                     <a class="profession">
                                         <span class="profession_type"
@@ -107,5 +102,4 @@
             });
         });
     </script>
-
 @endsection

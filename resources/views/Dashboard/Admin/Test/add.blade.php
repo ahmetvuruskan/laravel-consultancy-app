@@ -1,9 +1,9 @@
 @extends("Dashboard.Admin.Layout.layout")
 @section('title')
-    {{$title}} | Slider Düzenle
+    {{$title}} | Test Ekle
 @endsection
 @section('page-title')
-    Slider Düzenle
+    Test Ekle
 @endsection
 @section('content')
     <div class="content-body">
@@ -12,7 +12,7 @@
                 <div class="col-lg-12">
                     <div class="card">
                         <div class="card-header">
-                            <h4 class="card-title">Bu form aracılığyla mevcut bloklarınızı düzenleyebilirsiniz</h4>
+                            <h4 class="card-title"> Test Ekle</h4>
                         </div>
                         <div class="card-body">
                             @if($errors->any())
@@ -24,39 +24,30 @@
                                     </div>
                                 @endforeach
                             @endif
-                            <form method="post" action="{{route("admin.cms.blocks.update")}}" enctype="multipart/form-data">
+                            <form method="post" action="{{route("admin.test.insert")}}">
                                 @csrf
                                 <div class="row justify-content-center">
                                     <div class="form-group col-lg-6">
-                                        <label  class="col-form-label">Blok Başlık</label>
-                                        <input type="text" name="header"  class="form-control" value="{{$data['block']->header}}">
+                                        <label  class="col-form-label">Test Adı</label>
+                                        <input type="text" name="test_name"  class="form-control">
                                     </div>
                                 </div>
                                 <div class="row justify-content-center">
                                     <div class="form-group col-lg-6">
-                                        <label  class="col-form-label">Blok Paragraf</label>
-                                        <input type="text" name="paragraph" required class="form-control" value="{{$data['block']->paragraph}}">
+                                        <label  class="col-form-label">Test Açıklama</label>
+                                        <input type="text" name="test_description" required class="form-control">
                                     </div>
                                 </div>
                                 <div class="row justify-content-center">
                                     <div class="form-group col-lg-6">
-                                        <label  class="col-form-label">Blok Link</label>
-                                        <input type="text" name="link" required class="form-control" value="{{$data['block']->link}}">
+                                        <label  class="col-form-label">Test İframe</label>
+                                        <textarea name="test_embed" rows="5" class="form-control"></textarea>
                                     </div>
                                 </div>
-                                <div class="row justify-content-center">
-                                    <div class="form-group col-lg-6">
-                                        <label  class="col-form-label">Blok İcon</label>
-                                        <br>
-                                        <img class="mb-2" src="/Public/images/{{$data['block']->icon}}" >
-                                        <input type="file" name="icon_file"  class="form-control">
-                                    </div>
-                                </div>
-                                <input type="hidden" name="id" value="{{$data['block']->id}}">
-                                <input type="hidden" name="old_file" value="{{$data['block']->icon}}">
                                 <div class="row justify-content-end mr-xl-5">
-                                    <button type="submit" class="btn btn-primary">Güncelle</button>
+                                    <button class="btn btn-primary">Ekle</button>
                                 </div>
+
                             </form>
                         </div>
                     </div>
@@ -65,4 +56,3 @@
         </div>
     </div>
 @endsection
-

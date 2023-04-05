@@ -9,6 +9,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\FrontEndPageController;
 use App\Http\Controllers\CmsController;
 use App\Http\Controllers\CalendarController;
+use App\Http\Controllers\TestController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -20,8 +21,7 @@ use App\Http\Controllers\CalendarController;
 |
 */
 
-Route::middleware("adminAccess")->post("sayfalar/update/{id}",[CmsController::class,"pagesUpdate"])->name("admin.cms.pages.update");
-Route::middleware(['share', "xss"])->group(function () {
+Route::middleware(['share'])->group(function () {
     Route::prefix("/")->group(function (){
         Route::get("/", [FrontEndPageController::class, 'index'])->name("frontend.index");
         Route::get("sayfalar/{slug}", [FrontEndPageController::class, "pages"])->name("frontend.pages");
@@ -30,6 +30,10 @@ Route::middleware(['share', "xss"])->group(function () {
         Route::get("randevu-al", [FrontEndPageController::class, "getAppoinment"])->name("frontend.appointment");
         Route::get("randevu-al/{id?}", [FrontEndPageController::class, "createAppoinment"])->name("frontend.create.appointment");
         Route::get("bloglar/{slug}", [FrontEndPageController::class, "blogDetail"])->name("frontend.blog.detail");
+        Route::get("bloglar", [FrontEndPageController::class, "blog"])->name("frontend.blog");
+        Route::get("kendini-test-et", [FrontEndPageController::class, "tests"])->name("frontend.test");
+        Route::get("kendini-test-et/{slug}", [FrontEndPageController::class, "testDetail"])->name("frontend.test.detail");
+        Route::post("sanal-pos", [FrontEndPageController::class, "virtualTerminal"])->name("frontend.virtualTerminal");
     });
     Route::get("giris-yap", [AuthController::class, "login"])->middleware("checkSession")->name("login");
     Route::get("kayit-ol", [AuthController::class, "register"])->middleware("checkSession")->name("register");
@@ -61,6 +65,7 @@ Route::middleware(['share', "xss"])->group(function () {
             Route::get("blok/duzenle/{id}",[CmsController::class,"blocksEdit"])->name("admin.cms.blocks.edit");
             Route::post("blok/update",[CmsController::class,"blockUpdate"])->name("admin.cms.blocks.update");
             Route::get("sayfalar",[CmsController::class,"pagesIndex"])->name("admin.cms.pages");
+            Route::post("sayfalar/update/{id}",[CmsController::class,"pagesUpdate"])->name("admin.cms.pages.update");
             Route::get("sayfalar/duzenle/{id}",[CmsController::class,"pagesEdit"])->name("admin.cms.pages.edit");
         });
         Route::prefix("blog")->group(function(){
@@ -70,9 +75,12 @@ Route::middleware(['share', "xss"])->group(function () {
             Route::get("duzenle/{id}",[CmsController::class,"blogEdit"])->name("admin.blog.edit");
             Route::post("update",[CmsController::class,"blogUpdate"])->name("admin.blog.update");
         });
-
-        Route::prefix("kullanicilar")->group(function () {
-            Route::get("/", [UserController::class, "index"])->name("admin.users.index");
+        Route::prefix("test")->group(function (){
+            Route::get("/",[TestController::class,"index"])->name("admin.test.index");
+            Route::get("ekle",[TestController::class,"add"])->name("admin.test.add");
+            Route::post("insert",[TestController::class,"insert"])->name("admin.test.insert");
+            Route::get("duzenle/{id}",[TestController::class,"edit"])->name("admin.test.edit");
+            Route::post("update/{id}",[TestController::class,"update"])->name("admin.test.update");
         });
     });
     Route::middleware(["checkToken","psychologistAccess"])->prefix("psikolog")->group(function () { // Burası psikologlara açık
@@ -80,5 +88,8 @@ Route::middleware(['share', "xss"])->group(function () {
         Route::get("randevular", [CalendarController::class, "index"])->name("psychologist.calendar");
         Route::get("gorusmeler",[CalendarController::class ,"interviews"])->name("psychologist.interviews");
         Route::get("profil",[UserController::class,"profile"])->name("psychologist.profile");
+    });
+    Route::middleware("userAccess")->prefix("kullanicilar")->group(function () {
+        Route::get("/", [UserController::class, "index"])->name("admin.users.index");
     });
 });

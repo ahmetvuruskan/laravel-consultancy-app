@@ -37,6 +37,7 @@ class Products extends Model
                     "professions.id as profession_id",
                     "professions.profession_description as profession_description",
                     "$this->table.id as product_id",
+                    "users.id as user_id",
                 )
                 ->get();
     }
