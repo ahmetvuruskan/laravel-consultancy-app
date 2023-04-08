@@ -22,7 +22,12 @@ class AuthCheck
         }else{
             if (Auth::user()->role =="admin") {
                 return redirect(route("admin.index"));
+            }if (Auth::user()->role =="psychologist") {
+                return redirect(route("psychologist.index"));
+            }if (Auth::user()->role =="user") {
+                return redirect(route("admin.users.index"));
             }
+
         }
     }
 }

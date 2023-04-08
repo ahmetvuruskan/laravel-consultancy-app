@@ -25,7 +25,6 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('delete-user',[UserController::class,'deleteUser'])->name("admin.users.delete");
     Route::post('update-user',[UserController::class,'updateUser'])->name("admin.users.update");
     Route::post("slider/delete/",[CmsController::class,"deleteSlider"])->name("admin.cms.sliders.delete");
- //   Route::get("psicolosist",[AppointmentController::class,"getAppointments"])->name("psychologist.calendar.get");
     Route::post("packages/search",[PackageController::class,"search"])->name("admin.package.search");
     Route::post("professions/search",[ProfessionController::class,"search"])->name("admin.profession.search");
     Route::post("products/add",[ProductController::class,"add"])->name("api.save.products");
@@ -36,6 +35,8 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post("updateTimes",[AppointmentController::class,'updateTimes'])->name("api.update.times");
     Route::post("delete",[TestController::class,"delete"])->name("api.admin.test.delete");
     Route::post("get-available-times",[AppointmentController::class,"getAvailableTimes"])->name("api.get.available.times");
+    Route::post("create-appointment",[AppointmentController::class,"createAppointment"])->name("api.create.appointment");
+    Route::post("update_available_times",[AppointmentController::class,"updateAvailableTimes"])->name("api.update.available.times");
 });
 
     Route::post("products/getProductsByProfession",[ProductController::class,"getProductsByProfession"])->name("api.getproductsbyprofession");

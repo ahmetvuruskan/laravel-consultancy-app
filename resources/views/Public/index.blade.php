@@ -1,3 +1,4 @@
+
 @extends('Public.Layout.layout')
 @section('content')
     <section class="about-section">
@@ -17,21 +18,13 @@
             </div>
         </div>
     </section>
-    <section class="space">
-        <div class="container container-custom">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="heading-style1">
-                        <h2>Neden Biz  ?</h2>
-                    </div>
-                </div>
-            </div>
-            <div class="row justify-content-lg-center">
-                <img  src="/Public/images/{{$whyusimage}}">
-            </div>
+    <section class="about-section">
+        <div class="container container custom">
+           <div class="row justify-content-lg-center">
+               <img class="img-fluid" src="/Public/images/{{$whyusimage}}">
+           </div>
         </div>
     </section>
-
     <section class="space">
         <div class="container container-custom">
             <div class="row">
@@ -50,25 +43,21 @@
                                 <td>
                                     <div class="card ">
                                         <div class="card-body">
-                                            <div class="row">
+                                            <div class="row justify-content-center">
                                                 <div class="col-lg-4 ">
-                                                    <img  src="/assets/images/defaultavatar.png" class="img-fluid rounded-circle shadow-4-strong" alt="doctor_image">
-                                                    <div class="row justify-content-center">
+                                                    <img style="width: 220px"  src="/assets/images/{{$doctor->profile}}" class="img-fluid rounded-circle shadow-4-strong" alt="doctor_image">
+                                                    <div style=" padding-right: 90px" class="row justify-content-center">
                                                        <div class="row">
                                                            <p ><h5 style="@printStatus(1)">ÇEVRİMİÇİ</h5></p>
                                                        </div>
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-8">
-                                                    <h5 class="card-title">Deneme Deneme</h5>
-                                                    <p class="card-text">Seans</p>
-                                                    <p class="card-text">lorem lorem lorem lorem lorem</p>
-                                                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                                        Animi beatae, dignissimos dolorem eius error fugiat itaque iure nemo,
-                                                        nesciunt provident quas quasi, qui quos recusandae reprehenderit sint soluta
-                                                        tempore voluptatibus!</p>
-                                                    <a href="{{route("frontend.create.appointment")}}/"
-                                                       class="btn btn-primary buy">Satın Al 50 ₺</a>
+                                                    <h5 class="card-title">{{$doctor->fullname}}</h5>
+                                                    <p class="card-text">{{$doctor->title}}</p>
+                                                    <p class="card-text">{{$doctor->description}}</p>
+                                                    <a href="{{route("frontend.create.appointment")}}"
+                                                       class="btn btn-primary buy">Randevu Al </a>
                                                 </div>
                                             </div>
                                         </div>

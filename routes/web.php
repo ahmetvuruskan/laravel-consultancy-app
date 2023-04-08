@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Orders;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AdminController;
@@ -10,6 +11,7 @@ use App\Http\Controllers\FrontEndPageController;
 use App\Http\Controllers\CmsController;
 use App\Http\Controllers\CalendarController;
 use App\Http\Controllers\TestController;
+use App\Http\Controllers\OrderController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -27,13 +29,16 @@ Route::middleware(['share'])->group(function () {
         Route::get("sayfalar/{slug}", [FrontEndPageController::class, "pages"])->name("frontend.pages");
         Route::get("iletisim", [FrontEndPageController::class, "contact"])->name("frontend.contact");
         Route::post("contactForm", [FrontEndPageController::class, "contactForm"])->name("frontend.contactForm");
-        Route::get("randevu-al", [FrontEndPageController::class, "getAppoinment"])->name("frontend.appointment");
-        Route::get("randevu-al/{id?}", [FrontEndPageController::class, "createAppoinment"])->name("frontend.create.appointment");
+        Route::get("uzman/detay/{slug}", [FrontEndPageController::class, "psychologistDetail"])->name("frontend.psychologist.detail");
         Route::get("bloglar/{slug}", [FrontEndPageController::class, "blogDetail"])->name("frontend.blog.detail");
         Route::get("bloglar", [FrontEndPageController::class, "blog"])->name("frontend.blog");
         Route::get("kendini-test-et", [FrontEndPageController::class, "tests"])->name("frontend.test");
         Route::get("kendini-test-et/{slug}", [FrontEndPageController::class, "testDetail"])->name("frontend.test.detail");
-        Route::post("sanal-pos", [FrontEndPageController::class, "virtualTerminal"])->name("frontend.virtualTerminal");
+        Route::middleware("loginRequired")->group(function (){
+            Route::get("randevu-al", [FrontEndPageController::class, "getAppoinment"])->name("frontend.appointment");
+            Route::get("randevu-al/{id?}", [FrontEndPageController::class, "createAppoinment"])->name("frontend.create.appointment");
+            Route::post("sanal-pos", [FrontEndPageController::class, "virtualTerminal"])->name("frontend.virtualTerminal");
+        });
     });
     Route::get("giris-yap", [AuthController::class, "login"])->middleware("checkSession")->name("login");
     Route::get("kayit-ol", [AuthController::class, "register"])->middleware("checkSession")->name("register");
@@ -82,14 +87,25 @@ Route::middleware(['share'])->group(function () {
             Route::get("duzenle/{id}",[TestController::class,"edit"])->name("admin.test.edit");
             Route::post("update/{id}",[TestController::class,"update"])->name("admin.test.update");
         });
+        Route::prefix("kullanicilar")->group(function () {
+            Route::get("/", [UserController::class, "index"])->name("admin.user.list.index");
+        });
+        Route::prefix("satıslar")->group(function () {
+            Route::get("/", [OrderController::class, "index"])->name("admin.orders.list");
+            Route::get("detay/{id}", [OrderController::class, "detail"])->name("admin.orders.show");
+        });
     });
-    Route::middleware(["checkToken","psychologistAccess"])->prefix("psikolog")->group(function () { // Burası psikologlara açık
+    Route::middleware(["psychologistAccess"])->prefix("psikolog")->group(function () { // Burası psikologlara açık
         Route::get("/", [AdminController::class, "psychologistIndex"])->name("psychologist.index");
         Route::get("randevular", [CalendarController::class, "index"])->name("psychologist.calendar");
         Route::get("gorusmeler",[CalendarController::class ,"interviews"])->name("psychologist.interviews");
         Route::get("profil",[UserController::class,"profile"])->name("psychologist.profile");
+        Route::post("profil/guncelle",[UserController::class,"updateProfile"])->name("psychologist.profile.update");
     });
-    Route::middleware("userAccess")->prefix("kullanicilar")->group(function () {
-        Route::get("/", [UserController::class, "index"])->name("admin.users.index");
+    Route::middleware("userAccess")->prefix("kullanici")->group(function () {
+        Route::get("/", [AdminController::class, "userIndex"])->name("admin.users.index");
+        Route::get("gorusmelerim",[CalendarController::class ,"userInterviews"])->name("admin.user.interviews");
+        Route::get("randevu-ekle/{id}",[CalendarController::class ,"createInterview"])->name("admin.users.create.appointment");
     });
 });
+

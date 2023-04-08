@@ -39,9 +39,9 @@ class AuthController extends Controller
             }elseif (Auth::user()->role == "psychologist") {
                 return redirect(route("psychologist.index"))->withCookie(\cookie("token", $token, env("SESSION_LIFETIME")));
             }
-//            elseif (Auth::user()->role == "user") {
-//                return redirect("/kullanici/panel")->withCookie(\cookie("token", $token, env("SESSION_LIFETIME")));;
-//            }
+            elseif (Auth::user()->role == "user") {
+                return redirect(route("admin.users.index"))->withCookie(\cookie("token", $token, env("SESSION_LIFETIME")));;
+            }
         } else {
             Log::info('Kullanıcı giriş hatası.', ['email' => $userData['email']]);
             $request->flash();

@@ -15,9 +15,30 @@
                             <h4 class="card-title">Takvim</h4>
                         </div>
                         <div class="card-body">
-                            <div id="calendar">
-
-                            </div>
+                            <table class="table ">
+                                <thead>
+                                <tr>
+                                    <th>Rumuz</th>
+                                    <th>Randevu Tarihi</th>
+                                    <th>Randevu Saati</th>
+                                    <th>Görüşme Tipi</th>
+                                    <th>Görüşme Süresi</th>
+                                    <th>Telefon Numarası</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                @foreach($data['appointments'] as $appointment)
+                                    <tr>
+                                        <td>{{$appointment->username}}</td>
+                                        <td>{{date("d-m-Y",strtotime($appointment->start_date))}}</td>
+                                        <td>{{date("H:i",strtotime($appointment->start_time))}}</td>
+                                        <td>{{$appointment->package_name}}</td>
+                                        <td>{{$appointment->session_duration}}</td>
+                                        <td>{{$appointment->phone}}</td>
+                                    </tr>
+                                @endforeach
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
@@ -25,53 +46,4 @@
         </div>
     </div>
 @endsection
-@section('js')
-    <script>
 
-        document.addEventListener('DOMContentLoaded', function() {
-            var calendarEl = document.getElementById('calendar');
-
-            var calendar = new FullCalendar.Calendar(calendarEl, {
-                headerToolbar: {
-                    left: 'prev,next today',
-                    center: 'title',
-                    right: 'dayGridMonth,timeGridWeek,timeGridDay'
-                },
-                initialDate: '2023-01-12',
-                navLinks: true, // can click day/week names to navigate views
-                selectable: true,
-                selectMirror: true,
-                firstDay : 1,
-                initialDate: Date.now(),
-                select: function(arg) {
-                    var title = prompt('Event Title:');
-                    if (title) {
-                        calendar.addEvent({
-                            title: title,
-                            start: arg.start,
-                            end: arg.end,
-                            allDay: arg.allDay
-                        })
-                    }
-                    calendar.unselect()
-                },
-                eventClick: function(arg) {
-                    if (confirm('Are you sure you want to delete this event?')) {
-                        arg.event.remove()
-                    }
-                },
-                editable: true,
-                dayMaxEvents: true, // allow "more" link when too many events
-                events: (start,end,timezone,callback)=>{
-                    axios.get("{{route("psychologist.calendar.get")}}",{
-                        headers: {
-                            "Authorization": "Bearer " + "{{\Illuminate\Support\Facades\Cookie::get("token")}}"
-                        }
-                    })
-                }
-            });
-            calendar.render();
-        });
-
-    </script>
-@endsection

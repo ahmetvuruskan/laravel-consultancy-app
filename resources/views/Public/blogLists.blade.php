@@ -24,7 +24,7 @@
                 <div class="col-md-8">
                         @foreach($data['blogs'] as $blog)
                         <div class="blog-list">
-                            <img src="/Public/images/blog-img.jpg" class="img-fluid" alt="#">
+                            <img src="/Public/images/{{$blog->image}}" class="img-fluid" alt="#">
                             <div class="blog-text-wrap">
                                 <h3>{{$blog->title}}</h3>
                                 <p>{{substr($blog->content,0,50)}}</p>

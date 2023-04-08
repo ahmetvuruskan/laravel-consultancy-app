@@ -38,13 +38,13 @@
                                         <div class="col-lg-6">
                                             <div class="form-group">
                                                 <label class="mb-1 text-white"><strong>Adınız</strong></label>
-                                                <input type="text" name="firstname" class="form-control" placeholder="Adınız ">
+                                                <input type="text" name="firstname" value="{{old("firstname")}}" class="form-control" placeholder="Adınız ">
                                             </div>
                                         </div>
                                         <div class="col-lg-6">
                                             <div class="form-group">
                                                 <label class="mb-1 text-white"><strong>Soyadınız</strong></label>
-                                                <input type="text" name="surname" class="form-control" placeholder="Soyadınız">
+                                                <input type="text" name="surname" value=" {{old("surname")}}" class="form-control" placeholder="Soyadınız">
                                             </div>
                                         </div>
                                     </div>
@@ -52,13 +52,13 @@
                                         <div class="col-lg-5">
                                             <div class="form-group">
                                                 <label class="mb-1 text-white"><strong>Rumuz</strong></label>
-                                                <input type="text" name="username" class="form-control" placeholder="Rumuz">
+                                                <input type="text" name="username" value="{{old("username")}}" class="form-control" placeholder="Rumuz">
                                             </div>
                                         </div>
                                         <div class="col-lg-7">
                                             <div class="form-group">
                                                 <label class="mb-1 text-white"><strong>Telefon</strong></label>
-                                                <input type="text" name="phone" class="form-control" placeholder="Telefon Numaranız">
+                                                <input type="text" name="phone" value="{{old("phone")}}" class="form-control" placeholder="Telefon Numaranız">
                                             </div>
                                         </div>
                                     </div>
@@ -80,7 +80,7 @@
                                         <div class="col-lg-12">
                                             <div class="form-group">
                                                 <label class="mb-1 text-white"><strong>Email</strong></label>
-                                                <input type="email" name="email" class="form-control" placeholder="Email Adresiniz">
+                                                <input type="email" name="email" value="{{old("email")}}" class="form-control" placeholder="Email Adresiniz">
                                             </div>
                                         </div>
                                     </div>

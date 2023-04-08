@@ -164,6 +164,12 @@
                         <li>
                             <a href="{{route("frontend.blog")}}"><i class="fas fa-angle-double-right"></i>Blog</a>
                         </li>
+                        <li>
+                            <a href="{{route("frontend.pages","hizmet-sozlesmesi")}}"><i class="fas fa-angle-double-right"></i>Hizmet Sözleşmesi</a>
+                        </li>
+                        <li>
+                            <a href="{{route("frontend.pages","kvkk-metni")}}"><i class="fas fa-angle-double-right"></i>Kvkk Metni</a>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -173,7 +179,7 @@
                     <ul>
                         @foreach($data['professions'] as $package)
                             <li>
-                                <a href="#"><i class="fas fa-angle-double-right"></i>{{$package->profession_type}}</a>
+                                <a href="{{route("frontend.appointment")}}"><i class="fas fa-angle-double-right"></i>{{$package->profession_type}}</a>
                             </li>
                         @endforeach
                     </ul>
@@ -194,6 +200,9 @@
                     </ul>
                 </div>
             </div>
+        </div>
+        <div class="row justify-content-end mb-3">
+            <img  width="350" src="/Public/images/logolar.png">
         </div>
         <div class="row">
             <div class="col-md-12">

@@ -7,6 +7,9 @@ use Illuminate\Http\Request;
 use App\Models\AvailableTimes;
 use App\Models\Appointment;
 
+
+
+
 class AppointmentController extends Controller
 {
     public function getAvailableTimes(Request $request)
@@ -59,5 +62,52 @@ class AppointmentController extends Controller
             return response()->json(['error' => 'Invalid Request'], 400);
         }
     }
+    public function createAppointment(Request $request){
+        $extising = Appointment::where('id',$request->order_id)->get()->count();
+        if ($extising < $request->number_of_sessions){
+            Appointment::insert([
+                'id' => $request->order_id,
+                'user_id' => $request->buyer_id,
+                'specialist_id' => $request->specialist_id,
+                'product_id' => $request->product_id,
+                'start_time' => $request->time,
+                'end_time' => Carbon::parse($request->time)->addMinute($request->duration)->format("H:i"),
+                'start_date' => $request->date,
+                'end_date' => $request->date,
+                'created_at' => Carbon::now(),
+            ]);
+            return response(['message' => 'Randevu oluşturuldu.'], 200);
+        }else{
+            return response(['message' =>  'Bu sipariş için randevu oluşturamazsınız.'], 400);
+        }
+    }
+    public function updateAvailableTimes(Request $request)
+    {
+        $exists = AvailableTimes::where('user_id', $request->user_id)->get()->count();
+        if ($exists > 0) {
+            $days = $request->days;
+            $start = $request->startTimes;
+            $end = $request->endTimes;
+            for ($i = 0; $i < count($start); $i++) {
+                AvailableTimes::where('user_id', $request->user_id)->where('day', $days[$i])->update([
+                    'time_start' => $start[$i],
+                    'time_end' => $end[$i],
+                ]);
+            }
+        }else{
+            $days = $request->days;
+            $start = $request->startTimes;
+            $end = $request->endTimes;
+            for ($i = 0; $i < count($start); $i++) {
+                AvailableTimes::insert([
+                    'user_id' => $request->user_id,
+                    'day' => $days[$i],
+                    'time_start' => $start[$i],
+                    'time_end' => $end[$i],
+                ]);
+            }
+        }
+    }
 
 }
+

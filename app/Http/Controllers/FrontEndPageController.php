@@ -62,8 +62,11 @@ class FrontEndPageController extends Controller
 
     public function getAppoinment()
     {
+        $user = new User();
         $data['professions'] = Professions::take(6)->get();
         $data['professionsforsell'] = Professions::all();
+        $data['available_users'] = $user->getAvailableUsers();
+        $data['users'] = $user->getUsers();
         return view("Public.getAppointment")->with('data', $data);
     }
 

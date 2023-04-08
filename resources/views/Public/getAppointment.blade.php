@@ -3,15 +3,10 @@
     <section class="space sub-header">
         <div class="container container-custom">
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-12">
                     <div class="sub-header_content">
                         <p>Alanında Uzman Psikologlar</p>
-                        <h3>Hizmet almak istedğiniz kategoriyi seçerek listeleyebilirsiniz</h3>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="sub-header_main">
-                        <h2>Randevu Al</h2>
+                        <h3>Hizmet almak istediğiniz kategoriyi seçerek listeleyebilirsiniz</h3>
                     </div>
                 </div>
             </div>
@@ -34,35 +29,51 @@
                             @endforeach
                         </ul>
                     </div>
-                    <div class="contact-box mb-4">
-                        <h4>İletşim</h4>
-                        <hr>
-                        <div class="contact-title">
-                            <i class="fas fa-phone-volume"></i>
-                            <div class="contact-title_icon">
-                                <p>Phone</p>
-                                <h6>{{$phone_sabit}}</h6>
-                            </div>
-                        </div>
-                        <div class="contact-title">
-                            <i class="fas fa-envelope"></i>
-                            <div class="contact-title_icon">
-                                <p>Email</p>
-                                <h6>{{$mail}}</h6>
-                            </div>
-                        </div>
-                        <div class="contact-title">
-                            <i class="fas fa-map-marker-alt"></i>
-                            <div class="contact-title_icon">
-                                <p>Location</p>
-                                <h6>{{$adress}}</h6>
-                            </div>
-                        </div>
-                    </div>
                 </div>
                 <div class="col-md-12 col-lg-8">
-                    <div class="service-detail_wrap" id="service-detail">
-
+                    <div class="service-detail_wrap">
+                        <h2 class="text-center">Uzman Psikologlar</h2>
+                        <h4 class="text-center">Sol taraftaki menüden uzman seçerek randevu alabilirsiniz</h4>
+                        <div id="service-detail">
+                            @foreach($data['available_users'] as $user)
+                                <div class="card mt-2">
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-lg-4">
+                                                <img src="/assets/images/{{$user->profile}}"
+                                                     class="img-fluid rounded-circle shadow-4-strong"
+                                                     alt="doctor_image">
+                                            </div>
+                                            <div class="col-lg-8">
+                                                <h5 class="card-title">{{$user->user_fullname}}</h5>
+                                                <p class="card-text">{{$user->title}}</p>
+                                                <p class="card-text">{{$user->description}}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            @endforeach
+                            @foreach($data['users'] as $user)
+                                <div class="card mt-2">
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-lg-4">
+                                                <img src="/assets/images/{{$user->profile}}"
+                                                     class="img-fluid rounded-circle shadow-4-strong"
+                                                     alt="doctor_image">
+                                            </div>
+                                            <div class="col-lg-8">
+                                                <h5 class="card-title">{{$user->user_fullname}}</h5>
+                                                <p class="card-text">{{$user->title}}</p>
+                                                <p class="card-text">{{$user->description}}</p>
+                                                <a href="{{route("frontend.create.appointment")}}/${data[key].product_id}"
+                                                   class="btn btn-primary buy">Randevu Al</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            @endforeach
+                        </div>
                     </div>
                 </div>
             </div>

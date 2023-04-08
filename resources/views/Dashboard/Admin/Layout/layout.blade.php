@@ -56,11 +56,11 @@
                         </div>
                     </div>
                     <ul class="navbar-nav header-right">
-
+                        <a style="width: 95px; height: 45px" href="{{route("frontend.appointment")}}" class="nav-link btn btn-sm btn-primary mt-5">Randevu Al</a>
                         <li class="nav-item dropdown notification_dropdown">
                         <li class="nav-item dropdown header-profile">
                             <a class="nav-link" href="javascript:void(0)" role="button" data-toggle="dropdown">
-                                <img src="/assets/images/profile/17.jpg" width="20" alt=""/>
+                                <img src="/assets/images/{{auth()->user()->profile}}" width="20" alt=""/>
                                 <div class="header-info">
                                     <span
                                         class="text-black"><strong>{{\Illuminate\Support\Facades\Auth::user()->name." ".\Illuminate\Support\Facades\Auth::user()->surname}}</strong></span>
@@ -68,15 +68,6 @@
                                 </div>
                             </a>
                             <div class="dropdown-menu dropdown-menu-right">
-                                <a href="/assets/assets/app-profile.html" class="dropdown-item ai-icon">
-                                    <svg id="icon-user1" xmlns="http://www.w3.org/2000/svg" class="text-primary"
-                                         width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                         stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-                                        <circle cx="12" cy="7" r="4"></circle>
-                                    </svg>
-                                    <span class="ml-2">Profil </span>
-                                </a>
                                 <a href="{{route("logout")}}" class="dropdown-item ai-icon">
                                     <svg id="icon-logout" xmlns="http://www.w3.org/2000/svg" class="text-danger"
                                          width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
@@ -87,7 +78,6 @@
                                     </svg>
                                     <span class="ml-2">Çıkış Yap </span>
                                 </a>
-
                             </div>
                         </li>
                     </ul>
@@ -95,15 +85,15 @@
             </nav>
         </div>
     </div>
-
     <div class="deznav">
         <div class="deznav-scroll">
             <ul class="metismenu" id="menu">
                 <li><a href="@if(auth()->user()->role == "admin")
-
                 {{route("admin.index")}}
-                @else
+                @elseif(auth()->user()->role == "psychologist")
                 {{route("psychologist.index")}}
+                @elseif(auth()->user()->role == "user")
+                {{route("admin.users.index")}}
                 @endif" class="ai-icon" aria-expanded="false">
                         <i class="flaticon-381-home"></i>
                         <span class="nav-text">Anasayfa</span>
@@ -115,7 +105,13 @@
                             <span class="nav-text">Ayarlar</span>
                         </a>
                     </li>
-                    <li><a href="{{route("admin.users.index")}}" class="ai-icon" aria-expanded="false">
+                    <li>
+                        <a href="{{route("admin.orders.list")}}" class="ai-icon" aria-expanded="false">
+                            <i class="flaticon-381-id-card-2"></i>
+                            <span class="nav-text">Satışlar</span>
+                        </a>
+                    </li>
+                    <li><a href="{{route("admin.user.list.index")}}" class="ai-icon" aria-expanded="false">
                             <i class="flaticon-381-user"></i>
                             <span class="nav-text">Kullanıcılar</span>
                         </a>
@@ -137,7 +133,7 @@
                         </a>
                     </li>
                     <li>
-                        <a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
+                        <a class="has-arrow ai-icon" href="javascript:void(null)" aria-expanded="false">
                             <i class="flaticon-381-home-1"></i>
                             <span class="nav-text">Mağaza İşlemleri</span>
                         </a>
@@ -147,7 +143,7 @@
                         </ul>
                     </li>
                     <li>
-                        <a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
+                        <a class="has-arrow ai-icon" href="javascript:void(null)" aria-expanded="false">
                             <i class="flaticon-381-folder"></i>
                             <span class="nav-text">CMS İşlemleri</span>
                         </a>
@@ -156,10 +152,15 @@
                             <li><a href="{{route("admin.cms.blocks")}}">Anasayfa Blok Yönetimi</a></li>
                         </ul>
                     </li>
-                    @elseif(auth()->user()->role == "psychologist")
+                @elseif(auth()->user()->role == "psychologist")
                     <li><a href="{{route("psychologist.calendar")}}" class="ai-icon" aria-expanded="false">
                             <i class="flaticon-381-calendar"></i>
                             <span class="nav-text">Takvim</span>
+                        </a>
+                    </li>
+                    <li><a href="{{route("psychologist.profile")}}" class="ai-icon" aria-expanded="false">
+                            <i class="flaticon-381-user-3"></i>
+                            <span class="nav-text">Profil</span>
                         </a>
                     </li>
                     <li><a href="{{route("psychologist.interviews")}}" class="ai-icon" aria-expanded="false">
@@ -167,7 +168,13 @@
                             <span class="nav-text">Görüşmeler</span>
                         </a>
                     </li>
-
+                @elseif(auth()->user()->role =="user")
+                    <li>
+                        <a href="{{route("admin.user.interviews")}}" class="ai-icon" aria-expanded="false">
+                            <i class="flaticon-381-incoming-call"></i>
+                            <span class="nav-text">Görüşmelerim</span>
+                        </a>
+                    </li>
                 @endif
             </ul>
             <div class="copyright">
@@ -182,10 +189,7 @@
                     Vuruşkan</a> {{date("Y")}}</p>
         </div>
     </div>
-
-
 </div>
-
 <script src="/assets/vendor/global/global.min.js"></script>
 <script src="/assets/vendor/bootstrap-select/dist/js/bootstrap-select.min.js"></script>
 <script src="/assets/vendor/chart.js/Chart.bundle.min.js"></script>

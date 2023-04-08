@@ -176,6 +176,9 @@
                 </div>
             </div>
         </div>
+        <div class="row justify-content-end mb-3">
+            <img  width="350" src="/Public/images/logolar.png">
+        </div>
         <div class="row">
             <div class="col-md-12">
                 <div class="copyright">

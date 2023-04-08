@@ -12,4 +12,7 @@ class AdminController extends Controller
     public function psychologistIndex(){
         return view("Dashboard.Psychologist.index");
     }
+    public function userIndex(){
+        return view("Dashboard.Users.index");
+    }
 }

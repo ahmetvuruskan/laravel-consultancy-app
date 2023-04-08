@@ -9,6 +9,7 @@ use App\Http\Middleware\XssProtection;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 use App\Http\Middleware\PsychologistAccess;
 use App\Http\Middleware\checkToken;
+use App\Http\Middleware\UserAccess;
 class Kernel extends HttpKernel
 {
     /**
@@ -72,7 +73,9 @@ class Kernel extends HttpKernel
         'xss' =>XssProtection::class,
         'checkSession'=>AuthCheck::class,
         'adminAccess'=>AdminAccess::class,
+        'userAccess'=>UserAccess::class,
         'psychologistAccess'=>PsychologistAccess::class,
-        'checkToken'=>checkToken::class
+        'checkToken'=>checkToken::class,
+        'loginRequired'=>\App\Http\Middleware\LoginRequired::class,
     ];
 }
