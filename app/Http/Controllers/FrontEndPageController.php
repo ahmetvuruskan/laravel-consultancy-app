@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Crypt;
 use App\Models\Blogs;
 use App\Models\Orders;
-
+use App\Models\Comments;
 class FrontEndPageController extends Controller
 {
     public function index()
@@ -196,9 +196,11 @@ class FrontEndPageController extends Controller
     }
     public function psychologist($slug)
     {
+        $comments = new Comments();
         $user = new User();
         $data['professions'] = Professions::take(6)->get();
         $data['psychologists'] =$user->getSinglePsychologist(["psychologist.slug" => $slug]);
+        $data['comments'] = $comments->getUserComment($slug);
         return view("Public.psychologist")->with('data', $data);
     }
 

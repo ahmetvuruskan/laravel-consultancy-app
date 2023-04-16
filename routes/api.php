@@ -9,6 +9,7 @@ use App\Http\Controllers\ProfessionController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\AppointmentController;
 use App\Http\Controllers\TestController;
+use App\Http\Controllers\CommentController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -32,12 +33,13 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post("make-admin",[UserController::class,"makeAdmin"])->name("api.make.admin");
     Route::post("make-psychologist",[UserController::class,"makePsychologist"])->name("api.make.psychologist");
     Route::post("blog/sil",[CmsController::class,"blogDelete"])->name("api.blog.delete");
-    Route::post("updateTimes",[AppointmentController::class,'updateTimes'])->name("api.update.times");
+    Route::post("updateTimes",[Com::class,'updateTimes'])->name("api.update.times");
     Route::post("delete",[TestController::class,"delete"])->name("api.admin.test.delete");
     Route::post("get-available-times",[AppointmentController::class,"getAvailableTimes"])->name("api.get.available.times");
     Route::post("create-appointment",[AppointmentController::class,"createAppointment"])->name("api.create.appointment");
     Route::post("update_available_times",[AppointmentController::class,"updateAvailableTimes"])->name("api.update.available.times");
     Route::post("getPrices",[ProductController::class,"getPrices"])->name("api.get.prices");
+    Route::post("saveComment",[CommentController::class,"saveComment"])->name("api.save.comment");
 });
 
     Route::post("products/getProductsByProfession",[ProductController::class,"getProductsByProfession"])->name("api.getproductsbyprofession");

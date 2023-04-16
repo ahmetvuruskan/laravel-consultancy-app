@@ -4,7 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\DB;
+use App\Models\Appointment;
 class Orders extends Model
 {
     protected $table = "orders";
@@ -12,17 +14,24 @@ class Orders extends Model
 
     public function getMyOrders($user_id)
     {
-        return $this->where("$this->table.buyer_id", $user_id)
+       return $this->where("$this->table.buyer_id", $user_id)
             ->select(
                 "$this->table.*",
                 DB::raw("CONCAT(users.name,' ',users.surname) as seller_name"),
                 "packages.package_name",
+                "start_date as appointment_date",
+                "start_time as appointment_time",
+                "users.id as seller_id",
+                DB::raw("ADDTIME(end_time,'1:00:00') as appointment_end_time"),
             )
+            ->leftJoin("appointment", "appointment.id", "=", "orders.order_id")
             ->leftJoin("products", "products.id", "=", "orders.product_id")
             ->leftJoin("users", "users.id", "=", "products.user_id")
             ->leftJoin("professions", "professions.id", "=", "products.id")
             ->leftJoin("packages", "packages.id", "=", "products.package_id")
             ->get();
+
+
     }
     public function getSingleOrder($id){
         return $this->where("$this->table.order_id", $id)
