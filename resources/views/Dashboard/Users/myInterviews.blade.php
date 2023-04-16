@@ -25,7 +25,6 @@
                                         <th class="width80">#</th>
                                         <th>Paket Tipi</th>
                                         <th>Uzman Adı</th>
-                                        <th>Seans Sayısı</th>
                                         <th>Seans Süresi</th>
                                         <th>Randevu Oluştur</th>
                                     </tr>
@@ -36,8 +35,7 @@
                                             <td>{{$interview->order_id}}</td>
                                             <td>{{$interview->package_name}}</td>
                                             <td>{{$interview->seller_name}}</td>
-                                            <td>{{$interview->number_of_sessions}}</td>
-                                            <td>{{$interview->session_duration}}</td>
+                                            <td>{{$interview->duration}} dk</td>
                                             <td><a href="{{route("admin.users.create.appointment",\Illuminate\Support\Facades\Crypt::encrypt($interview->order_id))}}" class="btn btn-primary btn-sm">Randevu Oluştur</a></td>
                                         </tr>
                                     @endforeach

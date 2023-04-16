@@ -5,7 +5,6 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
     <link rel="stylesheet" href="/Public/css/bootstrap.min.css">
 
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&display=swap" rel="stylesheet">
@@ -16,6 +15,7 @@
     <link rel="stylesheet" href="/Public/css/slick-theme.css">
     <link rel="stylesheet" href="/Public/css/magnific-popup.css" />
     <link rel="stylesheet" href="/Public/css/style.css">
+    @yield("css")
     <title>@hasSection('title')
                @yield('title')
         @else{{$title}}

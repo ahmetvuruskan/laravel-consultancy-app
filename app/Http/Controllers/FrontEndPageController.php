@@ -72,16 +72,23 @@ class FrontEndPageController extends Controller
 
     public function createAppoinment($id)
     {
-        $data['professions'] = Professions::take(6)->get();
-        $data['professionsforsell'] = Professions::all();
+        $user = new User();
         $id = Crypt::decrypt($id);
         $product = new Products();
-        $data['product'] = $product->getSingleProduct($id);
+        $data['professions'] = Professions::take(6)->get();
+        $data['professionsforsell'] = Professions::all();
+        $data['user']=$user->getSinglePsychologist(['users.id' => $id]);
+        $data['user_products'] = $product->getProdcuts($id);
         return view("Public.createAppointment")->with('data', $data);
     }
 
     public function virtualTerminal(Request $request)
     {
+        $product = new Products();
+        //Todo: Fiyat Çekilecek 0 id 1 uzunluk
+
+        $parts = explode("-", $request->session_type);
+        $price = ($product->getProductPrice($parts[0], $parts[1]))[0]->price;
 
         if (empty($request->identity_number)) {
             if (empty($request->identity_number)) {
@@ -98,8 +105,8 @@ class FrontEndPageController extends Controller
         $paymentRequest = new \Iyzipay\Request\CreatePaymentRequest();
         $paymentRequest->setLocale(\Iyzipay\Model\Locale::TR);
         $paymentRequest->setConversationId($order_id);
-        $paymentRequest->setPrice($request->price);
-        $paymentRequest->setPaidPrice(intval($request->price));
+        $paymentRequest->setPrice($price);
+        $paymentRequest->setPaidPrice(intval($price));
         $paymentRequest->setCurrency(\Iyzipay\Model\Currency::TL);
         $paymentRequest->setInstallment(1);
         $paymnentCard = new \Iyzipay\Model\PaymentCard();
@@ -111,11 +118,11 @@ class FrontEndPageController extends Controller
         $paymnentCard->setRegisterCard(0);
         $paymentRequest->setPaymentCard($paymnentCard);
         $buyer = new \Iyzipay\Model\Buyer();
-        $buyer->setId($request->user_id);
-        $buyer->setName($request->name);
-        $buyer->setSurname($request->surname);
-        $buyer->setGsmNumber($request->phone);
-        $buyer->setEmail($request->mail);
+        $buyer->setId(Auth::user()->id);
+        $buyer->setName(Auth::user()->name);
+        $buyer->setSurname(Auth::user()->surname);
+        $buyer->setGsmNumber(Auth::user()->phone);
+        $buyer->setEmail(Auth::user()->mail);
         $buyer->setIdentityNumber($request->identity_number);
         $buyer->setIp($request->ip());
         $buyer->setRegistrationAddress("istanbul-merkez");
@@ -123,31 +130,31 @@ class FrontEndPageController extends Controller
         $buyer->setCountry("Turkey"); // ülke
         $paymentRequest->setBuyer($buyer); // requeste alıcıyı set ediyoruz.
         $shippingAddress = new \Iyzipay\Model\Address(); // kargo adresi
-        $shippingAddress->setContactName($request->firstname . ' ' . $request->lastname); // Adres isim soyisim
-        $shippingAddress->setCity($request->il); // İl
+        $shippingAddress->setContactName(Auth::user()->name . ' ' . Auth::user()->surname); // Adres isim soyisim
+        $shippingAddress->setCity("İstanbul"); // İl
         $shippingAddress->setCountry("Turkey"); // Ülke
-        $shippingAddress->setAddress($request->address . ' ' . $request->address2); //Kargo adresi
-        $paymentRequest->setShippingAddress($shippingAddress); // requeste shipping adresi set ediyoruz
+        $shippingAddress->setAddress($request->address . ' ' . $request->address2);
+        $paymentRequest->setShippingAddress($shippingAddress);
         $billingAddress = new \Iyzipay\Model\Address();
-        $billingAddress->setContactName($request->full_name); // Fatura sahibi isim
-        $billingAddress->setCity("İstanbul"); // Fatura için şehir
-        $billingAddress->setCountry("Turkey"); // Fatura ülke
-        $billingAddress->setAddress("İstanbul merkez"); // Fatura adresi
-        $paymentRequest->setBillingAddress($billingAddress); // Fatura bilgilerini set ediyoruz
+        $billingAddress->setContactName($request->full_name);
+        $billingAddress->setCity("İstanbul");
+        $billingAddress->setCountry("Turkey");
+        $billingAddress->setAddress("İstanbul merkez");
+        $paymentRequest->setBillingAddress($billingAddress);
         $basketItems = array();
         $firstBasketItem = new \Iyzipay\Model\BasketItem();
-        $firstBasketItem->setId($request->product_id); // Ürün id
-        $firstBasketItem->setName($request->package_type . " " . $request->profession); // ürün adı
-        $category_id = $request->package_id;
-        $firstBasketItem->setCategory1($category_id);
+        $firstBasketItem->setId($request->specialist_id);
+        $firstBasketItem->setName("Özel Danışmanlık");
+        $firstBasketItem->setCategory1($request->package_type);
         $firstBasketItem->setItemType(\Iyzipay\Model\BasketItemType::VIRTUAL);  // Ürünün  sanal mı fiziksel mi olduğunu belirtiyoruz
-        $firstBasketItem->setPrice(intval($request->price));
+        $firstBasketItem->setPrice(intval($price));
         $basketItems[0] = $firstBasketItem;
         $paymentRequest->setBasketItems($basketItems);
         $pay = \Iyzipay\Model\Payment::create($paymentRequest, $options);
         if ($error = $pay->getErrorMessage()) {
             Log::error("Ödeme Hatası: " . $error);
         }
+
         if ($pay->getStatus() == 'success') {
             Orders::insert([
                 "order_id" => $order_id,
@@ -186,6 +193,13 @@ class FrontEndPageController extends Controller
         $data['professions'] = Professions::take(6)->get();
         $data['test'] = Tests::where("slug", $slug)->first();
         return view("Public.testDetail")->with('data', $data);
+    }
+    public function psychologist($slug)
+    {
+        $user = new User();
+        $data['professions'] = Professions::take(6)->get();
+        $data['psychologists'] =$user->getSinglePsychologist(["psychologist.slug" => $slug]);
+        return view("Public.psychologist")->with('data', $data);
     }
 
 }

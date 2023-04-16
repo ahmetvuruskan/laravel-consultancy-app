@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="/Public/css/slick-theme.css">
     <link rel="stylesheet" href="/Public/css/magnific-popup.css"/>
     <link rel="stylesheet" href="/Public/css/style.css">
+    @yield("css")
     <title>@hasSection('title')
             @yield('title')
         @else

@@ -40,38 +40,58 @@
                                     <div class="card-body">
                                         <div class="row">
                                             <div class="col-lg-4">
-                                                <img src="/assets/images/{{$user->profile}}"
+                                                <img width="400" src="/assets/images/{{$user->profile}}"
                                                      class="img-fluid rounded-circle shadow-4-strong"
                                                      alt="doctor_image">
                                             </div>
                                             <div class="col-lg-8">
                                                 <h5 class="card-title">{{$user->user_fullname}}</h5>
                                                 <p class="card-text">{{$user->title}}</p>
-                                                <p class="card-text">{{$user->description}}</p>
+
+                                                @foreach($user->products as $product)
+                                                    <p class="font-weight-bold"> {{$product->package_name}} - 30
+                                                        dakika : {{$product->thirty_min}} ₺ - 60
+                                                        Dakika {{$product->sixty_min}} ₺ </p>
+                                                    @endforeach
+                                                    <p class="card-text">{!!substr($user->description,0,200)!!} <a href="{{ route("frontend.psychologist",['slug'=>$user->slug]) }}"> Devamını Oku</a></p>
+                                                    <a href="{{route("frontend.create.appointment",["id"=>\Illuminate\Support\Facades\Crypt::encrypt($user->id)])}}"
+                                                       class="btn btn-success">Randevu Al </a>
+                                                    <a href="{{route("frontend.create.appointment",["id"=>\Illuminate\Support\Facades\Crypt::encrypt($user->id)])}}"
+                                                       style="background-color: green" class="btn btn-success buy">Şimdi
+                                                        Konuş </a>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             @endforeach
                             @foreach($data['users'] as $user)
-                                <div class="card mt-2">
-                                    <div class="card-body">
-                                        <div class="row">
-                                            <div class="col-lg-4">
-                                                <img src="/assets/images/{{$user->profile}}"
-                                                     class="img-fluid rounded-circle shadow-4-strong"
-                                                     alt="doctor_image">
-                                            </div>
-                                            <div class="col-lg-8">
-                                                <h5 class="card-title">{{$user->user_fullname}}</h5>
-                                                <p class="card-text">{{$user->title}}</p>
-                                                <p class="card-text">{{$user->description}}</p>
-                                                <a href="{{route("frontend.create.appointment")}}/${data[key].product_id}"
-                                                   class="btn btn-primary buy">Randevu Al</a>
+                                    <div class="card mt-2">
+                                        <div class="card-body">
+                                            <div class="row">
+                                                <div class="col-lg-4">
+                                                    <img width="400" src="/assets/images/{{$user->profile}}"
+                                                         class="img-fluid rounded-circle shadow-4-strong"
+                                                         alt="doctor_image">
+                                                </div>
+                                                <div class="col-lg-8">
+                                                    <h5 class="card-title">{{$user->user_fullname}}</h5>
+                                                    <p class="card-text">{{$user->title}}</p>
+
+                                                    @foreach($user->products as $product)
+                                                        <p class="font-weight-bold"> {{$product->package_name}} - 30
+                                                            dakika : {{$product->thirty_min}} ₺ - 60
+                                                            Dakika {{$product->sixty_min}} ₺ </p>
+                                                    @endforeach
+                                                    <p class="card-text">{!!  $user->description!!}</p>
+                                                    <a href="{{route("frontend.create.appointment",["id"=>\Illuminate\Support\Facades\Crypt::encrypt($user->id)])}}"
+                                                       class="btn btn-success">Randevu Al </a>
+                                                    <a href="{{route("frontend.create.appointment",["id"=>\Illuminate\Support\Facades\Crypt::encrypt($user->id)])}}"
+                                                       style="background-color: green" class="btn btn-success buy">Şimdi
+                                                        Konuş </a>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
                             @endforeach
                         </div>
                     </div>

@@ -1,17 +1,7 @@
 @extends("Public.Layout.pagesLayout")
-{{--(--}}
-{{--[package_name] => Sesli Görüşme--}}
-{{--[package_id] => 1--}}
-{{--[package_price] => 100--}}
-{{--[profile] => defaultavatar.png--}}
-{{--[session_duration] => 30--}}
-{{--[number_of_sessions] => 1--}}
-{{--[user_fullname] => deneme deneme--}}
-{{--[profession_name] => Adli Psikoloji--}}
-{{--[profession_id] => 1--}}
-{{--[profession_description] => lorem ipsum--}}
-{{--[product_id] => 8--}}
-{{--)--}}
+@section('css')
+    <link rel="stylesheet" href="/assets/select2/select2.css">
+@endsection
 @section('content')
     <section class="space sub-header">
         <div class="container container-custom">
@@ -69,58 +59,54 @@
                                         </div>
                                     </div>
                                 </div>
+                                <input type="hidden" name="session_duration" id="session_duration">
+                                <input type="hidden" name="specialist_id" value="{{$data['user']->id}}">
                                 <div class="row mt-5">
                                     <div class="container p-0">
                                         <div class="card px-4">
-                                            <p class="h8 py-3">Ürün Bilgileri</p>
+                                            <p class="h8 py-3">Sipariş Bilgileri</p>
                                             <div class="row gx-3">
-                                                <div class="col-6">
+                                                <div class="col-lg-6">
                                                     <div class="d-flex flex-column">
-                                                        <p class="text mb-1">Paket Tipi</p>
-                                                        <input class="form-control mb-3" readonly type="text"
-                                                               value="{{$data['product'][0]->package_name}}"
-                                                               name="package_type">
+                                                        <p class="text mb-1">Uzman Ad Soyad</p>
+                                                        <input class="form-control mb-3" type="text" readonly
+                                                               value="{{$data['user']->name." ".$data['user']->surname}}">
                                                     </div>
                                                 </div>
-                                                <input type="hidden" name="price"
-                                                       value="{{$data['product'][0]->package_price}}">
-                                                <input type="hidden" name="user_id"
-                                                       value="{{\Illuminate\Support\Facades\Auth::user()->id}}">
-                                                <input type="hidden" name="product_id"
-                                                       value="{{$data['product'][0]->product_id}}">
-                                                <input type="hidden" name="package_id"
-                                                       value="{{$data['product'][0]->package_id}}">
-                                                <div class="col-6">
+                                                <div class="col-lg-6">
                                                     <div class="d-flex flex-column">
-                                                        <p class="text mb-1">Randevu Süresi</p>
-                                                        <input class="form-control mb-3" readonly type="text"
-                                                               value="{{$data['product'][0]->session_duration}} dk"
-                                                               name="session_duration">
+                                                        <p class="text mb-1">Uzman Ünvan</p>
+                                                        <input class="form-control mb-3" type="text" readonly
+                                                               value="{{$data['user']->title}}">
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="row gx-3">
-                                                <div class="col-6">
+                                            <div class="row gx-3 mb-2">
+                                                <div class="col-lg-6">
                                                     <div class="d-flex flex-column">
-                                                        <p class="text mb-1">Uzman Adı</p>
-                                                        <input class="form-control mb-3" readonly type="text"
-                                                               value="{{$data['product'][0]->user_fullname}}"
-                                                               name="specialist_name">
+                                                        <p class="text mb-1">Görüşme Tipi</p>
+                                                        <select required class="form-control" id="package_type"
+                                                                name="package_type">
+                                                            <option disabled selected value="">Seçiniz</option>
+                                                            @foreach($data['user_products'] as $products)
+                                                                <option
+                                                                    value="{{$products->id}}">{{$products->package_name}}</option>
+                                                            @endforeach
+                                                        </select>
                                                     </div>
                                                 </div>
-                                                <div class="col-6">
+                                                <div class="col-lg-6">
                                                     <div class="d-flex flex-column">
-                                                        <p class="text mb-1">Uzmanlık Alanı</p>
-                                                        <input class="form-control mb-3" readonly type="text"
-                                                               value="{{$data['product'][0]->profession_name}}"
-                                                               name="profession">
+                                                        <p class="text mb-1">Görüşme Süresi</p>
+                                                        <select required class="form-control" id="session"
+                                                                name="session_type">
+                                                        </select>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-
                                 <div class="row mt-5">
                                     <div class="container p-0">
                                         <div class="card px-4">
@@ -166,7 +152,7 @@
                                                 <div class="col-12">
                                                     <button type="submit" class="btn btn-primary mb-3">
                                                         <span
-                                                            class="ps-3">Öde {{$data['product'][0]->package_price}} ₺</span>
+                                                            class="ps-3">Öde <span id="price">0</span></span>
                                                         <span class="fas fa-arrow-right"></span>
                                                     </button>
                                                 </div>
@@ -181,4 +167,51 @@
             </div>
         </div>
     </section>
+@endsection
+@section('js')
+    <script>
+        $(document).ready(function () {
+            let price = $('#price');
+            price.hide();
+            $('#package_type').on('change', function () {
+                var package_type = $(this).val();
+                price.hide();
+                axios.post("{{route("api.get.prices")}}", {
+                    product: package_type
+                }, {
+                    headers: {
+                        'Authorization': "Bearer {{\Illuminate\Support\Facades\Cookie::get('token')}}"
+                    }
+                }).then(function (response) {
+                   let select = $('#session');
+                     select.empty();
+                    $.each(response.data.data, function (key, value) {
+                        select.append('   <option disabled selected value="">Seçiniz</option>')
+                        select.append('<option value=' + value.id +'-60'+'>60 Dakika - '  + value.sixty_min + ' ₺</option>');
+                        select.append('<option value=' + value.id +'-30'+ '>30 Dakika - ' + value.thirty_min + ' ₺</option>');
+                    });
+                }).catch(function (error) {
+                    if(error.response.status === 401) {
+                        window.location.href = "{{route("login")}}";
+                    }
+                });
+            });
+
+            $('#session').change(()=>{
+               let session = $('#session');
+               let vals = session.val();
+               let html = session.find(":selected").text();
+               htmlArray = html.split(' ');
+               console.log(htmlArray)
+                let sessionArray = vals.split('-');
+                price.show();
+                price.text(htmlArray[3]+'₺');
+                if(sessionArray[1] == 60) {
+                    $('#session_duration').val(60);
+                }else{
+                    $('#session_duration').val(30);
+                }
+            });
+        });
+    </script>
 @endsection

@@ -64,7 +64,7 @@ class AppointmentController extends Controller
     }
     public function createAppointment(Request $request){
         $extising = Appointment::where('id',$request->order_id)->get()->count();
-        if ($extising < $request->number_of_sessions){
+        if (!$extising){
             Appointment::insert([
                 'id' => $request->order_id,
                 'user_id' => $request->buyer_id,

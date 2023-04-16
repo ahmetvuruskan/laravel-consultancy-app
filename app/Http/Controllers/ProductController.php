@@ -14,10 +14,12 @@ class ProductController extends Controller
 
         $validate = Validator::make($request->all(),[
             'package' => 'required',
-            'profession' => 'required',
+            'thirty_min'=>'required',
+            'sixty_min'=>'required',
         ],[
             'package.required' => 'Paket seçimi zorunludur',
-            'profession.required' => 'Uzmanlık alanı seçimi zorunludur',
+            'thirty_min.required' => '30 dakika fiyatı zorunludur',
+            'sixty_min.required' => '60 dakika fiyatı zorunludur',
         ]);
         if ($validate->fails()){
             return response([
@@ -25,7 +27,7 @@ class ProductController extends Controller
                 "message" => $validate->errors()
             ],400);
         }
-       $isExists = Products::where("package_id", $request->package)->where("profession_id", $request->profession)->where("user_id", auth('sanctum')->user()->id)->get();
+       $isExists = Products::where("package_id", $request->package)->where("user_id", auth('sanctum')->user()->id)->get();
         if ($isExists->count() > 0){
             return response([
                 "status" => "error",
@@ -34,7 +36,8 @@ class ProductController extends Controller
         }else{
             Products::insert([
                 "package_id" => $request->package,
-                "profession_id" => $request->profession,
+                "thirty_min" => $request->thirty_min,
+                "sixty_min" => $request->sixty_min,
                 "created_at" => now(),
                 "user_id"=>auth('sanctum')->user()->id
             ]);
@@ -73,4 +76,12 @@ class ProductController extends Controller
             "data" => $products
         ],200);
     }
+    public function getPrices(Request $request){
+        $products =Products::where("id",$request->product)->get();
+        return response([
+            "status" => "success",
+            "data" => $products
+        ],200);
+    }
+
 }

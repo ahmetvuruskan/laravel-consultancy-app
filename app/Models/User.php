@@ -49,14 +49,16 @@ class User extends Authenticatable
 
     public function getAvailableUsers()
     {
+        $products = new Products();
 
         $days = ['Pazar', 'Pazartesi', 'Salı', 'Çarşamba', 'Perşembe', 'Cuma', 'Cumartesi'];
         $todayRaw = Carbon::now();
         $today = $days[$todayRaw->format("w")];
         $time = $todayRaw->format("H:i");
-
         $user_data = $this::select(
             "profile",
+            "users.id",
+            "slug",
             DB::raw("CONCAT($this->table.name,' ',$this->table.surname) as fullname"),
             "psychologist.title",
             "psychologist.school",
@@ -67,6 +69,9 @@ class User extends Authenticatable
             ->where('time_start', '<=', $time)
             ->where("day", $today)
             ->get();
+        foreach ($user_data as $user) {
+            $user->products = $products->getProdcuts($user->id);
+        }
         return $user_data;
     }
     public function getUsers(){
@@ -84,6 +89,11 @@ class User extends Authenticatable
             ->where('time_start', '>=', $time)
             ->get();
         return $user_data;
+    }
+    public function getSinglePsychologist($where){
+        return  $this::join("psychologist", "psychologist.user_id", "=", "$this->table.id")
+            ->where($where)
+            ->first();
     }
 
 }

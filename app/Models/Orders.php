@@ -13,9 +13,10 @@ class Orders extends Model
     public function getMyOrders($user_id)
     {
         return $this->where("$this->table.buyer_id", $user_id)
-            ->select("$this->table.*",
-                "packages.*",
+            ->select(
+                "$this->table.*",
                 DB::raw("CONCAT(users.name,' ',users.surname) as seller_name"),
+                "packages.package_name",
             )
             ->leftJoin("products", "products.id", "=", "orders.product_id")
             ->leftJoin("users", "users.id", "=", "products.user_id")

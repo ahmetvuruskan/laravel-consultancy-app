@@ -624,6 +624,7 @@ class ComposerStaticInit84984d8126b3f2c636af92c34088478e
         'App\\Http\\Middleware\\AuthCheck' => __DIR__ . '/../..' . '/app/Http/Middleware/AuthCheck.php',
         'App\\Http\\Middleware\\Authenticate' => __DIR__ . '/../..' . '/app/Http/Middleware/Authenticate.php',
         'App\\Http\\Middleware\\EncryptCookies' => __DIR__ . '/../..' . '/app/Http/Middleware/EncryptCookies.php',
+        'App\\Http\\Middleware\\LoginRequired' => __DIR__ . '/../..' . '/app/Http/Middleware/LoginRequired.php',
         'App\\Http\\Middleware\\PreventRequestsDuringMaintenance' => __DIR__ . '/../..' . '/app/Http/Middleware/PreventRequestsDuringMaintenance.php',
         'App\\Http\\Middleware\\PsychologistAccess' => __DIR__ . '/../..' . '/app/Http/Middleware/PsychologistAccess.php',
         'App\\Http\\Middleware\\RedirectIfAuthenticated' => __DIR__ . '/../..' . '/app/Http/Middleware/RedirectIfAuthenticated.php',

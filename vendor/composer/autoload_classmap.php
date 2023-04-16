@@ -58,6 +58,7 @@ return array(
     'App\\Http\\Middleware\\AuthCheck' => $baseDir . '/app/Http/Middleware/AuthCheck.php',
     'App\\Http\\Middleware\\Authenticate' => $baseDir . '/app/Http/Middleware/Authenticate.php',
     'App\\Http\\Middleware\\EncryptCookies' => $baseDir . '/app/Http/Middleware/EncryptCookies.php',
+    'App\\Http\\Middleware\\LoginRequired' => $baseDir . '/app/Http/Middleware/LoginRequired.php',
     'App\\Http\\Middleware\\PreventRequestsDuringMaintenance' => $baseDir . '/app/Http/Middleware/PreventRequestsDuringMaintenance.php',
     'App\\Http\\Middleware\\PsychologistAccess' => $baseDir . '/app/Http/Middleware/PsychologistAccess.php',
     'App\\Http\\Middleware\\RedirectIfAuthenticated' => $baseDir . '/app/Http/Middleware/RedirectIfAuthenticated.php',

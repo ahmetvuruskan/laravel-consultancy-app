@@ -5,6 +5,7 @@
 @section('page-title')
     Randevu Ekle
 @endsection
+
 @section('content')
     <div class="content-body">
         <div class="container-fluid">
@@ -82,8 +83,7 @@
                     specialist_id: {{$data['order']->user_id}},
                     buyer_id : {{\Illuminate\Support\Facades\Auth::user()->id}},
                     product_id : {{$data['order']->product_id}},
-                    number_of_sessions : {{$data['order']->number_of_sessions}},
-                    duration : {{$data['order']->session_duration}},
+                    duration : {{$data['order']->duration}},
                 }
                 axios.post("{{route("api.create.appointment")}}",data,{
                     headers:{

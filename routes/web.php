@@ -34,6 +34,7 @@ Route::middleware(['share'])->group(function () {
         Route::get("bloglar", [FrontEndPageController::class, "blog"])->name("frontend.blog");
         Route::get("kendini-test-et", [FrontEndPageController::class, "tests"])->name("frontend.test");
         Route::get("kendini-test-et/{slug}", [FrontEndPageController::class, "testDetail"])->name("frontend.test.detail");
+        Route::get("uzman/{slug}",[FrontEndPageController::class, "psychologist"])->name("frontend.psychologist");
         Route::middleware("loginRequired")->group(function (){
             Route::get("randevu-al", [FrontEndPageController::class, "getAppoinment"])->name("frontend.appointment");
             Route::get("randevu-al/{id?}", [FrontEndPageController::class, "createAppoinment"])->name("frontend.create.appointment");

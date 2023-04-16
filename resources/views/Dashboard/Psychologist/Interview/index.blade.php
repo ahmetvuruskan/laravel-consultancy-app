@@ -26,8 +26,9 @@
                                     <thead>
                                     <tr>
                                         <th class="width80">#</th>
-                                        <th>Uzmanlık Alanı</th>
                                         <th>Paket</th>
+                                        <th>30 Dk Ücret</th>
+                                        <th>60 Dk Ücret</th>
                                         <th>İşlemler</th>
                                     </tr>
                                     </thead>
@@ -38,8 +39,9 @@
                                     @foreach($data['products'] as $package)
                                         <tr>
                                             <td><strong>{{$i}}</strong></td>
-                                            <td>{{$package->profession_name}}</td>
                                             <td>{{$package->package_name}}</td>
+                                            <td>{{$package->thirty_min}} ₺</td>
+                                            <td>{{$package->sixty_min}} ₺</td>
                                             <td>
                                                 <div class="dropdown">
                                                     <button type="button" class="btn btn-success light sharp"
@@ -85,13 +87,20 @@
                    <div>
                         <div class="form-group">
                             <label for="package-name">Paket Seçiniz</label>
-                            <select name="package" id="package-name" class="form-control">
+                            <select name="package" id="package_name" class="form-control">
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="package-name">Uzmanlık Alanı Seçiniz</label><small>&nbsp;(Arama Yapabilirsiniz.)</small>
-                            <select  name="profession" id="profession-name" class="form-control">
-                            </select>
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <label for="thirty_min">30 Dk ücret</label>
+                                    <input required  id="thirty_min"  class="form-control">
+                                </div>
+                                <div class="col-lg-6">
+                                    <label for="sixty_min">60 Dk ücret</label>
+                                    <input required id="sixty_min" class="form-control">
+                                </div>
+                            </div>
                         </div>
                    </div>
 
@@ -110,7 +119,7 @@
         $(document).ready(function () {
             $('#add-package').click(function () {
                 $('#add-pacakge-modal').modal('show');
-                $("#package-name").select2({
+                $("#package_name").select2({
                     ajax:{
                         beforeSend:function (xhr) {
                             xhr.setRequestHeader('Authorization',"Bearer {{\Illuminate\Support\Facades\Cookie::get('token')}}");
@@ -121,21 +130,13 @@
                     placeholder:"Lütfen bir paket seçiniz",
 
                 });
-                $("#profession-name").select2({
-                    ajax:{
-                        beforeSend:function (xhr) {
-                            xhr.setRequestHeader('Authorization',"Bearer {{\Illuminate\Support\Facades\Cookie::get('token')}}");
-                        },
-                        url:"{{route("admin.profession.search")}}",
-                        type:"POST",
-                    },
-                    placeholder:"Lütfen bir çalışma alanı seçiniz",
-                });
+
             });
             $("#saveButton").click(()=>{
                 const data = {
-                    package:$("#package-name").val(),
-                    profession:$("#profession-name").val(),
+                    package:$("#package_name").val(),
+                    thirty_min:$("#thirty_min").val(),
+                    sixty_min:$("#sixty_min").val(),
                 };
                 axios.post("{{route("api.save.products")}}",data,{
                     headers:{
