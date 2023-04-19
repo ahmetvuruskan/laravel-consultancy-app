@@ -126,6 +126,11 @@
                             <span class="nav-text">Bloglar</span>
                         </a>
                     </li>
+                    <li><a href="{{route("admin.comments.index")}}" class="ai-icon" aria-expanded="false">
+                            <i class="flaticon-381-bookmark"></i>
+                            <span class="nav-text">Yorumlar</span>
+                        </a>
+                    </li>
                     <li>
                         <a href="{{route("admin.test.index")}}" class="ai-icon" aria-expanded="false">
                             <i class="flaticon-381-book"></i>
@@ -177,16 +182,12 @@
                     </li>
                 @endif
             </ul>
-            <div class="copyright">
-                <p>Made with <span class="heart"></span> by Ahmet Vuruskan</p>
-            </div>
         </div>
     </div>
     @yield('content')
     <div class="footer">
         <div class="copyright">
-            <p>Copyright © Developed by <a href="https://github.com/ahmetvuruskan" target="_blank">Ahmet
-                    Vuruşkan</a> {{date("Y")}}</p>
+            <p>Copyright © Psikologlive {{date("Y")}}</p>
         </div>
     </div>
 </div>

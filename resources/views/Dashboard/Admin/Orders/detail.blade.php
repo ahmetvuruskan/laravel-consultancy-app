@@ -29,7 +29,7 @@
                 </div>
 
                 <div class="col-sm-6">
-                    <h6 class="mb-3">To:</h6>
+                    <h6 class="mb-3">Danışan:</h6>
                     <div>
                         <strong>{{$order['buyer_name']}}</strong>
                     </div>
@@ -61,10 +61,6 @@
                 </table>
             </div>
             <div class="row">
-                <div class="col-lg-4 col-sm-5">
-
-                </div>
-
                 <div class="col-lg-4 col-sm-5 ml-auto">
                     <table class="table table-clear">
                         <tbody>
@@ -72,7 +68,7 @@
                             <td class="left">
                                 <strong>Toplam</strong>
                             </td>
-                            <td class="right">{{$order['package_price']}}</td>
+                            <td class="right">{{$order['package_price']}} ₺</td>
                         </tr>
                         </tbody>
                     </table>

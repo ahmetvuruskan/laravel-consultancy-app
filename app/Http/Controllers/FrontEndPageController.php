@@ -122,7 +122,7 @@ class FrontEndPageController extends Controller
         $buyer->setName(Auth::user()->name);
         $buyer->setSurname(Auth::user()->surname);
         $buyer->setGsmNumber(Auth::user()->phone);
-        $buyer->setEmail(Auth::user()->mail);
+        $buyer->setEmail(Auth::user()->email);
         $buyer->setIdentityNumber($request->identity_number);
         $buyer->setIp($request->ip());
         $buyer->setRegistrationAddress("istanbul-merkez");
@@ -154,12 +154,12 @@ class FrontEndPageController extends Controller
         if ($error = $pay->getErrorMessage()) {
             Log::error("Ödeme Hatası: " . $error);
         }
-
         if ($pay->getStatus() == 'success') {
             Orders::insert([
                 "order_id" => $order_id,
                 "buyer_id" => Auth::user()->id,
-                "product_id" => $request->product_id,
+                "product_id" => $parts[0],
+                "duration" =>$parts[1],
                 "status" => "success",
             ]);
             return view("Public.success");

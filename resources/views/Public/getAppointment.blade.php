@@ -82,7 +82,7 @@
                                                             dakika : {{$product->thirty_min}} ₺ - 60
                                                             Dakika {{$product->sixty_min}} ₺ </p>
                                                     @endforeach
-                                                    <p class="card-text">{!!  $user->description!!}</p>
+                                                    <p class="card-text">{!!substr($user->description,0,200)!!} <a href="{{ route("frontend.psychologist",['slug'=>$user->slug]) }}"> Devamını Oku</a></p>
                                                     <a href="{{route("frontend.create.appointment",["id"=>\Illuminate\Support\Facades\Crypt::encrypt($user->id)])}}"
                                                        class="btn btn-success">Randevu Al </a>
                                                     <a href="{{route("frontend.create.appointment",["id"=>\Illuminate\Support\Facades\Crypt::encrypt($user->id)])}}"

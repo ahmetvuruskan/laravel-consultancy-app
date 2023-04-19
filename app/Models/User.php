@@ -62,6 +62,7 @@ class User extends Authenticatable
             DB::raw("CONCAT($this->table.name,' ',$this->table.surname) as fullname"),
             "psychologist.title",
             "psychologist.school",
+            "psychologist.slug",
             "psychologist.description")
             ->join("psychologist", "psychologist.user_id", "=", "$this->table.id")
             ->join("available_times", "available_times.user_id", "=", "$this->table.id")
@@ -75,19 +76,29 @@ class User extends Authenticatable
         return $user_data;
     }
     public function getUsers(){
+        $days = ['Pazar', 'Pazartesi', 'Salı', 'Çarşamba', 'Perşembe', 'Cuma', 'Cumartesi'];
+        $todayRaw = Carbon::now();
+        $today = $days[$todayRaw->format("w")];
+        $products = new Products();
         $todayRaw = Carbon::now();
         $time = $todayRaw->format("H:i");
         $user_data = $this::select(
             "profile",
+            "users.id",
+            "slug",
             DB::raw("CONCAT($this->table.name,' ',$this->table.surname) as fullname"),
             "psychologist.title",
             "psychologist.school",
+            "psychologist.slug",
             "psychologist.description")
             ->join("psychologist", "psychologist.user_id", "=", "$this->table.id")
             ->join("available_times", "available_times.user_id", "=", "$this->table.id")
             ->where('time_end', '<=', $time)
-            ->where('time_start', '>=', $time)
+            ->where("day", $today)
             ->get();
+        foreach ($user_data as $user) {
+            $user->products = $products->getProdcuts($user->id);
+        }
         return $user_data;
     }
     public function getSinglePsychologist($where){

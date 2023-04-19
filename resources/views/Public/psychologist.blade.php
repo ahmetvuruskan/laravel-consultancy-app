@@ -1,6 +1,6 @@
 @extends("Public.Layout.pagesLayout")
 @section('title')
-    {{$title}} | {{$data['psychologists']->name}} {{$data['psychologists']->surname}}
+    {{$title}} | {{ucfirst($data['psychologists']->name)}} {{strtoupper($data['psychologists']->surname)}}
 @endsection
 @section('content')
 
@@ -12,19 +12,21 @@
                     <div class="row justify-content-center text-center">
                         <h2>{{strtoupper($data['psychologists']->name." ".$data['psychologists']->surname)}}</h2>
                     </div>
-                    <div class="row">
+                    <div class="row col-lg-8 d-flex">
                         <div class="col-lg-4 justify-content-center">
                             <div class="row mb-3">
                                 <img width="200" src="/assets/images/{{$data['psychologists']->profile}}"
                                      class="img-fluid rounded-circle shadow-4-strong"
                                      alt="doctor_image">
                             </div>
-                            <h5 style="padding-left: 45px">{{$data['psychologists']->title}}</h5>
+                            <h4 style="padding-left: 45px">{{$data['psychologists']->title}}</h4>
+                            <h5>{{$data['psychologists']->school}}</h5>
                         </div>
-                        <div class="col-lg-8">
-                            {!!  $data['psychologists']->description!!}
+                        <div class="col-lg-8 ">
+                            <p class=""> {!!  $data['psychologists']->description!!}</p>
                         </div>
                     </div>
+
                     @if(!empty($data['comments']))
                         <section class="testimonial">
                             <div class="container container-custom">

@@ -66,8 +66,7 @@
                                                             dakika : {{$product->thirty_min}} ₺ - 60
                                                             Dakika {{$product->sixty_min}} ₺ </p>
                                                     @endforeach
-
-                                                    <p class="card-text">{!!  $doctor->description!!}</p>
+                                                    <p class="card-text">{!!substr($doctor->description,0,200)!!} <a href="{{ route("frontend.psychologist",['slug'=>$doctor->slug]) }}"> Devamını Oku</a></p>
                                                     <a href="{{route("frontend.create.appointment")}}"
                                                        class="btn btn-success">Randevu Al </a>
                                                     <a href="{{route("frontend.create.appointment")}}"
@@ -81,40 +80,43 @@
                             </tr>
                         @endforeach
                         @foreach($data['users'] as $doctor)
-                            <tr>
-                                <td>
-                                    <div class="card ">
-                                        <div class="card-body">
-                                            <div class="row">
-                                                <div class="col-lg-4 ">
-                                                    <img src="/assets/images/defaultavatar.png"
-                                                         class="img-fluid rounded-circle shadow-4-strong"
-                                                         alt="doctor_image">
-                                                    <div class="row justify-content-center">
-                                                        <div class="row">
-                                                            <h5 style="@printStatus(0)">ÇEVRİMDIŞI</h5>
+                                <tr>
+                                    <td>
+                                        <div class="card ">
+                                            <div class="card-body">
+                                                <div class="row justify-content-center">
+                                                    <div class="col-lg-4 ">
+                                                        <img style="width: 220px" src="/assets/images/{{$doctor->profile}}"
+                                                             class="img-fluid rounded-circle shadow-4-strong"
+                                                             alt="doctor_image">
+                                                        <div style=" padding-right: 90px"
+                                                             class="row justify-content-center">
+                                                            <div class="row">
+                                                                <h5 style="@printStatus(0)">ÇEVRİMDIŞI</h5>
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                                <div class="col-lg-8">
-                                                    <h5 class="card-title">Deneme Deneme</h5>
-                                                    <p class="card-text">Seans</p>
-                                                    <p class="card-text">lorem lorem lorem lorem lorem</p>
-                                                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur
-                                                        adipisicing elit.
-                                                        Animi beatae, dignissimos dolorem eius error fugiat itaque iure
-                                                        nemo,
-                                                        nesciunt provident quas quasi, qui quos recusandae reprehenderit
-                                                        sint soluta
-                                                        tempore voluptatibus!</p>
-                                                    <a href="{{route("frontend.create.appointment")}}/"
-                                                       class="btn btn-primary buy">Satın Al 50 ₺</a>
+                                                    <div class="col-lg-8">
+                                                        <h5 class="card-title">{{$doctor->fullname}}</h5>
+                                                        <p class="card-text">{{$doctor->title}}</p>
+
+                                                        @foreach($doctor->products as $product)
+                                                            <p class="font-weight-bold"> {{$product->package_name}} - 30
+                                                                dakika : {{$product->thirty_min}} ₺ - 60
+                                                                Dakika {{$product->sixty_min}} ₺ </p>
+                                                        @endforeach
+                                                        <p class="card-text">{!!substr($doctor->description,0,200)!!} <a href="{{ route("frontend.psychologist",['slug'=>$doctor->slug]) }}"> Devamını Oku</a></p>
+                                                        <a href="{{route("frontend.create.appointment")}}"
+                                                           class="btn btn-success">Randevu Al </a>
+                                                        <a href="{{route("frontend.create.appointment")}}"
+                                                           style="background-color: green" class="btn btn-success buy">Şimdi
+                                                            Konuş </a>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                </td>
-                            </tr>
+                                    </td>
+                                </tr>
                         @endforeach
                     </table>
                 </div>

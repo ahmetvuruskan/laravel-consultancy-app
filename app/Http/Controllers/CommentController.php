@@ -40,4 +40,27 @@ class CommentController extends Controller
             ], 500);
         }
     }
+    public function comments(){
+
+        $comment = new Comments();
+        $data['comments'] = $comment->getAll();
+        return view('Dashboard.Admin.Comments.index')->with("data",$data);
+    }
+    public function updateComment(Request $request)
+    {
+        $st = Comments::where("id",$request->id)->update([
+            "status" => $request->status
+        ]);
+        if($st){
+            return response()->json([
+                "status" => "success",
+                "message" => "Yorum başarıyla güncellendi"
+            ],200);
+        }else{
+            return response()->json([
+                "status" => "error",
+                "message" => "Yorum güncellenirken bir hata oluştu"
+            ],500);
+        }
+    }
 }

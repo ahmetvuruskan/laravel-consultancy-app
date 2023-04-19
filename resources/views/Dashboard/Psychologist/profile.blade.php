@@ -48,7 +48,8 @@
                                 </div>
                                 <div class="row justify-content-center">
                                     <div class="form-group col-lg-6">
-                                        <label for="settingValue" class="col-form-label">Açıklama</label>
+                                        <label for="settingValue" class="col-form-label">Açıklama</label><br>
+                                        <small>Lütfen biçimlendirme yaparak ekleyiniz.Buraya nasıl kayıt ederseniz profilinizde öyle gözükecektir</small>
                                         <textarea id="ckEditor" name="description" class="form-control">{{$data['profile']->description}}</textarea>
                                     </div>
                                 </div>

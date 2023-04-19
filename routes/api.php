@@ -40,6 +40,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post("update_available_times",[AppointmentController::class,"updateAvailableTimes"])->name("api.update.available.times");
     Route::post("getPrices",[ProductController::class,"getPrices"])->name("api.get.prices");
     Route::post("saveComment",[CommentController::class,"saveComment"])->name("api.save.comment");
+    Route::post("updateComment",[CommentController::class,"updateComment"])->name("api.comments.update");
 });
 
     Route::post("products/getProductsByProfession",[ProductController::class,"getProductsByProfession"])->name("api.getproductsbyprofession");

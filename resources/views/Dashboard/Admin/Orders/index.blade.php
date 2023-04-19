@@ -30,7 +30,7 @@
                                     <tbody>
                                     @foreach($data['orders'] as $order)
                                         <tr>
-                                            <td>{{$order->id}}</td>
+                                            <td>{{$order->order_id}}</td>
                                             <td>{{\Carbon\Carbon::parse("$order->created_at")->format("d/m/Y")}}</td>
                                             <td>
                                                 <a href="{{route('admin.orders.show',$order->order_id)}}" class="btn btn-primary btn-sm">Detaylar</a>

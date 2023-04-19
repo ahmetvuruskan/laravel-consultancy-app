@@ -104,9 +104,11 @@ class AppointmentController extends Controller
                     'day' => $days[$i],
                     'time_start' => $start[$i],
                     'time_end' => $end[$i],
+                    'created_at' => Carbon::now(),
                 ]);
             }
         }
+        return response(['message' => 'Müsait zamanlar güncellendi.'], 200);
     }
 
 

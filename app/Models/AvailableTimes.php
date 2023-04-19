@@ -14,4 +14,12 @@ class AvailableTimes extends Model
         $data = $this::select("time_start","time_end")->where("user_id",$user_id)->where("day",$day)->get();
         return $data;
     }
+    public function hasTime(){
+        $data = $this::select("time_start","time_end")->where("user_id",auth()->user()->id)->get();
+        if(count($data) > 0){
+            return true;
+        }else{
+            return false;
+        }
+    }
 }

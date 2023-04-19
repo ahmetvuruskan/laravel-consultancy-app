@@ -12,6 +12,7 @@ use App\Http\Controllers\CmsController;
 use App\Http\Controllers\CalendarController;
 use App\Http\Controllers\TestController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\CommentController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -48,6 +49,9 @@ Route::middleware(['share'])->group(function () {
     Route::get("cikis-yap", [AuthController::class, 'logout'])->name("logout");
     Route::middleware(["checkToken","adminAccess"])->prefix("admin")->group(function () { // Burası adminlere açık
         Route::get("/", [AdminController::class, "index"])->name("admin.index");
+        Route::prefix("yorumlar")->group(function () {
+            Route::get("/", [CommentController::class, "comments"])->name("admin.comments.index");
+        });
         Route::prefix("ayarlar")->group(function () {
             Route::get("/", [SettingsController::class, "index"])->name("admin.settings.index");
             Route::get("duzenle/{id}", [SettingsController::class, 'editSettings'])->name("admin.settings.edit");
